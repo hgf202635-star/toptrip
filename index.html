@@ -1,0 +1,3428 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TOP TRIP AlUla | اكتشف العلا بطريقة مختلفة</title>
+
+<meta name="description"
+content="TOP TRIP AlUla — رحلات باجي في الصحراء وتجارب مغامرة في قلب العلا.">
+
+<meta name="theme-color" content="#17130f">
+
+<!-- Favicon (browser tab icon) -->
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="shortcut icon" type="image/png" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="TOP TRIP AlUla">
+<meta property="og:description" content="اكتشف العلا بطريقة مختلفة مع TOP TRIP">
+<meta property="og:url" content="https://top-trip.freesrv.com/">
+<meta property="og:image" content="https://top-trip.freesrv.com/images/logo.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://top-trip.freesrv.com/images/logo.png?v=2">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* =========================================================
+ROOT
+========================================================= */
+
+:root {
+--sand: #c8a77a;
+--sand-light: #e7d2ae;
+--gold: #d6b277;
+
+--dark: #15110d;
+--dark-2: #1e1812;
+--dark-3: #282018;
+
+--cream: #f4eee4;
+--white: #ffffff;
+--muted: #aaa096;
+
+--border: rgba(255,255,255,.10);
+
+--container: 1240px;
+
+--radius-lg: 30px;
+--radius-md: 20px;
+
+--shadow:
+0 30px 80px rgba(0,0,0,.30);
+
+--transition:
+.35s cubic-bezier(.2,.8,.2,1);
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: "Cairo", sans-serif;
+background: var(--dark);
+color: var(--white);
+overflow-x: hidden;
+}
+
+body.no-scroll {
+overflow: hidden;
+}
+
+img {
+width: 100%;
+display: block;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+button {
+font: inherit;
+}
+
+::selection {
+background: var(--sand);
+color: var(--dark);
+}
+
+/* =========================================================
+LOADER
+========================================================= */
+
+.loader {
+position: fixed;
+inset: 0;
+background: #15110d;
+z-index: 99999;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+transition: .7s ease;
+}
+
+.loader.hide {
+opacity: 0;
+visibility: hidden;
+}
+
+.loader-inner {
+text-align: center;
+}
+
+.loader-logo {
+width: 100px;
+height: 100px;
+object-fit: contain;
+margin: auto;
+animation: pulseLogo 1.5s infinite;
+}
+
+.loader-line {
+width: 100px;
+height: 2px;
+margin: 22px auto 0;
+background: linear-gradient(
+90deg,
+transparent,
+var(--sand),
+transparent
+);
+animation: loaderLine 1.3s infinite;
+}
+
+@keyframes pulseLogo {
+50% {
+transform: scale(1.06);
+opacity: .75;
+}
+}
+
+@keyframes loaderLine {
+50% {
+transform: scaleX(.4);
+opacity: .4;
+}
+}
+
+/* =========================================================
+UTILITIES
+========================================================= */
+
+.container {
+width: min(
+calc(100% - 40px),
+var(--container)
+);
+margin-inline: auto;
+}
+
+.section {
+padding: 120px 0;
+position: relative;
+}
+
+.section-header {
+max-width: 760px;
+margin-bottom: 55px;
+}
+
+.eyebrow {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+
+color: var(--gold);
+font-size: 13px;
+font-weight: 800;
+
+letter-spacing: 2px;
+text-transform: uppercase;
+
+margin-bottom: 15px;
+}
+
+.eyebrow::before {
+content: "";
+width: 32px;
+height: 1px;
+background: var(--gold);
+}
+
+.section-title {
+font-size: clamp(34px, 5vw, 64px);
+line-height: 1.12;
+font-weight: 900;
+letter-spacing: -1px;
+}
+
+.section-text {
+color: var(--muted);
+line-height: 2;
+margin-top: 18px;
+font-size: 16px;
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.header {
+position: fixed;
+top: 0;
+right: 0;
+left: 0;
+z-index: 1000;
+
+transition: var(--transition);
+}
+
+.header.scrolled {
+background: rgba(21,17,13,.86);
+backdrop-filter: blur(20px);
+border-bottom: 1px solid var(--border);
+}
+
+.nav {
+height: 90px;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 30px;
+}
+
+.brand {
+display: flex;
+align-items: center;
+gap: 12px;
+
+flex-shrink: 0;
+}
+
+.brand img {
+width: 58px;
+height: 58px;
+object-fit: contain;
+}
+
+.brand-name {
+font-size: 21px;
+font-weight: 900;
+letter-spacing: 2px;
+}
+
+.brand-name span {
+display: block;
+color: var(--gold);
+font-size: 10px;
+letter-spacing: 4px;
+font-weight: 700;
+margin-top: -5px;
+}
+
+.nav-links {
+display: flex;
+align-items: center;
+gap: 30px;
+}
+
+.nav-links a {
+position: relative;
+color: rgba(255,255,255,.78);
+font-size: 14px;
+font-weight: 600;
+transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+color: var(--white);
+}
+
+.nav-links a::after {
+content: "";
+position: absolute;
+right: 0;
+bottom: -8px;
+
+width: 0;
+height: 1px;
+
+background: var(--gold);
+transition: var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+width: 100%;
+}
+
+.nav-actions {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.header-book {
+padding: 12px 20px;
+border-radius: 100px;
+
+background: var(--white);
+color: var(--dark);
+
+font-size: 13px;
+font-weight: 800;
+
+transition: var(--transition);
+}
+
+.header-book:hover {
+transform: translateY(-3px);
+background: var(--sand-light);
+}
+
+.menu-btn {
+display: none;
+
+width: 45px;
+height: 45px;
+
+border: 1px solid var(--border);
+background: rgba(255,255,255,.05);
+
+color: white;
+border-radius: 50%;
+
+cursor: pointer;
+}
+
+/* =========================================================
+MOBILE MENU
+========================================================= */
+
+.mobile-menu {
+position: fixed;
+inset: 0;
+z-index: 2000;
+
+background: rgba(10,8,6,.97);
+backdrop-filter: blur(20px);
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+opacity: 0;
+visibility: hidden;
+transition: .4s ease;
+}
+
+.mobile-menu.open {
+opacity: 1;
+visibility: visible;
+}
+
+.mobile-menu-close {
+position: absolute;
+top: 25px;
+left: 25px;
+
+width: 45px;
+height: 45px;
+
+border: 1px solid var(--border);
+border-radius: 50%;
+
+background: transparent;
+color: white;
+
+cursor: pointer;
+}
+
+.mobile-links {
+display: flex;
+flex-direction: column;
+gap: 25px;
+text-align: center;
+}
+
+.mobile-links a {
+font-size: 25px;
+font-weight: 800;
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.hero {
+min-height: 100vh;
+position: relative;
+
+display: flex;
+align-items: center;
+
+overflow: hidden;
+}
+
+.hero-bg {
+position: absolute;
+inset: 0;
+background:
+linear-gradient(
+90deg,
+rgba(13,10,7,.25),
+rgba(13,10,7,.70)
+),
+linear-gradient(
+0deg,
+rgba(13,10,7,.92),
+transparent 65%
+),
+url("images/hero.jpg") center/cover no-repeat;
+
+transform: scale(1.04);
+animation: heroZoom 12s ease-out forwards;
+}
+
+@keyframes heroZoom {
+to {
+transform: scale(1);
+}
+}
+
+.hero::after {
+content: "";
+position: absolute;
+inset: 0;
+
+background:
+radial-gradient(
+circle at 25% 50%,
+transparent,
+rgba(0,0,0,.45)
+);
+
+pointer-events: none;
+}
+
+.hero-content {
+position: relative;
+z-index: 2;
+
+padding-top: 100px;
+max-width: 800px;
+}
+
+.hero-mini {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+
+padding: 8px 14px;
+border: 1px solid rgba(255,255,255,.18);
+border-radius: 100px;
+
+background: rgba(255,255,255,.06);
+backdrop-filter: blur(10px);
+
+color: #e9ddcb;
+font-size: 12px;
+font-weight: 700;
+
+margin-bottom: 25px;
+}
+
+.hero-mini i {
+color: var(--gold);
+}
+
+.hero-title {
+font-size: clamp(55px, 9vw, 115px);
+line-height: .9;
+font-weight: 900;
+letter-spacing: -5px;
+}
+
+.hero-title span {
+color: var(--sand-light);
+display: block;
+}
+
+.hero-subtitle {
+font-size: clamp(19px, 3vw, 30px);
+font-weight: 600;
+margin-top: 28px;
+}
+
+.hero-description {
+max-width: 650px;
+margin-top: 18px;
+
+color: rgba(255,255,255,.72);
+line-height: 2;
+font-size: 16px;
+}
+
+.hero-buttons {
+display: flex;
+gap: 14px;
+flex-wrap: wrap;
+
+margin-top: 35px;
+}
+
+.btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+
+min-height: 54px;
+padding: 0 25px;
+
+border-radius: 100px;
+
+font-size: 14px;
+font-weight: 800;
+
+cursor: pointer;
+border: 1px solid transparent;
+
+transition: var(--transition);
+}
+
+.btn-primary {
+background: var(--white);
+color: var(--dark);
+}
+
+.btn-primary:hover {
+transform: translateY(-4px);
+box-shadow: 0 15px 35px rgba(0,0,0,.25);
+background: var(--sand-light);
+}
+
+.btn-outline {
+color: white;
+border-color: rgba(255,255,255,.25);
+background: rgba(255,255,255,.05);
+backdrop-filter: blur(10px);
+}
+
+.btn-outline:hover {
+transform: translateY(-4px);
+border-color: var(--gold);
+}
+
+.hero-bottom {
+position: absolute;
+z-index: 3;
+bottom: 35px;
+right: 50%;
+
+transform: translateX(50%);
+
+width: min(calc(100% - 40px), var(--container));
+
+display: flex;
+justify-content: space-between;
+align-items: end;
+}
+
+.hero-scroll {
+display: flex;
+align-items: center;
+gap: 12px;
+
+color: rgba(255,255,255,.65);
+font-size: 11px;
+letter-spacing: 2px;
+}
+
+.scroll-line {
+width: 45px;
+height: 1px;
+background: rgba(255,255,255,.4);
+}
+
+.hero-location {
+display: flex;
+align-items: center;
+gap: 8px;
+
+color: rgba(255,255,255,.75);
+font-size: 12px;
+}
+
+.hero-location i {
+color: var(--gold);
+}
+
+/* =========================================================
+INTRO
+========================================================= */
+
+.intro {
+background:
+radial-gradient(
+circle at 80% 20%,
+rgba(200,167,122,.08),
+transparent 30%
+),
+var(--dark);
+}
+
+.intro-grid {
+display: grid;
+grid-template-columns: 1.05fr .95fr;
+gap: 70px;
+align-items: center;
+}
+
+.intro-image {
+position: relative;
+border-radius: var(--radius-lg);
+overflow: hidden;
+
+min-height: 600px;
+
+box-shadow: var(--shadow);
+}
+
+.intro-image img {
+height: 100%;
+object-fit: cover;
+}
+
+.image-label {
+position: absolute;
+right: 25px;
+bottom: 25px;
+
+padding: 12px 16px;
+border: 1px solid rgba(255,255,255,.2);
+border-radius: 100px;
+
+background: rgba(0,0,0,.35);
+backdrop-filter: blur(15px);
+
+font-size: 12px;
+}
+
+.intro-copy p {
+color: var(--muted);
+line-height: 2.1;
+margin-top: 25px;
+font-size: 17px;
+}
+
+.intro-points {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+margin-top: 35px;
+}
+
+.intro-point {
+padding: 18px;
+
+border: 1px solid var(--border);
+border-radius: 18px;
+
+background: rgba(255,255,255,.025);
+}
+
+.intro-point i {
+color: var(--gold);
+margin-bottom: 10px;
+}
+
+.intro-point strong {
+display: block;
+font-size: 14px;
+}
+
+.intro-point span {
+display: block;
+color: var(--muted);
+font-size: 11px;
+margin-top: 3px;
+}
+
+/* =========================================================
+EXPERIENCES
+========================================================= */
+
+.experiences {
+background:
+linear-gradient(
+180deg,
+#1b1510,
+#15110d
+);
+}
+
+.experience-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 25px;
+}
+
+.experience-card {
+position: relative;
+min-height: 620px;
+
+overflow: hidden;
+border-radius: 28px;
+
+background: #211a14;
+
+border: 1px solid rgba(255,255,255,.08);
+
+isolation: isolate;
+}
+
+.experience-image {
+position: absolute;
+inset: 0;
+z-index: -2;
+}
+
+.experience-image img {
+height: 100%;
+object-fit: cover;
+transition: transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.experience-card:hover .experience-image img {
+transform: scale(1.07);
+}
+
+.experience-card::after {
+content: "";
+position: absolute;
+inset: 0;
+z-index: -1;
+
+background:
+linear-gradient(
+0deg,
+rgba(0,0,0,.92),
+rgba(0,0,0,.08) 65%
+);
+}
+
+.experience-content {
+position: absolute;
+right: 30px;
+left: 30px;
+bottom: 30px;
+}
+
+.experience-badge {
+display: inline-flex;
+padding: 7px 12px;
+
+border-radius: 100px;
+
+background: rgba(255,255,255,.1);
+border: 1px solid rgba(255,255,255,.18);
+
+backdrop-filter: blur(12px);
+
+font-size: 11px;
+margin-bottom: 15px;
+}
+
+.experience-title {
+font-size: 32px;
+font-weight: 900;
+}
+
+.experience-description {
+color: rgba(255,255,255,.7);
+font-size: 13px;
+line-height: 1.9;
+margin-top: 8px;
+}
+
+.experience-meta {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 15px;
+
+padding-top: 20px;
+margin-top: 20px;
+
+border-top: 1px solid rgba(255,255,255,.15);
+}
+
+.experience-info {
+display: flex;
+gap: 18px;
+}
+
+.meta-item {
+display: flex;
+align-items: center;
+gap: 7px;
+
+color: rgba(255,255,255,.75);
+font-size: 12px;
+}
+
+.meta-item i {
+color: var(--gold);
+}
+
+.price {
+font-size: 28px;
+font-weight: 900;
+}
+
+.price small {
+font-size: 11px;
+color: var(--muted);
+font-weight: 500;
+}
+
+.card-button {
+width: 48px;
+height: 48px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 50%;
+background: white;
+color: var(--dark);
+
+transition: var(--transition);
+}
+
+.card-button:hover {
+transform: rotate(-45deg);
+background: var(--sand-light);
+}
+
+/* =========================================================
+FEATURES
+========================================================= */
+
+.features {
+background: #f0e9df;
+color: var(--dark);
+}
+
+.features .eyebrow {
+color: #8f6d40;
+}
+
+.features .eyebrow::before {
+background: #8f6d40;
+}
+
+.features .section-text {
+color: #756c62;
+}
+
+.features-grid {
+display: grid;
+grid-template-columns: repeat(4,1fr);
+gap: 16px;
+}
+
+.feature {
+min-height: 250px;
+
+padding: 30px;
+
+background: rgba(255,255,255,.7);
+border: 1px solid rgba(50,35,20,.10);
+border-radius: 24px;
+
+transition: var(--transition);
+}
+
+.feature:hover {
+transform: translateY(-8px);
+box-shadow: 0 25px 50px rgba(60,40,20,.12);
+}
+
+.feature-icon {
+width: 52px;
+height: 52px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 15px;
+
+background: #e4d3ba;
+color: #765630;
+
+font-size: 19px;
+
+margin-bottom: 35px;
+}
+
+.feature h3 {
+font-size: 18px;
+margin-bottom: 9px;
+}
+
+.feature p {
+color: #786f66;
+line-height: 1.8;
+font-size: 13px;
+}
+
+/* =========================================================
+SAFETY
+========================================================= */
+
+.safety {
+position: relative;
+overflow: hidden;
+}
+
+.safety::before {
+content: "SAFETY";
+position: absolute;
+left: -40px;
+bottom: -90px;
+
+font-size: 220px;
+font-weight: 900;
+
+color: rgba(255,255,255,.025);
+pointer-events: none;
+}
+
+.safety-grid {
+display: grid;
+grid-template-columns: .8fr 1.2fr;
+gap: 70px;
+align-items: center;
+}
+
+.safety-visual {
+min-height: 550px;
+border-radius: 30px;
+overflow: hidden;
+position: relative;
+}
+
+.safety-visual img {
+height: 100%;
+object-fit: cover;
+}
+
+.safety-overlay {
+position: absolute;
+inset: 20px;
+
+border: 1px solid rgba(255,255,255,.3);
+border-radius: 22px;
+}
+
+.safety-list {
+display: grid;
+gap: 12px;
+margin-top: 30px;
+}
+
+.safety-item {
+display: flex;
+align-items: center;
+gap: 15px;
+
+padding: 18px 20px;
+
+border: 1px solid var(--border);
+border-radius: 17px;
+
+background: rgba(255,255,255,.025);
+}
+
+.safety-item i {
+color: var(--gold);
+font-size: 18px;
+}
+
+.safety-item span {
+color: #c2b9af;
+font-size: 13px;
+}
+
+/* =========================================================
+ALULA
+========================================================= */
+
+.alula {
+min-height: 700px;
+
+display: flex;
+align-items: center;
+
+background:
+linear-gradient(
+90deg,
+rgba(15,11,8,.88),
+rgba(15,11,8,.25)
+),
+url("images/alula.jpg") center/cover fixed;
+}
+
+.alula-content {
+max-width: 700px;
+}
+
+.alula-title {
+font-size: clamp(45px, 7vw, 90px);
+line-height: 1;
+font-weight: 900;
+}
+
+.alula-title span {
+color: var(--sand-light);
+}
+
+.alula p {
+max-width: 600px;
+margin-top: 25px;
+
+color: rgba(255,255,255,.72);
+line-height: 2;
+}
+
+/* =========================================================
+GALLERY
+========================================================= */
+
+.gallery {
+background: #f0e9df;
+color: var(--dark);
+}
+
+.gallery .eyebrow {
+color: #8f6d40;
+}
+
+.gallery .eyebrow::before {
+background: #8f6d40;
+}
+
+.gallery .section-text {
+color: #756c62;
+}
+
+.gallery-grid {
+display: grid;
+grid-template-columns: repeat(12,1fr);
+grid-auto-rows: 190px;
+gap: 14px;
+}
+
+.gallery-item {
+position: relative;
+overflow: hidden;
+
+border-radius: 20px;
+cursor: pointer;
+}
+
+.gallery-item:nth-child(1) {
+grid-column: span 5;
+grid-row: span 2;
+}
+
+.gallery-item:nth-child(2) {
+grid-column: span 4;
+grid-row: span 1;
+}
+
+.gallery-item:nth-child(3) {
+grid-column: span 3;
+grid-row: span 2;
+}
+
+.gallery-item:nth-child(4) {
+grid-column: span 4;
+grid-row: span 1;
+}
+
+.gallery-item:nth-child(5) {
+grid-column: span 4;
+grid-row: span 1;
+}
+
+.gallery-item:nth-child(6) {
+grid-column: span 4;
+grid-row: span 1;
+}
+
+.gallery-item img {
+height: 100%;
+object-fit: cover;
+transition: .6s ease;
+}
+
+.gallery-item::after {
+content: "\f00e";
+
+position: absolute;
+inset: 0;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+font-family: "Font Awesome 6 Free";
+font-weight: 900;
+
+font-size: 20px;
+
+color: white;
+background: rgba(0,0,0,.25);
+
+opacity: 0;
+transition: var(--transition);
+}
+
+.gallery-item:hover img {
+transform: scale(1.08);
+}
+
+.gallery-item:hover::after {
+opacity: 1;
+}
+
+/* =========================================================
+VIDEOS
+========================================================= */
+
+.videos {
+background: #15110d;
+}
+
+.video-grid {
+display: grid;
+grid-template-columns: repeat(3,1fr);
+gap: 18px;
+}
+
+.video-card {
+position: relative;
+min-height: 450px;
+
+overflow: hidden;
+border-radius: 24px;
+
+background: #211a14;
+}
+
+.video-card video {
+position: absolute;
+inset: 0;
+
+width: 100%;
+height: 100%;
+
+object-fit: cover;
+}
+
+.video-card::after {
+content: "";
+position: absolute;
+inset: 0;
+
+background:
+linear-gradient(
+0deg,
+rgba(0,0,0,.85),
+transparent 70%
+);
+}
+
+.video-label {
+position: absolute;
+z-index: 2;
+
+right: 22px;
+bottom: 22px;
+left: 22px;
+}
+
+.video-label h3 {
+font-size: 19px;
+}
+
+.video-label span {
+color: #aaa;
+font-size: 11px;
+}
+
+/* =========================================================
+CONTACT
+========================================================= */
+
+.contact {
+background:
+radial-gradient(
+circle at 15% 20%,
+rgba(200,167,122,.1),
+transparent 25%
+),
+#1b1510;
+}
+
+.contact-box {
+padding: 65px;
+
+border: 1px solid var(--border);
+border-radius: 32px;
+
+background:
+linear-gradient(
+135deg,
+rgba(255,255,255,.06),
+rgba(255,255,255,.015)
+);
+
+display: grid;
+grid-template-columns: 1fr .8fr;
+gap: 60px;
+}
+
+.contact-title {
+font-size: clamp(38px, 5vw, 70px);
+line-height: 1;
+font-weight: 900;
+}
+
+.contact-title span {
+color: var(--sand-light);
+}
+
+.contact-copy {
+color: var(--muted);
+line-height: 2;
+margin-top: 20px;
+max-width: 600px;
+}
+
+.contact-actions {
+display: grid;
+gap: 12px;
+align-content: center;
+}
+
+.contact-link {
+display: flex;
+align-items: center;
+gap: 15px;
+
+padding: 18px 20px;
+
+border: 1px solid var(--border);
+border-radius: 17px;
+
+background: rgba(255,255,255,.025);
+
+transition: var(--transition);
+}
+
+.contact-link:hover {
+transform: translateX(-6px);
+border-color: rgba(214,178,119,.4);
+}
+
+.contact-link-icon {
+width: 45px;
+height: 45px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 13px;
+
+background: rgba(214,178,119,.12);
+color: var(--gold);
+}
+
+.contact-link strong {
+display: block;
+font-size: 13px;
+}
+
+.contact-link small {
+color: var(--muted);
+font-size: 11px;
+}
+
+/* =========================================================
+MAP
+========================================================= */
+
+.location {
+background: #f0e9df;
+color: var(--dark);
+}
+
+.location-grid {
+display: grid;
+grid-template-columns: .8fr 1.2fr;
+gap: 40px;
+align-items: stretch;
+}
+
+.location-info {
+padding: 40px;
+background: white;
+border-radius: 25px;
+}
+
+.location-info h3 {
+font-size: 30px;
+margin-bottom: 20px;
+}
+
+.location-info p {
+color: #756c62;
+line-height: 2;
+}
+
+.location-detail {
+display: flex;
+align-items: flex-start;
+gap: 14px;
+
+padding: 18px 0;
+border-bottom: 1px solid #eee4d7;
+}
+
+.location-detail i {
+color: #987648;
+margin-top: 5px;
+}
+
+.map-frame {
+min-height: 430px;
+border-radius: 25px;
+overflow: hidden;
+background: #ddd;
+}
+
+.map-frame iframe {
+width: 100%;
+height: 100%;
+min-height: 430px;
+border: 0;
+filter: grayscale(.25) contrast(.95);
+}
+
+/* =========================================================
+CTA
+========================================================= */
+
+.final-cta {
+position: relative;
+padding: 120px 20px;
+
+text-align: center;
+
+background:
+linear-gradient(
+rgba(20,15,10,.78),
+rgba(20,15,10,.92)
+),
+url("images/cta.jpg") center/cover;
+}
+
+.final-cta h2 {
+font-size: clamp(42px, 7vw, 90px);
+font-weight: 900;
+line-height: 1;
+}
+
+.final-cta p {
+max-width: 600px;
+margin: 22px auto 30px;
+
+color: rgba(255,255,255,.65);
+line-height: 2;
+}
+
+/* =========================================================
+FOOTER
+========================================================= */
+
+footer {
+background: #0e0b08;
+padding: 70px 0 25px;
+border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+display: grid;
+grid-template-columns: 1.3fr 1fr 1fr;
+gap: 50px;
+}
+
+.footer-brand {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.footer-brand img {
+width: 65px;
+height: 65px;
+object-fit: contain;
+}
+
+.footer-brand strong {
+font-size: 22px;
+}
+
+.footer-description {
+color: var(--muted);
+line-height: 1.9;
+font-size: 13px;
+max-width: 450px;
+margin-top: 20px;
+}
+
+.footer-column h4 {
+font-size: 14px;
+margin-bottom: 20px;
+}
+
+.footer-links {
+display: grid;
+gap: 10px;
+}
+
+.footer-links a {
+color: var(--muted);
+font-size: 12px;
+transition: var(--transition);
+}
+
+.footer-links a:hover {
+color: var(--gold);
+transform: translateX(-3px);
+}
+
+.socials {
+display: flex;
+gap: 8px;
+margin-top: 22px;
+}
+
+.social {
+width: 40px;
+height: 40px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border: 1px solid var(--border);
+border-radius: 50%;
+
+color: #aaa;
+
+transition: var(--transition);
+}
+
+.social:hover {
+color: var(--dark);
+background: var(--sand);
+border-color: var(--sand);
+transform: translateY(-4px);
+}
+
+.footer-bottom {
+display: flex;
+justify-content: space-between;
+gap: 20px;
+
+padding-top: 30px;
+margin-top: 50px;
+
+border-top: 1px solid var(--border);
+
+color: #68615a;
+font-size: 11px;
+}
+
+/* =========================================================
+LIGHTBOX
+========================================================= */
+
+.lightbox {
+position: fixed;
+inset: 0;
+z-index: 5000;
+
+background: rgba(0,0,0,.94);
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+padding: 30px;
+
+opacity: 0;
+visibility: hidden;
+transition: .35s ease;
+}
+
+.lightbox.open {
+opacity: 1;
+visibility: visible;
+}
+
+.lightbox img {
+max-width: 1100px;
+max-height: 85vh;
+width: auto;
+
+object-fit: contain;
+border-radius: 15px;
+}
+
+.lightbox-close {
+position: absolute;
+top: 25px;
+left: 25px;
+
+width: 50px;
+height: 50px;
+
+border: 1px solid rgba(255,255,255,.2);
+background: rgba(255,255,255,.08);
+
+color: white;
+border-radius: 50%;
+
+cursor: pointer;
+font-size: 20px;
+}
+
+/* =========================================================
+BOOKING MODAL
+========================================================= */
+
+.modal {
+position: fixed;
+inset: 0;
+z-index: 4000;
+
+background: rgba(0,0,0,.72);
+backdrop-filter: blur(12px);
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+padding: 20px;
+
+opacity: 0;
+visibility: hidden;
+transition: .3s ease;
+}
+
+.modal.open {
+opacity: 1;
+visibility: visible;
+}
+
+.modal-box {
+width: min(560px, 100%);
+
+background: #211a14;
+border: 1px solid var(--border);
+border-radius: 28px;
+
+padding: 35px;
+
+transform: translateY(20px);
+transition: .4s ease;
+}
+
+.modal.open .modal-box {
+transform: translateY(0);
+}
+
+.modal-top {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 20px;
+}
+
+.modal-top h3 {
+font-size: 26px;
+}
+
+.modal-close {
+width: 42px;
+height: 42px;
+
+border-radius: 50%;
+border: 1px solid var(--border);
+
+background: transparent;
+color: white;
+
+cursor: pointer;
+}
+
+.modal-selected {
+margin-top: 25px;
+padding: 20px;
+
+border-radius: 18px;
+background: rgba(255,255,255,.04);
+}
+
+.modal-selected strong {
+display: block;
+color: var(--sand-light);
+font-size: 18px;
+}
+
+.modal-selected span {
+display: block;
+color: var(--muted);
+font-size: 12px;
+margin-top: 5px;
+}
+
+.booking-options {
+display: grid;
+gap: 10px;
+margin-top: 20px;
+}
+
+.booking-option {
+display: flex;
+align-items: center;
+gap: 14px;
+
+padding: 17px;
+
+border: 1px solid var(--border);
+border-radius: 16px;
+
+transition: var(--transition);
+}
+
+.booking-option:hover {
+border-color: rgba(214,178,119,.5);
+background: rgba(214,178,119,.05);
+}
+
+.booking-option i {
+color: var(--gold);
+width: 20px;
+}
+
+.booking-option strong {
+display: block;
+font-size: 13px;
+}
+
+.booking-option small {
+display: block;
+color: var(--muted);
+margin-top: 2px;
+}
+
+/* =========================================================
+REVEAL
+========================================================= */
+
+.reveal {
+opacity: 0;
+transform: translateY(35px);
+transition: .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.show {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+.nav-links {
+display: none;
+}
+
+.menu-btn {
+display: block;
+}
+
+.intro-grid,
+.safety-grid,
+.contact-box,
+.location-grid {
+grid-template-columns: 1fr;
+}
+
+.features-grid {
+grid-template-columns: repeat(2,1fr);
+}
+
+.video-grid {
+grid-template-columns: repeat(2,1fr);
+}
+
+.intro-image {
+min-height: 500px;
+}
+
+.safety-visual {
+min-height: 450px;
+}
+
+.contact-actions {
+max-width: 600px;
+}
+
+.footer-grid {
+grid-template-columns: 1fr 1fr;
+}
+
+.footer-grid > :first-child {
+grid-column: 1 / -1;
+}
+}
+
+@media (max-width: 750px) {
+
+.container {
+width: min(
+calc(100% - 28px),
+var(--container)
+);
+}
+
+.section {
+padding: 80px 0;
+}
+
+.header-book {
+display: none;
+}
+
+.brand-name {
+font-size: 17px;
+}
+
+.brand img {
+width: 48px;
+height: 48px;
+}
+
+.hero-content {
+padding-top: 80px;
+}
+
+.hero-title {
+font-size: 58px;
+letter-spacing: -3px;
+}
+
+.hero-description {
+font-size: 14px;
+}
+
+.hero-bottom {
+bottom: 20px;
+}
+
+.hero-location {
+display: none;
+}
+
+.experience-grid {
+grid-template-columns: 1fr;
+}
+
+.experience-card {
+min-height: 580px;
+}
+
+.features-grid {
+grid-template-columns: 1fr;
+}
+
+.intro-points {
+grid-template-columns: 1fr;
+}
+
+.gallery-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-auto-rows: 180px;
+}
+
+.gallery-item,
+.gallery-item:nth-child(n) {
+grid-column: span 1;
+grid-row: span 1;
+}
+
+.gallery-item:first-child {
+grid-column: span 2;
+grid-row: span 2;
+}
+
+.video-grid {
+grid-template-columns: 1fr;
+}
+
+.video-card {
+min-height: 430px;
+}
+
+.contact-box {
+padding: 30px 22px;
+}
+
+.location-info {
+padding: 28px;
+}
+
+.footer-grid {
+grid-template-columns: 1fr;
+}
+
+.footer-grid > :first-child {
+grid-column: auto;
+}
+
+.footer-bottom {
+flex-direction: column;
+}
+}
+
+@media (max-width: 450px) {
+
+.hero-title {
+font-size: 50px;
+}
+
+.hero-buttons {
+flex-direction: column;
+}
+
+.hero-buttons .btn {
+width: 100%;
+}
+
+.experience-content {
+right: 20px;
+left: 20px;
+bottom: 20px;
+}
+
+.experience-title {
+font-size: 27px;
+}
+
+.experience-meta {
+align-items: flex-end;
+}
+
+.experience-info {
+gap: 10px;
+flex-direction: column;
+}
+
+.price {
+font-size: 23px;
+}
+
+.modal-box {
+padding: 25px 20px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+LOADER
+========================================================= -->
+
+<div class="loader" id="loader">
+<div class="loader-inner">
+<img src="images/logo.png" class="loader-logo" alt="TOP TRIP">
+<div class="loader-line"></div>
+</div>
+</div>
+
+<!-- =========================================================
+HEADER
+========================================================= -->
+
+<header class="header" id="header">
+
+<div class="container">
+
+<nav class="nav">
+
+<a href="#home" class="brand">
+
+<img src="images/logo.png" alt="TOP TRIP">
+
+<div class="brand-name">
+TOP TRIP
+<span>ALULA</span>
+</div>
+
+</a>
+
+<div class="nav-links">
+
+<a href="#home">الرئيسية</a>
+<a href="#about">عن Top Trip</a>
+<a href="#experiences">الجولات</a>
+<a href="#why">لماذا نحن؟</a>
+<a href="#gallery">المعرض</a>
+<a href="#contact">تواصل معنا</a>
+
+</div>
+
+<div class="nav-actions">
+
+<a href="#experiences" class="header-book">
+احجز تجربتك
+</a>
+
+<button class="menu-btn" id="menuBtn">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+</div>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- =========================================================
+MOBILE MENU
+========================================================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+<button class="mobile-menu-close" id="mobileClose">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+<div class="mobile-links">
+
+<a href="#home">الرئيسية</a>
+<a href="#about">عن Top Trip</a>
+<a href="#experiences">الجولات</a>
+<a href="#why">لماذا نحن؟</a>
+<a href="#gallery">المعرض</a>
+<a href="#contact">تواصل معنا</a>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+<div class="hero-bg"></div>
+
+<div class="container">
+
+<div class="hero-content reveal">
+
+<div class="hero-mini">
+<i class="fa-solid fa-location-dot"></i>
+ALULA · SAUDI ARABIA
+</div>
+
+<h1 class="hero-title">
+TOP
+<span>TRIP</span>
+</h1>
+
+<h2 class="hero-subtitle">
+اكتشف العلا بطريقة مختلفة
+</h2>
+
+<p class="hero-description">
+نضمن لك تقديم خدمات تشمل رحلات باجي في الصحراء،
+ومغامرات استكشافية في طبيعة العلا، مع السعي لتقديم
+تجربة مغامرات حقيقية تترك بصمة لا تُنسى، مع الالتزام
+بأعلى معايير السلامة والجودة والإثارة والابتكار.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#experiences" class="btn btn-primary">
+استكشف الجولات
+<i class="fa-solid fa-arrow-left"></i>
+</a>
+
+<a href="#about" class="btn btn-outline">
+تعرّف على Top Trip
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-bottom">
+
+<div class="hero-scroll">
+<span class="scroll-line"></span>
+SCROLL TO EXPLORE
+</div>
+
+<div class="hero-location">
+<i class="fa-solid fa-location-dot"></i>
+العلا، المملكة العربية السعودية
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+ABOUT
+========================================================= -->
+
+<section class="section intro" id="about">
+
+<div class="container">
+
+<div class="intro-grid">
+
+<div class="intro-image reveal">
+
+<img src="images/about.jpg"
+alt="Top Trip AlUla"
+loading="lazy">
+
+<div class="image-label">
+TOP TRIP · ALULA
+</div>
+
+</div>
+
+<div class="intro-copy reveal">
+
+<div class="eyebrow">
+ABOUT TOP TRIP
+</div>
+
+<h2 class="section-title">
+تجربة مختلفة
+<br>
+في قلب العلا
+</h2>
+
+<p>
+نضمن لك تقديم خدمات تشمل رحلات باجي في الصحراء،
+مغامرات جبلية، وتجارب تخييم تحت النجوم.
+نسعى نحن شركة "TOP TRIP" لإلهام المشاركين بتجربة
+مغامرات حقيقية نترك بصمة لا تُنسى، مع التزامِ
+بأعلى معايير السلامة والجودة وتقديم رحلة
+استكشافية تنبض بالإثارة والابتكار.
+</p>
+
+<div class="intro-points">
+
+<div class="intro-point">
+<i class="fa-solid fa-mountain-sun"></i>
+<strong>مغامرات العلا</strong>
+<span>استكشف الطبيعة بطريقة مختلفة</span>
+</div>
+
+<div class="intro-point">
+<i class="fa-solid fa-car-side"></i>
+<strong>رحلات الباجي</strong>
+<span>تجربة قيادة واستكشاف</span>
+</div>
+
+<div class="intro-point">
+<i class="fa-solid fa-shield-halved"></i>
+<strong>السلامة والجودة</strong>
+<span>التزام بمعايير السلامة</span>
+</div>
+
+<div class="intro-point">
+<i class="fa-solid fa-star"></i>
+<strong>تجربة لا تُنسى</strong>
+<span>مغامرة بطابع مختلف</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+EXPERIENCES
+========================================================= -->
+
+<section class="section experiences" id="experiences">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="eyebrow">
+OUR EXPERIENCES
+</div>
+
+<h2 class="section-title">
+اختر تجربتك
+</h2>
+
+<p class="section-text">
+اختر المغامرة التي تناسبك واستمتع بتجربة استكشاف
+مختلفة في طبيعة العلا.
+</p>
+
+</div>
+
+<div class="experience-grid">
+
+<!-- EXPERIENCE 1 -->
+
+<article class="experience-card reveal">
+
+<div class="experience-image">
+<img src="images/buggy-30.jpg"
+alt="رحلة باجي 30 دقيقة"
+loading="lazy">
+</div>
+
+<div class="experience-content">
+
+<div class="experience-badge">
+الأكثر مغامرة
+</div>
+
+<h3 class="experience-title">
+رحلة الباجي — 30 دقيقة
+</h3>
+
+<p class="experience-description">
+رحلة استكشافية لمدة 30 دقيقة، مع توقف عند
+النقوش، ثم العودة إلى موقع الانطلاق.
+</p>
+
+<div class="experience-meta">
+
+<div>
+
+<div class="experience-info">
+
+<div class="meta-item">
+<i class="fa-regular fa-clock"></i>
+30 دقيقة
+</div>
+
+<div class="meta-item">
+<i class="fa-solid fa-location-dot"></i>
+توقف عند النقوش
+</div>
+
+</div>
+
+<div class="price">
+500
+<small>ريال</small>
+</div>
+
+</div>
+
+<button
+class="card-button book-btn"
+data-tour="رحلة الباجي — 30 دقيقة"
+data-price="500 ريال">
+<i class="fa-solid fa-arrow-left"></i>
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+<!-- EXPERIENCE 2 -->
+
+<article class="experience-card reveal">
+
+<div class="experience-image">
+<img src="images/buggy-15.jpg"
+alt="رحلة باجي 15 دقيقة"
+loading="lazy">
+</div>
+
+<div class="experience-content">
+
+<div class="experience-badge">
+تجربة سريعة
+</div>
+
+<h3 class="experience-title">
+رحلة الباجي — 15 دقيقة
+</h3>
+
+<p class="experience-description">
+تجربة باجي لمدة 15 دقيقة بدون توقف،
+ثم العودة إلى موقع الانطلاق.
+</p>
+
+<div class="experience-meta">
+
+<div>
+
+<div class="experience-info">
+
+<div class="meta-item">
+<i class="fa-regular fa-clock"></i>
+15 دقيقة
+</div>
+
+<div class="meta-item">
+<i class="fa-solid fa-flag"></i>
+بدون توقف
+</div>
+
+</div>
+
+<div class="price">
+250
+<small>ريال</small>
+</div>
+
+</div>
+
+<button
+class="card-button book-btn"
+data-tour="رحلة الباجي — 15 دقيقة"
+data-price="250 ريال">
+<i class="fa-solid fa-arrow-left"></i>
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+WHY TOP TRIP
+========================================================= -->
+
+<section class="section features" id="why">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="eyebrow">
+WHY TOP TRIP
+</div>
+
+<h2 class="section-title">
+أكثر من مجرد رحلة
+</h2>
+
+<p class="section-text">
+تجربة تجمع بين المغامرة والاستكشاف والطبيعة،
+مع الاهتمام بالتفاصيل التي تصنع تجربة مختلفة.
+</p>
+
+</div>
+
+<div class="features-grid">
+
+<div class="feature reveal">
+
+<div class="feature-icon">
+<i class="fa-solid fa-car-side"></i>
+</div>
+
+<h3>رحلات الباجي</h3>
+
+<p>
+مغامرات استكشافية في طبيعة العلا باستخدام
+مركبات الباجي.
+</p>
+
+</div>
+
+<div class="feature reveal">
+
+<div class="feature-icon">
+<i class="fa-solid fa-mountain"></i>
+</div>
+
+<h3>طبيعة العلا</h3>
+
+<p>
+تجربة وسط التضاريس والمناظر الطبيعية
+المميزة للعلا.
+</p>
+
+</div>
+
+<div class="feature reveal">
+
+<div class="feature-icon">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+
+<h3>السلامة أولًا</h3>
+
+<p>
+الالتزام بمعايير السلامة والجودة ضمن
+التجارب المقدمة.
+</p>
+
+</div>
+
+<div class="feature reveal">
+
+<div class="feature-icon">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+</div>
+
+<h3>تجربة مختلفة</h3>
+
+<p>
+رحلة استكشافية تنبض بالإثارة والابتكار
+وتترك ذكرى لا تُنسى.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+SAFETY
+========================================================= -->
+
+<section class="section safety">
+
+<div class="container">
+
+<div class="safety-grid">
+
+<div class="safety-visual reveal">
+
+<img src="images/safety.jpg"
+alt="السلامة في Top Trip"
+loading="lazy">
+
+<div class="safety-overlay"></div>
+
+</div>
+
+<div class="reveal">
+
+<div class="eyebrow">
+SAFETY FIRST
+</div>
+
+<h2 class="section-title">
+السلامة
+<br>
+أولًا
+</h2>
+
+<p class="section-text">
+لأن المغامرة الحقيقية تحتاج إلى تجربة مسؤولة،
+تلتزم Top Trip بأعلى معايير السلامة والجودة
+ضمن التجارب التي تقدمها.
+</p>
+
+<div class="safety-list">
+
+<div class="safety-item">
+<i class="fa-solid fa-shield-halved"></i>
+<span>
+الالتزام بمعايير السلامة والجودة.
+</span>
+</div>
+
+<div class="safety-item">
+<i class="fa-solid fa-car"></i>
+<span>
+الاهتمام بتجهيز المركبات للتجارب.
+</span>
+</div>
+
+<div class="safety-item">
+<i class="fa-solid fa-user-shield"></i>
+<span>
+إرشادات وتجهيزات السلامة أثناء التجربة.
+</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+ALULA
+========================================================= -->
+
+<section class="section alula">
+
+<div class="container">
+
+<div class="alula-content reveal">
+
+<div class="eyebrow">
+DISCOVER ALULA
+</div>
+
+<h2 class="alula-title">
+العلا...
+<br>
+<span>حيث تبدأ المغامرة</span>
+</h2>
+
+<p>
+بين الصخور والتضاريس والمناظر الطبيعية،
+تقدم العلا مساحة استثنائية للاكتشاف والمغامرة.
+ومع Top Trip تصبح الرحلة طريقة مختلفة لرؤية المكان.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+GALLERY
+========================================================= -->
+
+<section class="section gallery" id="gallery">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="eyebrow">
+TOP TRIP GALLERY
+</div>
+
+<h2 class="section-title">
+لحظات من المغامرة
+</h2>
+
+<p class="section-text">
+صور من تجارب Top Trip وطبيعة العلا.
+</p>
+
+</div>
+
+<div class="gallery-grid">
+
+<div class="gallery-item reveal">
+<img src="images/gallery-1.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+<div class="gallery-item reveal">
+<img src="images/gallery-2.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+<div class="gallery-item reveal">
+<img src="images/gallery-3.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+<div class="gallery-item reveal">
+<img src="images/gallery-4.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+<div class="gallery-item reveal">
+<img src="images/gallery-5.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+<div class="gallery-item reveal">
+<img src="images/gallery-6.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+VIDEOS
+========================================================= -->
+
+<section class="section videos">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="eyebrow">
+TOP TRIP STORIES
+</div>
+
+<h2 class="section-title">
+شاهد المغامرة
+</h2>
+
+<p class="section-text">
+مقاطع من أعمال وتجارب Top Trip.
+</p>
+
+</div>
+
+<div class="video-grid">
+
+<div class="video-card reveal">
+
+<video
+src="videos/toptrip-1.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+<div class="video-label">
+<h3>أجواء المغامرة</h3>
+<span>TOP TRIP · ALULA</span>
+</div>
+
+</div>
+
+<div class="video-card reveal">
+
+<video
+src="videos/toptrip-2.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+<div class="video-label">
+<h3>رحلات الباجي</h3>
+<span>TOP TRIP · ALULA</span>
+</div>
+
+</div>
+
+<div class="video-card reveal">
+
+<video
+src="videos/toptrip-3.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+<div class="video-label">
+<h3>استكشف العلا</h3>
+<span>TOP TRIP · ALULA</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+LOCATION
+========================================================= -->
+
+<section class="section location">
+
+<div class="container">
+
+<div class="location-grid">
+
+<div class="location-info reveal">
+
+<div class="eyebrow">
+OUR LOCATION
+</div>
+
+<h3>
+موقع Top Trip
+</h3>
+
+<p>
+موقع الانطلاق في العلا.
+</p>
+
+<div class="location-detail">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<div>
+<strong>العنوان</strong>
+<br>
+السعودية، 43543 المنقا، العلا
+</div>
+
+</div>
+
+<div class="location-detail">
+
+<i class="fa-solid fa-phone"></i>
+
+<div>
+<strong>رقم التواصل</strong>
+<br>
++966 59 330 4444
+</div>
+
+</div>
+
+<a
+href="https://www.google.com/maps/search/?api=1&query=Top+Trip+AlUla"
+target="_blank"
+rel="noopener"
+class="btn btn-primary"
+style="margin-top:25px;">
+فتح الموقع في الخرائط
+<i class="fa-solid fa-arrow-left"></i>
+</a>
+
+</div>
+
+<div class="map-frame reveal">
+
+<iframe
+src="https://www.google.com/maps?q=Top%20Trip%20AlUla&output=embed"
+loading="lazy"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+CONTACT
+========================================================= -->
+
+<section class="section contact" id="contact">
+
+<div class="container">
+
+<div class="contact-box reveal">
+
+<div>
+
+<div class="eyebrow">
+GET IN TOUCH
+</div>
+
+<h2 class="contact-title">
+مستعد
+<br>
+<span>للمغامرة؟</span>
+</h2>
+
+<p class="contact-copy">
+للحجز والاستفسار تواصل مع Top Trip عبر
+قنوات التواصل الرسمية.
+</p>
+
+</div>
+
+<div class="contact-actions">
+
+<a
+href="tel:+966593304444"
+class="contact-link">
+
+<div class="contact-link-icon">
+<i class="fa-solid fa-phone"></i>
+</div>
+
+<div>
+<strong>اتصل الآن</strong>
+<small>+966 59 330 4444</small>
+</div>
+
+</a>
+
+<a
+href="mailto:Toptrip50@gmail.com"
+class="contact-link">
+
+<div class="contact-link-icon">
+<i class="fa-solid fa-envelope"></i>
+</div>
+
+<div>
+<strong>البريد الإلكتروني</strong>
+<small>Toptrip50@gmail.com</small>
+</div>
+
+</a>
+
+<a
+href="https://linktr.ee/toptrip00"
+target="_blank"
+rel="noopener"
+class="contact-link">
+
+<div class="contact-link-icon">
+<i class="fa-solid fa-link"></i>
+</div>
+
+<div>
+<strong>جميع حساباتنا</strong>
+<small>Instagram · WhatsApp · وغيرها</small>
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+FINAL CTA
+========================================================= -->
+
+<section class="final-cta">
+
+<div class="reveal">
+
+<div class="eyebrow"
+style="justify-content:center;">
+TOP TRIP ALULA
+</div>
+
+<h2>
+اكتشف العلا
+<br>
+بطريقة مختلفة
+</h2>
+
+<p>
+اختر تجربتك وتواصل مع Top Trip للحجز والاستفسار.
+</p>
+
+<a href="#experiences" class="btn btn-primary">
+استكشف الجولات
+<i class="fa-solid fa-arrow-left"></i>
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<div class="footer-brand">
+
+<img src="images/logo.png" alt="TOP TRIP">
+
+<strong>
+TOP TRIP
+</strong>
+
+</div>
+
+<p class="footer-description">
+تجارب مغامرة واستكشاف في قلب العلا،
+مع التركيز على الجودة والسلامة وصناعة
+تجربة لا تُنسى.
+</p>
+
+<div class="socials">
+
+<a
+href="https://linktr.ee/toptrip00"
+target="_blank"
+rel="noopener"
+class="social"
+aria-label="جميع الحسابات">
+<i class="fa-solid fa-link"></i>
+</a>
+
+<a
+href="https://www.instagram.com/toptrip.50/"
+target="_blank"
+rel="noopener"
+class="social"
+aria-label="Instagram">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a
+href="https://www.linkedin.com/company/toptripsa/"
+target="_blank"
+rel="noopener"
+class="social"
+aria-label="LinkedIn">
+<i class="fa-brands fa-linkedin-in"></i>
+</a>
+
+</div>
+
+</div>
+
+<div class="footer-column">
+
+<h4>
+روابط سريعة
+</h4>
+
+<div class="footer-links">
+
+<a href="#home">الرئيسية</a>
+<a href="#about">عن Top Trip</a>
+<a href="#experiences">الجولات</a>
+<a href="#why">لماذا نحن؟</a>
+<a href="#gallery">معرض الصور</a>
+<a href="#contact">تواصل معنا</a>
+
+</div>
+
+</div>
+
+<div class="footer-column">
+
+<h4>
+تواصل معنا
+</h4>
+
+<div class="footer-links">
+
+<a href="tel:+966593304444">
++966 59 330 4444
+</a>
+
+<a href="mailto:Toptrip50@gmail.com">
+Toptrip50@gmail.com
+</a>
+
+<a
+href="https://linktr.ee/toptrip00"
+target="_blank"
+rel="noopener">
+جميع حسابات التواصل
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<span>
+© TOP TRIP AlUla — جميع الحقوق محفوظة
+</span>
+
+<span>
+EXPERIENCE OFFROAD ADVENTURE
+</span>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- =========================================================
+LIGHTBOX
+========================================================= -->
+
+<div class="lightbox" id="lightbox">
+
+<button class="lightbox-close" id="lightboxClose">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+<img id="lightboxImage" src="" alt="Top Trip">
+
+</div>
+
+<!-- =========================================================
+BOOKING MODAL
+========================================================= -->
+
+<div class="modal" id="bookingModal">
+
+<div class="modal-box">
+
+<div class="modal-top">
+
+<h3>
+للحجز والاستفسار
+</h3>
+
+<button class="modal-close" id="modalClose">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+</div>
+
+<div class="modal-selected">
+
+<strong id="selectedTour">
+رحلة الباجي
+</strong>
+
+<span id="selectedPrice">
+500 ريال
+</span>
+
+</div>
+
+<div class="booking-options">
+
+<a
+href="tel:+966593304444"
+class="booking-option">
+
+<i class="fa-solid fa-phone"></i>
+
+<div>
+<strong>اتصل الآن</strong>
+<small>
++966 59 330 4444
+</small>
+</div>
+
+</a>
+
+<a
+href="https://linktr.ee/toptrip00"
+target="_blank"
+rel="noopener"
+class="booking-option">
+
+<i class="fa-solid fa-link"></i>
+
+<div>
+<strong>جميع حسابات التواصل</strong>
+<small>
+WhatsApp · Instagram · وغيرها
+</small>
+</div>
+
+</a>
+
+<a
+href="mailto:Toptrip50@gmail.com"
+class="booking-option">
+
+<i class="fa-solid fa-envelope"></i>
+
+<div>
+<strong>البريد الإلكتروني</strong>
+<small>
+Toptrip50@gmail.com
+</small>
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+LOADER
+========================================================= */
+
+window.addEventListener("load", () => {
+
+setTimeout(() => {
+
+document
+.getElementById("loader")
+.classList.add("hide");
+
+}, 500);
+
+});
+
+/* =========================================================
+HEADER SCROLL
+========================================================= */
+
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+
+if (window.scrollY > 50) {
+
+header.classList.add("scrolled");
+
+} else {
+
+header.classList.remove("scrolled");
+
+}
+
+});
+
+/* =========================================================
+MOBILE MENU
+========================================================= */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const mobileMenu =
+document.getElementById("mobileMenu");
+
+const mobileClose =
+document.getElementById("mobileClose");
+
+function closeMobileMenu() {
+
+mobileMenu.classList.remove("open");
+document.body.classList.remove("no-scroll");
+
+}
+
+menuBtn.addEventListener("click", () => {
+
+mobileMenu.classList.add("open");
+document.body.classList.add("no-scroll");
+
+});
+
+mobileClose.addEventListener(
+"click",
+closeMobileMenu
+);
+
+document
+.querySelectorAll(".mobile-links a")
+.forEach(link => {
+
+link.addEventListener(
+"click",
+closeMobileMenu
+);
+
+});
+
+/* =========================================================
+REVEAL ON SCROLL
+========================================================= */
+
+const revealObserver =
+new IntersectionObserver(
+entries => {
+
+entries.forEach(entry => {
+
+if (entry.isIntersecting) {
+
+entry.target.classList.add("show");
+
+revealObserver.unobserve(
+entry.target
+);
+
+}
+
+});
+
+},
+{
+threshold: .12
+}
+);
+
+document
+.querySelectorAll(".reveal")
+.forEach(element => {
+
+revealObserver.observe(element);
+
+});
+
+/* =========================================================
+LIGHTBOX
+========================================================= */
+
+const lightbox =
+document.getElementById("lightbox");
+
+const lightboxImage =
+document.getElementById("lightboxImage");
+
+const lightboxClose =
+document.getElementById("lightboxClose");
+
+document
+.querySelectorAll(".gallery-item img")
+.forEach(image => {
+
+image.addEventListener("click", () => {
+
+lightboxImage.src =
+image.src;
+
+lightbox.classList.add("open");
+
+document.body.classList.add(
+"no-scroll"
+);
+
+});
+
+});
+
+function closeLightbox() {
+
+lightbox.classList.remove("open");
+
+document.body.classList.remove(
+"no-scroll"
+);
+
+}
+
+lightboxClose.addEventListener(
+"click",
+closeLightbox
+);
+
+lightbox.addEventListener(
+"click",
+event => {
+
+if (event.target === lightbox) {
+
+closeLightbox();
+
+}
+
+}
+);
+
+/* =========================================================
+BOOKING MODAL
+========================================================= */
+
+const bookingModal =
+document.getElementById(
+"bookingModal"
+);
+
+const modalClose =
+document.getElementById(
+"modalClose"
+);
+
+const selectedTour =
+document.getElementById(
+"selectedTour"
+);
+
+const selectedPrice =
+document.getElementById(
+"selectedPrice"
+);
+
+document
+.querySelectorAll(".book-btn")
+.forEach(button => {
+
+button.addEventListener(
+"click",
+() => {
+
+selectedTour.textContent =
+button.dataset.tour;
+
+selectedPrice.textContent =
+button.dataset.price;
+
+bookingModal.classList.add(
+"open"
+);
+
+document.body.classList.add(
+"no-scroll"
+);
+
+}
+);
+
+});
+
+function closeBooking() {
+
+bookingModal.classList.remove(
+"open"
+);
+
+document.body.classList.remove(
+"no-scroll"
+);
+
+}
+
+modalClose.addEventListener(
+"click",
+closeBooking
+);
+
+bookingModal.addEventListener(
+"click",
+event => {
+
+if (event.target === bookingModal) {
+
+closeBooking();
+
+}
+
+}
+);
+
+/* =========================================================
+ESC KEY
+========================================================= */
+
+document.addEventListener(
+"keydown",
+event => {
+
+if (event.key === "Escape") {
+
+closeMobileMenu();
+closeLightbox();
+closeBooking();
+
+}
+
+}
+);
+
+/* =========================================================
+ACTIVE NAV
+========================================================= */
+
+const sections =
+document.querySelectorAll(
+"section[id]"
+);
+
+const navLinks =
+document.querySelectorAll(
+".nav-links a"
+);
+
+window.addEventListener(
+"scroll",
+() => {
+
+let current = "";
+
+sections.forEach(section => {
+
+const sectionTop =
+section.offsetTop - 160;
+
+if (
+window.scrollY >= sectionTop
+) {
+
+current =
+section.getAttribute("id");
+
+}
+
+});
+
+navLinks.forEach(link => {
+
+link.classList.remove("active");
+
+if (
+link.getAttribute("href") ===
+"#" + current
+) {
+
+link.classList.add("active");
+
+}
+
+});
+
+}
+);
+
+</script>
+
+</body>
+</html>

@@ -2055,7 +2055,7 @@ url("/images/alula.jpg") center/cover fixed;
 
 
 /* =========================================================
-REPORTS
+REPORTS SYSTEM
 ========================================================= */
 .rp-fab{position:fixed;bottom:22px;inset-inline-end:22px;z-index:900;display:flex;align-items:center;gap:10px;padding:14px 22px;border:0;border-radius:100px;background:linear-gradient(135deg,var(--sand-light),var(--gold) 55%,#b8864a);color:var(--dark);font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 12px 40px rgba(214,178,119,.35);transition:var(--transition);animation:rpPulse 3s infinite}
 .rp-fab:hover{transform:translateY(-4px) scale(1.04)}
@@ -2101,11 +2101,11 @@ REPORTS
 .rp-big{display:grid;place-items:center;width:84px;height:84px;margin:0 auto 20px;border-radius:50%;background:linear-gradient(135deg,var(--sand-light),var(--gold));color:var(--dark);font-size:32px;box-shadow:0 0 0 10px rgba(214,178,119,.12),0 0 50px rgba(214,178,119,.35)}
 .rp-note{padding:18px;margin-bottom:18px;border:1px solid rgba(214,178,119,.3);border-radius:18px;background:rgba(214,178,119,.07);color:var(--sand-light);font-size:14px;line-height:2;text-align:center}
 .rp-list{display:grid;gap:14px}
-.rp-item{padding:18px;border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.03);animation:rpIn .45s ease}
+.rp-item{padding:18px;border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.03);animation:rpIn .45s ease;cursor:pointer;transition:var(--transition)}
+.rp-item:hover{border-color:rgba(214,178,119,.4);background:rgba(255,255,255,.05)}
 .rp-status{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;margin-bottom:12px;border-radius:100px;font-size:12px;font-weight:800}
-.rp-status.s0{background:rgba(255,120,100,.12);color:#ff9a86;box-shadow:0 0 22px rgba(255,120,100,.15)}
-.rp-status.s1{background:rgba(255,196,80,.12);color:#ffc85a;box-shadow:0 0 22px rgba(255,196,80,.15)}
-.rp-status.s2{background:rgba(110,220,150,.12);color:#7be0a0;box-shadow:0 0 22px rgba(110,220,150,.15)}
+.rp-status.unread{background:rgba(255,196,80,.12);color:#ffc85a;box-shadow:0 0 22px rgba(255,196,80,.15)}
+.rp-status.read{background:rgba(110,220,150,.12);color:#7be0a0;box-shadow:0 0 22px rgba(110,220,150,.15)}
 .rp-item h5{font-size:17px;font-weight:900;word-break:break-word}
 .rp-item p{margin-top:6px;color:var(--muted);font-size:13px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
 .rp-meta{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);color:#8c8278;font-size:12px}
@@ -3284,10 +3284,13 @@ Toptrip50@gmail.com
 </div>
 
 <!-- =========================================================
-REPORTS
+REPORTS SYSTEM
 ========================================================= -->
 
-<button class="rp-fab" id="rpOpen" type="button" aria-label="البلاغات"><i class="fa-solid fa-bullhorn"></i><span>البلاغات</span><b id="rpBadge" hidden>0</b></button>
+<button class="rp-fab" id="rpOpen" type="button" aria-label="البلاغات">
+<i class="fa-solid fa-bullhorn"></i>
+<span>البلاغات</span>
+</button>
 
 <div class="rp" id="rpPanel" role="dialog" aria-modal="true" aria-hidden="true">
 <div class="rp-box">
@@ -3296,68 +3299,52 @@ REPORTS
 <div class="rp-head">
 <div class="eyebrow">TOP TRIP · REPORTS</div>
 <h3>مركز البلاغات</h3>
-<p>أنشئ بلاغًا جديدًا أو تابع حالة بلاغاتك السابقة.</p>
+<p>أنشئ بلاغاً جديداً أو استعرض سجل البلاغات.</p>
 </div>
 
-<div class="rp-view show" id="rpHome"><div class="rp-grid">
-<button type="button" class="rp-card" data-go="rpNew"><i class="fa-solid fa-pen-to-square"></i><div><strong>إنشاء بلاغ</strong><span>أرسل بلاغك أو ملاحظتك إلى فريقنا</span></div></button>
-<button type="button" class="rp-card" data-go="rpLog"><i class="fa-solid fa-clock-rotate-left"></i><div><strong>سجل البلاغات</strong><span>تابع حالة بلاغاتك السابقة</span></div></button>
-<button type="button" class="rp-card" data-go="rpStaffLogin"><i class="fa-solid fa-user-shield"></i><div><strong>تسجيل دخول الموظفين</strong><span>خاص بموظفي الدعم والمتابعة</span></div></button>
-</div></div>
-
-<div class="rp-view" id="rpStaffLogin">
-<div class="rp-field"><label for="rpStaffEmail">سجل بريد إلكتروني</label><input id="rpStaffEmail" type="email" autocomplete="off" placeholder="اكتب بريدك الإلكتروني كَموظف"></div>
-<div class="rp-err" id="rpStaffErr" role="alert"></div>
-<button type="button" class="rp-btn" id="rpStaffLoginBtn">تسجيل الدخول</button>
-<button type="button" class="rp-link" data-go="rpHome">رجوع</button>
+<!-- القائمة الرئيسية (زر إنشاء بلاغ + زر سجل البلاغات) -->
+<div class="rp-view show" id="rpHome">
+<div class="rp-grid" style="margin-top:20px">
+<button type="button" class="rp-card" data-go="rpNew">
+<i class="fa-solid fa-pen-to-square"></i>
+<div><strong>إنشاء بلاغ</strong><span>أرسل بلاغك أو ملاحظتك لفريقنا</span></div>
+</button>
+<button type="button" class="rp-card" data-go="rpLog">
+<i class="fa-solid fa-clock-rotate-left"></i>
+<div><strong>سجل البلاغات</strong><span>عرض البلاغات السابقة وحالة فتح الرسالة</span></div>
+</button>
+</div>
 </div>
 
-<div class="rp-view" id="rpNew"><form id="rpForm" novalidate>
-<div class="rp-field"><label for="rpType">نوع البلاغ</label><input id="rpType" type="text" maxlength="60" autocomplete="off"></div>
-<div class="rp-field"><label for="rpDetails">تفاصيل البلاغ</label><textarea id="rpDetails" maxlength="1000"></textarea></div>
+<!-- نموذج إنشاء البلاغ -->
+<div class="rp-view" id="rpNew">
+<form id="rpForm" novalidate>
+<div class="rp-field">
+<label for="rpType">نوع البلاغ</label>
+<input id="rpType" type="text" maxlength="60" placeholder="اكتب نوع البلاغ" autocomplete="off">
+</div>
+<div class="rp-field">
+<label for="rpDetails">التفاصيل</label>
+<textarea id="rpDetails" maxlength="1000" placeholder="اكتب تفاصيل البلاغ"></textarea>
+</div>
 <div class="rp-err" id="rpErr" role="alert"></div>
 <button type="submit" class="rp-btn">إرسال</button>
 <button type="button" class="rp-link" data-go="rpHome">رجوع</button>
-</form></div>
-
-<div class="rp-view" id="rpChoose">
-<div class="rp-center"><h4>كيف تريد إرسال البلاغ؟</h4></div>
-<div class="rp-grid">
-<button type="button" class="rp-card" data-via="site"><i class="fa-solid fa-globe"></i><div><strong>عبر الموقع</strong><span>يُحفظ في سجل البلاغات</span></div></button>
-<button type="button" class="rp-card" data-via="mail"><i class="fa-solid fa-envelope"></i><div><strong>عبر البريد الإلكتروني</strong><span id="rpMail"></span></div></button>
-</div>
-<button type="button" class="rp-link" data-go="rpNew">رجوع</button>
+</form>
 </div>
 
+<!-- رسالة التأكيد -->
 <div class="rp-view" id="rpConfirm">
 <div class="rp-center"><div class="rp-big"><i class="fa-solid fa-envelope-circle-check"></i></div></div>
 <div class="rp-note">يتم إرسال البلاغ إلى إيميل الشركة، ونتمنى منك تصفّح تطبيق رسائل البريد الإلكتروني ليصلك ردّنا وتتمكن من رؤية الرد.</div>
-<button type="button" class="rp-btn" id="rpSend">تأكيد الإرسال</button>
-<button type="button" class="rp-link" data-go="rpChoose">رجوع</button>
+<button type="button" class="rp-btn" id="rpSendConfirm">تأكيد ارسال</button>
+<button type="button" class="rp-link" data-go="rpNew">رجوع</button>
 </div>
 
-<div class="rp-view" id="rpDone">
-<div class="rp-center"><div class="rp-big"><i class="fa-solid fa-check"></i></div><h4>تم تسجيل بلاغك</h4><p>يمكنك متابعة حالته من سجل البلاغات.</p></div>
-<button type="button" class="rp-btn" data-go="rpLog">عرض سجل البلاغات</button>
-</div>
-
+<!-- سجل البلاغات -->
 <div class="rp-view" id="rpLog">
 <div class="rp-list" id="rpList"></div>
-<button type="button" class="rp-btn" data-go="rpNew" style="margin-top:18px">إنشاء بلاغ</button>
-<button type="button" class="rp-link" data-go="rpHome">رجوع</button>
-</div>
-
-<div class="rp-view" id="rpChat">
-<div class="rp-head" style="margin-bottom:15px">
-<h5 id="rpChatTitle" style="font-size:18px;font-weight:900;">محادثة العميل</h5>
-<span id="rpChatSub" style="color:var(--muted);font-size:12px;">دردشة مباشرة مع صاحب البلاغ</span>
-</div>
-<div id="rpChatMsgs" style="background:rgba(0,0,0,.2);border:1px solid var(--border);border-radius:16px;padding:15px;height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:15px;"></div>
-<div style="display:flex;gap:10px;">
-<input id="rpChatInput" type="text" placeholder="اكتب رسالتك..." style="flex:1;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.04);color:#fff;outline:none;font:inherit;">
-<button type="button" id="rpChatSend" class="rp-btn" style="width:auto;padding:0 20px;">إرسال</button>
-</div>
-<button type="button" class="rp-link" data-go="rpLog">العودة لسجل البلاغات</button>
+<button type="button" class="rp-link" data-go="rpHome" style="margin-top:18px">رجوع</button>
 </div>
 
 </div>
@@ -3704,36 +3691,28 @@ var I18N = {
  "البلاغات": "Reports",
  "إغلاق": "Close",
  "مركز البلاغات": "Reports Center",
- "أنشئ بلاغًا جديدًا أو تابع حالة بلاغاتك السابقة.": "Create a new report or track the status of your previous reports.",
+ "أنشئ بلاغاً جديداً أو استعرض سجل البلاغات.": "Create a new report or view the reports log.",
  "إنشاء بلاغ": "Create a Report",
- "أرسل بلاغك أو ملاحظتك إلى فريقنا": "Send your report or feedback to our team",
+ "أرسل بلاغك أو ملاحظتك لفريقنا": "Send your report or feedback to our team",
  "سجل البلاغات": "Reports Log",
- "تابع حالة بلاغاتك السابقة": "Track the status of your previous reports",
+ "عرض البلاغات السابقة وحالة فتح الرسالة": "View previous reports and message open status",
  "نوع البلاغ": "Report Type",
- "تفاصيل البلاغ": "Report Details",
+ "التفاصيل": "Details",
  "إرسال": "Send",
  "رجوع": "Back",
- "كيف تريد إرسال البلاغ؟": "How would you like to send the report?",
- "عبر الموقع": "Via the website",
- "يُحفظ في سجل البلاغات": "Saved in the reports log",
- "عبر البريد الإلكتروني": "Via email",
- "تأكيد الإرسال": "Confirm Sending",
+ "تأكيد ارسال": "Confirm Sending",
  "يتم إرسال البلاغ إلى إيميل الشركة، ونتمنى منك تصفّح تطبيق رسائل البريد الإلكتروني ليصلك ردّنا وتتمكن من رؤية الرد.": "The report will be sent to the company's email. We kindly ask you to check your email app so you can receive our reply and view it.",
- "تم تسجيل بلاغك": "Your report has been recorded",
- "يمكنك متابعة حالته من سجل البلاغات.": "You can track its status in the reports log.",
- "عرض سجل البلاغات": "View Reports Log",
  "لا توجد بلاغات حتى الآن": "No reports yet",
  "الرجاء كتابة نوع البلاغ": "Please enter the report type",
  "الرجاء كتابة تفاصيل البلاغ": "Please enter the report details",
  "اكتب نوع البلاغ": "Write the report type",
  "اكتب تفاصيل البلاغ": "Write the report details",
- "لم يتم استلام البلاغ": "Report not received",
- "يتم مراجعة البلاغ": "Report is under review",
- "تم استلام البلاغ": "Report received",
+ "غير مفتوحة": "Unopened",
+ "تم فتح الرساله": "Message opened",
  "الرئيسية": "Home",
  "عن Top Trip": "About Top Trip",
  "الجولات": "Tours",
- "لماذا نحن؟": "Why Us?",
+ "لماذا نحن?": "Why Us?",
  "المعرض": "Gallery",
  "تواصل معنا": "Contact Us",
  "احجز تجربتك": "Book Your Experience",
@@ -3744,7 +3723,6 @@ var I18N = {
  "العلا، المملكة العربية السعودية": "AlUla, Saudi Arabia",
  "تجربة مختلفة": "A Different Experience",
  "في قلب العلا": "in the Heart of AlUla",
- "نضمن لك تقديم خدمات تشمل رحلات باجي في الصحراء، مغامرات جبلية، وتجارب تخييم تحت النجوم. نسعى نحن شركة \"TOP TRIP\" لإلهام المشاركين بتجربة مغامرات حقيقية نترك بصمة لا تُنسى، مع التزامِ بأعلى معايير السلامة والجودة وتقديم رحلة استكشافية تنبض بالإثارة والابتكار.": "We guarantee services that include buggy trips in the desert, mountain adventures, and camping experiences under the stars. We at \"TOP TRIP\" strive to inspire participants with a genuine adventure experience that leaves an unforgettable mark, with a commitment to the highest standards of safety and quality, and an exploratory journey full of excitement and innovation.",
  "مغامرات العلا": "AlUla Adventures",
  "استكشف الطبيعة بطريقة مختلفة": "Explore nature in a different way",
  "رحلات الباجي": "Buggy Trips",
@@ -3813,7 +3791,6 @@ var I18N = {
  "للحجز والاستفسار": "Booking & Inquiries",
  "رحلة الباجي": "Buggy Ride",
  "500 ريال": "500 SAR",
- "WhatsApp · Instagram · وغيرها": "WhatsApp · Instagram · and more",
  "رحلة باجي 30 دقيقة": "Buggy ride, 30 minutes",
  "رحلة باجي 15 دقيقة": "Buggy ride, 15 minutes",
  "السلامة في Top Trip": "Safety at Top Trip",
@@ -4009,7 +3986,7 @@ setLang(wanted);
 
 
 /* =========================================================
-REPORTS
+REPORTS SYSTEM
 ========================================================= */
 
 (function () {
@@ -4026,24 +4003,11 @@ return n;
 var mailA = document.querySelector('a[href^="mailto:"]');
 var EMAIL = mailA ? mailA.getAttribute("href").replace("mailto:", "").split("?")[0] : "Toptrip50@gmail.com";
 
-var KEY = "tt-reports";
-var STAFF_KEY = "tt-staffs";
-
-var ST = [
-{ k: "لم يتم استلام البلاغ", i: "fa-circle-exclamation" },
-{ k: "يتم مراجعة البلاغ", i: "fa-magnifying-glass" },
-{ k: "تم استلام البلاغ", i: "fa-circle-check" }
-];
-
-var validStaffs = ["hsh156366@gmail.com", "staff@toptrip.com", "admin@toptrip.com", "toptrip@staff.com"];
-
+var KEY = "tt-reports-v2";
 var panel = $("rpPanel"), box = panel.querySelector(".rp-box");
 var form = $("rpForm"), fType = $("rpType"), fDet = $("rpDetails");
-var err = $("rpErr"), listEl = $("rpList"), badge = $("rpBadge");
-var staffEmailInput = $("rpStaffEmail"), staffErr = $("rpStaffErr");
+var err = $("rpErr"), listEl = $("rpList");
 var draft = null, list = [];
-var currentLoggedInStaff = null;
-var activeChatReportId = null;
 
 try { list = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
 if (!Array.isArray(list)) list = [];
@@ -4069,7 +4033,6 @@ return n;
 }
 
 function render() {
-
 listEl.textContent = "";
 
 if (!list.length) {
@@ -4077,70 +4040,35 @@ var em = mk("div", "rp-empty");
 em.appendChild(mk("i", "fa-solid fa-inbox"));
 em.appendChild(mk("div", "", tr("لا توجد بلاغات حتى الآن")));
 listEl.appendChild(em);
+return;
 }
 
-list.forEach(function (r) {
-
-var idx = ST[r.status] ? r.status : 0;
+list.forEach(function (r, index) {
+var isRead = r.read;
 var it = mk("div", "rp-item");
 
-it.appendChild(withIcon("div", "rp-status s" + idx, "fa-solid " + ST[idx].i, tr(ST[idx].k)));
+var stClass = isRead ? "rp-status read" : "rp-status unread";
+var stText = isRead ? "تم فتح الرساله" : "غير مفتوحة";
+var stIcon = isRead ? "fa-circle-check" : "fa-circle-exclamation";
+
+it.appendChild(withIcon("div", stClass, "fa-solid " + stIcon, tr(stText)));
 it.appendChild(mk("h5", "", String(r.type)));
 it.appendChild(mk("p", "", String(r.details)));
 
-if (r.assignedTo) {
-var ast = mk("div", "", "الموظف المستلم: " + r.assignedTo);
-ast.style.fontSize = "12px";
-ast.style.color = "var(--gold)";
-ast.style.marginTop = "6px";
-it.appendChild(ast);
-}
-
 var meta = mk("div", "rp-meta");
 meta.appendChild(withIcon("span", "", "fa-regular fa-clock", fmt(r.date)));
-meta.appendChild(withIcon(
-"span", "",
-"fa-solid " + (r.via === "mail" ? "fa-envelope" : "fa-globe"),
-tr(r.via === "mail" ? "عبر البريد الإلكتروني" : "عبر الموقع")
-));
+meta.appendChild(withIcon("span", "", "fa-solid fa-envelope", EMAIL));
 it.appendChild(meta);
 
-if (currentLoggedInStaff) {
-var actionDiv = mk("div", "", "");
-actionDiv.style.marginTop = "12px";
-actionDiv.style.display = "flex";
-actionDiv.style.gap = "10px";
-
-if (!r.assignedTo) {
-var takeBtn = mk("button", "rp-btn", "استلام");
-takeBtn.style.padding = "8px 16px";
-takeBtn.style.fontSize = "13px";
-takeBtn.onclick = function() {
-r.assignedTo = currentLoggedInStaff;
-r.status = 2; // تم استلام البلاغ
+// عند النقر على عنصر البلاغ في السجل يتم تحديث حالته إلى "تم فتح الرساله"
+it.addEventListener("click", function () {
+list[index].read = true;
 save();
 render();
-};
-actionDiv.appendChild(takeBtn);
-} else {
-var chatBtn = mk("button", "rp-btn", "الدخول للمحادثة");
-chatBtn.style.padding = "8px 16px";
-chatBtn.style.fontSize = "13px";
-chatBtn.onclick = function() {
-openChat(r.id);
-};
-actionDiv.appendChild(chatBtn);
-}
-it.appendChild(actionDiv);
-}
-
-listEl.appendChild(it);
-
 });
 
-badge.hidden = !list.length;
-badge.textContent = list.length;
-
+listEl.appendChild(it);
+});
 }
 
 function show(id) {
@@ -4164,143 +4092,17 @@ panel.setAttribute("aria-hidden", "true");
 document.body.classList.remove("no-scroll");
 }
 
-function add(via) {
-
-var r = {
-id: Date.now(),
-type: draft.type,
-details: draft.details,
-date: new Date().toISOString(),
-via: via,
-status: 0,
-assignedTo: null,
-messages: []
-};
-
-list.unshift(r);
-save();
-
-draft = null;
-fType.value = "";
-fDet.value = "";
-
-render();
-
-return r;
-
-}
-
-function mailUrl(r) {
-return "mailto:" + EMAIL +
-"?subject=" + encodeURIComponent((lang === "en" ? "Report: " : "بلاغ: ") + r.type) +
-"&body=" + encodeURIComponent(
-tr("نوع البلاغ") + ": " + r.type + "\n" +
-tr("تفاصيل البلاغ") + ": " + r.details + "\n\n" + fmt(r.date)
-);
-}
-
 $("rpOpen").addEventListener("click", rpOpen);
 $("rpClose").addEventListener("click", rpClose);
 
 panel.addEventListener("click", function (e) {
-
 if (e.target === panel) rpClose();
-
 var go = e.target.closest("[data-go]");
 if (go) show(go.getAttribute("data-go"));
-
-var via = e.target.closest("[data-via]");
-
-if (via) {
-if (!draft) { show("rpNew"); return; }
-if (via.getAttribute("data-via") === "site") {
-add("site");
-show("rpDone");
-} else {
-show("rpConfirm");
-}
-}
-
-});
-
-$("rpStaffLoginBtn").addEventListener("click", function () {
-var val = staffEmailInput.value.trim();
-if (!val) {
-staffErr.textContent = "الرجاء كتابة بريد إلكتروني";
-staffEmailInput.focus();
-return;
-}
-// البحث في النظام
-var exists = validStaffs.includes(val.toLowerCase()) || val.endsWith("@toptrip.com");
-if (!exists) {
-staffErr.textContent = "أنت غير مسجل في النظام";
-} else {
-staffErr.textContent = "";
-currentLoggedInStaff = val;
-alert("تم تسجيل دخولك");
-show("rpLog");
-}
-});
-
-function openChat(id) {
-activeChatReportId = id;
-show("rpChat");
-renderChatMessages();
-}
-
-function renderChatMessages() {
-var msgsContainer = $("rpChatMsgs");
-msgsContainer.textContent = "";
-var r = list.find(function(x) { return x.id === activeChatReportId; });
-if (!r) return;
-$("rpChatTitle.value") || ($("rpChatTitle").textContent = "محادثة البلاغ: " + r.type);
-if (!r.messages) r.messages = [];
-if (!r.messages.length) {
-var emptyMsg = mk("div", "", "لا توجد رسائل بعد. ابدأ المحادثة مع العميل.");
-emptyMsg.style.color = "var(--muted)";
-emptyMsg.style.fontSize = "13px";
-emptyMsg.style.textAlign = "center";
-msgsContainer.appendChild(emptyMsg);
-return;
-}
-r.messages.forEach(function(m) {
-var mDiv = mk("div", "", m.text);
-mDiv.style.padding = "10px 14px";
-mDiv.style.borderRadius = "12px";
-mDiv.style.maxWidth = "80%";
-mDiv.style.fontSize = "13px";
-if (m.sender === "staff") {
-mDiv.style.background = "var(--gold)";
-mDiv.style.color = "var(--dark)";
-mDiv.style.marginRight = "auto";
-} else {
-mDiv.style.background = "rgba(255,255,255,.08)";
-mDiv.style.color = "#fff";
-mDiv.style.marginLeft = "auto";
-}
-msgsContainer.appendChild(mDiv);
-});
-msgsContainer.scrollTop = msgsContainer.scrollHeight;
-}
-
-$("rpChatSend").addEventListener("click", function() {
-var input = $("rpChatInput");
-var val = input.value.trim();
-if (!val) return;
-var r = list.find(function(x) { return x.id === activeChatReportId; });
-if (r) {
-if (!r.messages) r.messages = [];
-r.messages.push({ sender: "staff", text: val, time: new Date().toISOString() });
-save();
-input.value = "";
-renderChatMessages();
-}
 });
 
 form.addEventListener("submit", function (e) {
-
 e.preventDefault();
-
 var t = fType.value.trim(), d = fDet.value.trim();
 
 if (!t) { err.textContent = tr("الرجاء كتابة نوع البلاغ"); fType.focus(); return; }
@@ -4308,18 +4110,35 @@ if (!d) { err.textContent = tr("الرجاء كتابة تفاصيل البلا�
 
 err.textContent = "";
 draft = { type: t, details: d };
-show("rpChoose");
-
+show("rpConfirm");
 });
 
-$("rpSend").addEventListener("click", function () {
-
+$("rpSendConfirm").addEventListener("click", function () {
 if (!draft) { show("rpNew"); return; }
 
-var r = add("mail");
-show("rpDone");
-window.location.href = mailUrl(r);
+var newReport = {
+id: Date.now(),
+type: draft.type,
+details: draft.details,
+date: new Date().toISOString(),
+read: false
+};
 
+list.unshift(newReport);
+save();
+
+var mailWindow = window.open("mailto:" + EMAIL +
+"?subject=" + encodeURIComponent((lang === "en" ? "Report: " : "بلاغ: ") + newReport.type) +
+"&body=" + encodeURIComponent(
+tr("نوع البلاغ") + ": " + newReport.type + "\n" +
+tr("التفاصيل") + ": " + newReport.details + "\n\n" + fmt(newReport.date)
+), "_blank");
+
+draft = null;
+fType.value = "";
+fDet.value = "";
+
+show("rpLog");
 });
 
 document.addEventListener("keydown", function (e) {
@@ -4329,21 +4148,17 @@ if (e.key === "Escape") rpClose();
 function applyLang() {
 fType.placeholder = tr("اكتب نوع البلاغ");
 fDet.placeholder = tr("اكتب تفاصيل البلاغ");
-$("rpMail").textContent = EMAIL;
 err.textContent = "";
 render();
 }
 
 var baseSetLang = setLang;
-
 setLang = function (next) {
 baseSetLang(next);
 applyLang();
 };
 
 applyLang();
-
-window.rpMailUrl = mailUrl;
 
 })();
 

@@ -2053,6 +2053,66 @@ rgba(15,11,8,.25)
 url("/images/alula.jpg") center/cover fixed;
 }
 
+
+/* =========================================================
+REPORTS
+========================================================= */
+.rp-fab{position:fixed;bottom:22px;inset-inline-end:22px;z-index:900;display:flex;align-items:center;gap:10px;padding:14px 22px;border:0;border-radius:100px;background:linear-gradient(135deg,var(--sand-light),var(--gold) 55%,#b8864a);color:var(--dark);font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 12px 40px rgba(214,178,119,.35);transition:var(--transition);animation:rpPulse 3s infinite}
+.rp-fab:hover{transform:translateY(-4px) scale(1.04)}
+.rp-fab b{min-width:22px;height:22px;display:grid;place-items:center;border-radius:50%;background:var(--dark);color:var(--gold);font-size:12px}
+.rp-fab b[hidden]{display:none}
+@keyframes rpPulse{50%{box-shadow:0 12px 55px rgba(214,178,119,.65)}}
+.rp{position:fixed;inset:0;z-index:4500;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(8,6,4,.82);backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:.4s ease}
+.rp.open{opacity:1;visibility:visible}
+.rp-box{position:relative;width:min(100%,560px);max-height:92vh;overflow:auto;padding:34px 28px 28px;border-radius:var(--radius-lg);background:radial-gradient(circle at 85% 0,rgba(214,178,119,.20),transparent 45%),radial-gradient(circle at 0 100%,rgba(200,167,122,.10),transparent 50%),var(--dark-2);border:1px solid rgba(214,178,119,.30);box-shadow:var(--shadow),0 0 90px rgba(214,178,119,.14);transform:translateY(30px) scale(.96);transition:.5s cubic-bezier(.2,.8,.2,1)}
+.rp.open .rp-box{transform:none}
+.rp-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.rp-x{position:absolute;top:16px;inset-inline-end:16px;width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:rgba(255,255,255,.05);color:#fff;cursor:pointer;transition:var(--transition)}
+.rp-x:hover{background:#fff;color:var(--dark);transform:rotate(90deg)}
+.rp-head{padding-inline-end:48px}
+.rp-head h3{font-size:30px;font-weight:900;line-height:1.2}
+.rp-head p{color:var(--muted);line-height:1.9;margin-top:8px;font-size:14px}
+.rp-view{display:none;margin-top:26px}
+.rp-view.show{display:block;animation:rpIn .45s ease}
+@keyframes rpIn{from{opacity:0;transform:translateY(14px)}}
+.rp-grid{display:grid;gap:14px}
+.rp-card{display:flex;align-items:center;gap:16px;width:100%;padding:20px;border:1px solid var(--border);border-radius:var(--radius-md);background:rgba(255,255,255,.03);color:#fff;text-align:start;cursor:pointer;transition:var(--transition)}
+.rp-card:hover{transform:translateY(-4px);border-color:rgba(214,178,119,.55);background:rgba(214,178,119,.07);box-shadow:0 18px 45px rgba(0,0,0,.35)}
+.rp-card>i{flex:none;width:54px;height:54px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(135deg,var(--sand-light),var(--gold));color:var(--dark);font-size:21px}
+.rp-card strong{display:block;font-size:17px}
+.rp-card span{display:block;color:var(--muted);font-size:13px;margin-top:3px;word-break:break-all}
+.rp-field{margin-bottom:18px}
+.rp-field label{display:block;margin-bottom:8px;color:var(--sand-light);font-weight:800;font-size:14px}
+.rp-field input,.rp-field textarea{width:100%;padding:15px 16px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:16px;outline:0;transition:var(--transition)}
+.rp-field textarea{min-height:150px;resize:vertical;line-height:1.8}
+.rp-field input:focus,.rp-field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(214,178,119,.15)}
+.rp-field ::placeholder{color:#7d746b}
+.rp-err{min-height:22px;margin-bottom:10px;color:#ff8f7a;font-size:13px;font-weight:700}
+.rp-btn{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;width:100%;padding:16px;border:0;border-radius:100px;background:linear-gradient(135deg,var(--sand-light),var(--gold) 55%,#b8864a);color:var(--dark);font-weight:900;font-size:16px;cursor:pointer;transition:var(--transition)}
+.rp-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55),transparent 70%);transform:translateX(-120%);transition:.7s}
+.rp-btn:hover{transform:translateY(-3px);box-shadow:0 14px 38px rgba(214,178,119,.4)}
+.rp-btn:hover::after{transform:translateX(120%)}
+.rp-link{display:block;margin:16px auto 0;background:none;border:0;color:var(--muted);font-weight:700;cursor:pointer;transition:var(--transition)}
+.rp-link:hover{color:var(--gold)}
+.rp-center{text-align:center}
+.rp-center h4{font-size:22px;font-weight:900;margin-bottom:8px}
+.rp-center p{color:var(--muted);line-height:1.9;margin-bottom:18px;font-size:14px}
+.rp-grid{margin-top:18px}
+.rp-big{display:grid;place-items:center;width:84px;height:84px;margin:0 auto 20px;border-radius:50%;background:linear-gradient(135deg,var(--sand-light),var(--gold));color:var(--dark);font-size:32px;box-shadow:0 0 0 10px rgba(214,178,119,.12),0 0 50px rgba(214,178,119,.35)}
+.rp-note{padding:18px;margin-bottom:18px;border:1px solid rgba(214,178,119,.3);border-radius:18px;background:rgba(214,178,119,.07);color:var(--sand-light);font-size:14px;line-height:2;text-align:center}
+.rp-list{display:grid;gap:14px}
+.rp-item{padding:18px;border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.03);animation:rpIn .45s ease}
+.rp-status{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;margin-bottom:12px;border-radius:100px;font-size:12px;font-weight:800}
+.rp-status.s0{background:rgba(255,120,100,.12);color:#ff9a86;box-shadow:0 0 22px rgba(255,120,100,.15)}
+.rp-status.s1{background:rgba(255,196,80,.12);color:#ffc85a;box-shadow:0 0 22px rgba(255,196,80,.15)}
+.rp-status.s2{background:rgba(110,220,150,.12);color:#7be0a0;box-shadow:0 0 22px rgba(110,220,150,.15)}
+.rp-item h5{font-size:17px;font-weight:900;word-break:break-word}
+.rp-item p{margin-top:6px;color:var(--muted);font-size:13px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
+.rp-meta{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);color:#8c8278;font-size:12px}
+.rp-meta i{color:var(--gold);margin-inline-end:6px}
+.rp-empty{padding:40px 10px;text-align:center;color:var(--muted)}
+.rp-empty i{display:block;margin-bottom:12px;color:var(--gold);font-size:40px;opacity:.7}
+@media (max-width:750px){.rp{padding:0;align-items:flex-end}.rp-box{width:100%;max-height:94vh;padding:30px 18px 22px;border-radius:26px 26px 0 0}.rp-fab{padding:16px}.rp-fab span{display:none}}
 </style>
 </head>
 
@@ -3224,6 +3284,86 @@ Toptrip50@gmail.com
 </div>
 
 <!-- =========================================================
+REPORTS
+========================================================= -->
+
+<button class="rp-fab" id="rpOpen" type="button" aria-label="البلاغات"><i class="fa-solid fa-bullhorn"></i><span>البلاغات</span><b id="rpBadge" hidden>0</b></button>
+
+<div class="rp" id="rpPanel" role="dialog" aria-modal="true" aria-hidden="true">
+<div class="rp-box">
+<button class="rp-x" id="rpClose" type="button" aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
+
+<div class="rp-head">
+<div class="eyebrow">TOP TRIP · REPORTS</div>
+<h3>مركز البلاغات</h3>
+<p>أنشئ بلاغًا جديدًا أو تابع حالة بلاغاتك السابقة.</p>
+</div>
+
+<div class="rp-view show" id="rpHome"><div class="rp-grid">
+<button type="button" class="rp-card" data-go="rpNew"><i class="fa-solid fa-pen-to-square"></i><div><strong>إنشاء بلاغ</strong><span>أرسل بلاغك أو ملاحظتك إلى فريقنا</span></div></button>
+<button type="button" class="rp-card" data-go="rpLog"><i class="fa-solid fa-clock-rotate-left"></i><div><strong>سجل البلاغات</strong><span>تابع حالة بلاغاتك السابقة</span></div></button>
+<button type="button" class="rp-card" data-go="rpStaffLogin"><i class="fa-solid fa-user-shield"></i><div><strong>تسجيل دخول الموظفين</strong><span>خاص بموظفي الدعم والمتابعة</span></div></button>
+</div></div>
+
+<div class="rp-view" id="rpStaffLogin">
+<div class="rp-field"><label for="rpStaffEmail">سجل بريد إلكتروني</label><input id="rpStaffEmail" type="email" autocomplete="off" placeholder="اكتب بريدك الإلكتروني كَموظف"></div>
+<div class="rp-err" id="rpStaffErr" role="alert"></div>
+<button type="button" class="rp-btn" id="rpStaffLoginBtn">تسجيل الدخول</button>
+<button type="button" class="rp-link" data-go="rpHome">رجوع</button>
+</div>
+
+<div class="rp-view" id="rpNew"><form id="rpForm" novalidate>
+<div class="rp-field"><label for="rpType">نوع البلاغ</label><input id="rpType" type="text" maxlength="60" autocomplete="off"></div>
+<div class="rp-field"><label for="rpDetails">تفاصيل البلاغ</label><textarea id="rpDetails" maxlength="1000"></textarea></div>
+<div class="rp-err" id="rpErr" role="alert"></div>
+<button type="submit" class="rp-btn">إرسال</button>
+<button type="button" class="rp-link" data-go="rpHome">رجوع</button>
+</form></div>
+
+<div class="rp-view" id="rpChoose">
+<div class="rp-center"><h4>كيف تريد إرسال البلاغ؟</h4></div>
+<div class="rp-grid">
+<button type="button" class="rp-card" data-via="site"><i class="fa-solid fa-globe"></i><div><strong>عبر الموقع</strong><span>يُحفظ في سجل البلاغات</span></div></button>
+<button type="button" class="rp-card" data-via="mail"><i class="fa-solid fa-envelope"></i><div><strong>عبر البريد الإلكتروني</strong><span id="rpMail"></span></div></button>
+</div>
+<button type="button" class="rp-link" data-go="rpNew">رجوع</button>
+</div>
+
+<div class="rp-view" id="rpConfirm">
+<div class="rp-center"><div class="rp-big"><i class="fa-solid fa-envelope-circle-check"></i></div></div>
+<div class="rp-note">يتم إرسال البلاغ إلى إيميل الشركة، ونتمنى منك تصفّح تطبيق رسائل البريد الإلكتروني ليصلك ردّنا وتتمكن من رؤية الرد.</div>
+<button type="button" class="rp-btn" id="rpSend">تأكيد الإرسال</button>
+<button type="button" class="rp-link" data-go="rpChoose">رجوع</button>
+</div>
+
+<div class="rp-view" id="rpDone">
+<div class="rp-center"><div class="rp-big"><i class="fa-solid fa-check"></i></div><h4>تم تسجيل بلاغك</h4><p>يمكنك متابعة حالته من سجل البلاغات.</p></div>
+<button type="button" class="rp-btn" data-go="rpLog">عرض سجل البلاغات</button>
+</div>
+
+<div class="rp-view" id="rpLog">
+<div class="rp-list" id="rpList"></div>
+<button type="button" class="rp-btn" data-go="rpNew" style="margin-top:18px">إنشاء بلاغ</button>
+<button type="button" class="rp-link" data-go="rpHome">رجوع</button>
+</div>
+
+<div class="rp-view" id="rpChat">
+<div class="rp-head" style="margin-bottom:15px">
+<h5 id="rpChatTitle" style="font-size:18px;font-weight:900;">محادثة العميل</h5>
+<span id="rpChatSub" style="color:var(--muted);font-size:12px;">دردشة مباشرة مع صاحب البلاغ</span>
+</div>
+<div id="rpChatMsgs" style="background:rgba(0,0,0,.2);border:1px solid var(--border);border-radius:16px;padding:15px;height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:15px;"></div>
+<div style="display:flex;gap:10px;">
+<input id="rpChatInput" type="text" placeholder="اكتب رسالتك..." style="flex:1;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.04);color:#fff;outline:none;font:inherit;">
+<button type="button" id="rpChatSend" class="rp-btn" style="width:auto;padding:0 20px;">إرسال</button>
+</div>
+<button type="button" class="rp-link" data-go="rpLog">العودة لسجل البلاغات</button>
+</div>
+
+</div>
+</div>
+
+<!-- =========================================================
 JAVASCRIPT
 ========================================================= -->
 
@@ -3561,6 +3701,35 @@ LANGUAGE SWITCH (AR / EN)
 ========================================================= */
 
 var I18N = {
+ "البلاغات": "Reports",
+ "إغلاق": "Close",
+ "مركز البلاغات": "Reports Center",
+ "أنشئ بلاغًا جديدًا أو تابع حالة بلاغاتك السابقة.": "Create a new report or track the status of your previous reports.",
+ "إنشاء بلاغ": "Create a Report",
+ "أرسل بلاغك أو ملاحظتك إلى فريقنا": "Send your report or feedback to our team",
+ "سجل البلاغات": "Reports Log",
+ "تابع حالة بلاغاتك السابقة": "Track the status of your previous reports",
+ "نوع البلاغ": "Report Type",
+ "تفاصيل البلاغ": "Report Details",
+ "إرسال": "Send",
+ "رجوع": "Back",
+ "كيف تريد إرسال البلاغ؟": "How would you like to send the report?",
+ "عبر الموقع": "Via the website",
+ "يُحفظ في سجل البلاغات": "Saved in the reports log",
+ "عبر البريد الإلكتروني": "Via email",
+ "تأكيد الإرسال": "Confirm Sending",
+ "يتم إرسال البلاغ إلى إيميل الشركة، ونتمنى منك تصفّح تطبيق رسائل البريد الإلكتروني ليصلك ردّنا وتتمكن من رؤية الرد.": "The report will be sent to the company's email. We kindly ask you to check your email app so you can receive our reply and view it.",
+ "تم تسجيل بلاغك": "Your report has been recorded",
+ "يمكنك متابعة حالته من سجل البلاغات.": "You can track its status in the reports log.",
+ "عرض سجل البلاغات": "View Reports Log",
+ "لا توجد بلاغات حتى الآن": "No reports yet",
+ "الرجاء كتابة نوع البلاغ": "Please enter the report type",
+ "الرجاء كتابة تفاصيل البلاغ": "Please enter the report details",
+ "اكتب نوع البلاغ": "Write the report type",
+ "اكتب تفاصيل البلاغ": "Write the report details",
+ "لم يتم استلام البلاغ": "Report not received",
+ "يتم مراجعة البلاغ": "Report is under review",
+ "تم استلام البلاغ": "Report received",
  "الرئيسية": "Home",
  "عن Top Trip": "About Top Trip",
  "الجولات": "Tours",
@@ -3835,6 +4004,346 @@ var fromUrl = new URLSearchParams(window.location.search).get("lang");
 if (fromUrl === "en" || fromUrl === "ar") wanted = fromUrl;
 
 setLang(wanted);
+
+})();
+
+
+/* =========================================================
+REPORTS
+========================================================= */
+
+(function () {
+
+var $ = function (id) { return document.getElementById(id); };
+
+var mk = function (tag, cls, txt) {
+var n = document.createElement(tag);
+if (cls) n.className = cls;
+if (txt != null) n.textContent = txt;
+return n;
+};
+
+var mailA = document.querySelector('a[href^="mailto:"]');
+var EMAIL = mailA ? mailA.getAttribute("href").replace("mailto:", "").split("?")[0] : "Toptrip50@gmail.com";
+
+var KEY = "tt-reports";
+var STAFF_KEY = "tt-staffs";
+
+var ST = [
+{ k: "لم يتم استلام البلاغ", i: "fa-circle-exclamation" },
+{ k: "يتم مراجعة البلاغ", i: "fa-magnifying-glass" },
+{ k: "تم استلام البلاغ", i: "fa-circle-check" }
+];
+
+var validStaffs = ["employee@toptrip.com", "staff@toptrip.com", "admin@toptrip.com", "toptrip@staff.com"];
+
+var panel = $("rpPanel"), box = panel.querySelector(".rp-box");
+var form = $("rpForm"), fType = $("rpType"), fDet = $("rpDetails");
+var err = $("rpErr"), listEl = $("rpList"), badge = $("rpBadge");
+var staffEmailInput = $("rpStaffEmail"), staffErr = $("rpStaffErr");
+var draft = null, list = [];
+var currentLoggedInStaff = null;
+var activeChatReportId = null;
+
+try { list = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+if (!Array.isArray(list)) list = [];
+
+function save() {
+try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
+}
+
+function fmt(iso) {
+try {
+return new Date(iso).toLocaleString(
+lang === "en" ? "en-GB" : "ar-SA-u-ca-gregory-nu-latn",
+{ dateStyle: "medium", timeStyle: "short" }
+);
+} catch (e) { return ""; }
+}
+
+function withIcon(tag, cls, icon, text) {
+var n = mk(tag, cls);
+n.appendChild(mk("i", icon));
+n.appendChild(document.createTextNode(text));
+return n;
+}
+
+function render() {
+
+listEl.textContent = "";
+
+if (!list.length) {
+var em = mk("div", "rp-empty");
+em.appendChild(mk("i", "fa-solid fa-inbox"));
+em.appendChild(mk("div", "", tr("لا توجد بلاغات حتى الآن")));
+listEl.appendChild(em);
+}
+
+list.forEach(function (r) {
+
+var idx = ST[r.status] ? r.status : 0;
+var it = mk("div", "rp-item");
+
+it.appendChild(withIcon("div", "rp-status s" + idx, "fa-solid " + ST[idx].i, tr(ST[idx].k)));
+it.appendChild(mk("h5", "", String(r.type)));
+it.appendChild(mk("p", "", String(r.details)));
+
+if (r.assignedTo) {
+var ast = mk("div", "", "الموظف المستلم: " + r.assignedTo);
+ast.style.fontSize = "12px";
+ast.style.color = "var(--gold)";
+ast.style.marginTop = "6px";
+it.appendChild(ast);
+}
+
+var meta = mk("div", "rp-meta");
+meta.appendChild(withIcon("span", "", "fa-regular fa-clock", fmt(r.date)));
+meta.appendChild(withIcon(
+"span", "",
+"fa-solid " + (r.via === "mail" ? "fa-envelope" : "fa-globe"),
+tr(r.via === "mail" ? "عبر البريد الإلكتروني" : "عبر الموقع")
+));
+it.appendChild(meta);
+
+if (currentLoggedInStaff) {
+var actionDiv = mk("div", "", "");
+actionDiv.style.marginTop = "12px";
+actionDiv.style.display = "flex";
+actionDiv.style.gap = "10px";
+
+if (!r.assignedTo) {
+var takeBtn = mk("button", "rp-btn", "استلام");
+takeBtn.style.padding = "8px 16px";
+takeBtn.style.fontSize = "13px";
+takeBtn.onclick = function() {
+r.assignedTo = currentLoggedInStaff;
+r.status = 2; // تم استلام البلاغ
+save();
+render();
+};
+actionDiv.appendChild(takeBtn);
+} else {
+var chatBtn = mk("button", "rp-btn", "الدخول للمحادثة");
+chatBtn.style.padding = "8px 16px";
+chatBtn.style.fontSize = "13px";
+chatBtn.onclick = function() {
+openChat(r.id);
+};
+actionDiv.appendChild(chatBtn);
+}
+it.appendChild(actionDiv);
+}
+
+listEl.appendChild(it);
+
+});
+
+badge.hidden = !list.length;
+badge.textContent = list.length;
+
+}
+
+function show(id) {
+Array.prototype.forEach.call(panel.querySelectorAll(".rp-view"), function (v) {
+v.classList.toggle("show", v.id === id);
+});
+if (id === "rpLog") render();
+box.scrollTop = 0;
+}
+
+function rpOpen() {
+panel.classList.add("open");
+panel.setAttribute("aria-hidden", "false");
+document.body.classList.add("no-scroll");
+show("rpHome");
+}
+
+function rpClose() {
+panel.classList.remove("open");
+panel.setAttribute("aria-hidden", "true");
+document.body.classList.remove("no-scroll");
+}
+
+function add(via) {
+
+var r = {
+id: Date.now(),
+type: draft.type,
+details: draft.details,
+date: new Date().toISOString(),
+via: via,
+status: 0,
+assignedTo: null,
+messages: []
+};
+
+list.unshift(r);
+save();
+
+draft = null;
+fType.value = "";
+fDet.value = "";
+
+render();
+
+return r;
+
+}
+
+function mailUrl(r) {
+return "mailto:" + EMAIL +
+"?subject=" + encodeURIComponent((lang === "en" ? "Report: " : "بلاغ: ") + r.type) +
+"&body=" + encodeURIComponent(
+tr("نوع البلاغ") + ": " + r.type + "\n" +
+tr("تفاصيل البلاغ") + ": " + r.details + "\n\n" + fmt(r.date)
+);
+}
+
+$("rpOpen").addEventListener("click", rpOpen);
+$("rpClose").addEventListener("click", rpClose);
+
+panel.addEventListener("click", function (e) {
+
+if (e.target === panel) rpClose();
+
+var go = e.target.closest("[data-go]");
+if (go) show(go.getAttribute("data-go"));
+
+var via = e.target.closest("[data-via]");
+
+if (via) {
+if (!draft) { show("rpNew"); return; }
+if (via.getAttribute("data-via") === "site") {
+add("site");
+show("rpDone");
+} else {
+show("rpConfirm");
+}
+}
+
+});
+
+$("rpStaffLoginBtn").addEventListener("click", function () {
+var val = staffEmailInput.value.trim();
+if (!val) {
+staffErr.textContent = "الرجاء كتابة بريد إلكتروني";
+staffEmailInput.focus();
+return;
+}
+// البحث في النظام
+var exists = validStaffs.includes(val.toLowerCase()) || val.endsWith("@toptrip.com");
+if (!exists) {
+staffErr.textContent = "أنت غير مسجل في النظام";
+} else {
+staffErr.textContent = "";
+currentLoggedInStaff = val;
+alert("تم تسجيل دخولك");
+show("rpLog");
+}
+});
+
+function openChat(id) {
+activeChatReportId = id;
+show("rpChat");
+renderChatMessages();
+}
+
+function renderChatMessages() {
+var msgsContainer = $("rpChatMsgs");
+msgsContainer.textContent = "";
+var r = list.find(function(x) { return x.id === activeChatReportId; });
+if (!r) return;
+$("rpChatTitle.value") || ($("rpChatTitle").textContent = "محادثة البلاغ: " + r.type);
+if (!r.messages) r.messages = [];
+if (!r.messages.length) {
+var emptyMsg = mk("div", "", "لا توجد رسائل بعد. ابدأ المحادثة مع العميل.");
+emptyMsg.style.color = "var(--muted)";
+emptyMsg.style.fontSize = "13px";
+emptyMsg.style.textAlign = "center";
+msgsContainer.appendChild(emptyMsg);
+return;
+}
+r.messages.forEach(function(m) {
+var mDiv = mk("div", "", m.text);
+mDiv.style.padding = "10px 14px";
+mDiv.style.borderRadius = "12px";
+mDiv.style.maxWidth = "80%";
+mDiv.style.fontSize = "13px";
+if (m.sender === "staff") {
+mDiv.style.background = "var(--gold)";
+mDiv.style.color = "var(--dark)";
+mDiv.style.marginRight = "auto";
+} else {
+mDiv.style.background = "rgba(255,255,255,.08)";
+mDiv.style.color = "#fff";
+mDiv.style.marginLeft = "auto";
+}
+msgsContainer.appendChild(mDiv);
+});
+msgsContainer.scrollTop = msgsContainer.scrollHeight;
+}
+
+$("rpChatSend").addEventListener("click", function() {
+var input = $("rpChatInput");
+var val = input.value.trim();
+if (!val) return;
+var r = list.find(function(x) { return x.id === activeChatReportId; });
+if (r) {
+if (!r.messages) r.messages = [];
+r.messages.push({ sender: "staff", text: val, time: new Date().toISOString() });
+save();
+input.value = "";
+renderChatMessages();
+}
+});
+
+form.addEventListener("submit", function (e) {
+
+e.preventDefault();
+
+var t = fType.value.trim(), d = fDet.value.trim();
+
+if (!t) { err.textContent = tr("الرجاء كتابة نوع البلاغ"); fType.focus(); return; }
+if (!d) { err.textContent = tr("الرجاء كتابة تفاصيل البلاغ"); fDet.focus(); return; }
+
+err.textContent = "";
+draft = { type: t, details: d };
+show("rpChoose");
+
+});
+
+$("rpSend").addEventListener("click", function () {
+
+if (!draft) { show("rpNew"); return; }
+
+var r = add("mail");
+show("rpDone");
+window.location.href = mailUrl(r);
+
+});
+
+document.addEventListener("keydown", function (e) {
+if (e.key === "Escape") rpClose();
+});
+
+function applyLang() {
+fType.placeholder = tr("اكتب نوع البلاغ");
+fDet.placeholder = tr("اكتب تفاصيل البلاغ");
+$("rpMail").textContent = EMAIL;
+err.textContent = "";
+render();
+}
+
+var baseSetLang = setLang;
+
+setLang = function (next) {
+baseSetLang(next);
+applyLang();
+};
+
+applyLang();
+
+window.rpMailUrl = mailUrl;
 
 })();
 

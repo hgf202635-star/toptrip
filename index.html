@@ -1,0 +1,4212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TOP TRIP AlUla | اكتشف العلا بطريقة مختلفة</title>
+
+<meta name="description"
+content="TOP TRIP AlUla — رحلات باجي في الصحراء وتجارب مغامرة في قلب العلا.">
+
+<meta name="theme-color" content="#17130f">
+
+<!-- Favicon (browser tab icon) -->
+<link rel="icon" type="image/png" href="/images/logo.png">
+<link rel="shortcut icon" type="image/png" href="/images/logo.png">
+<link rel="apple-touch-icon" href="/images/logo.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="TOP TRIP AlUla">
+<meta property="og:description" content="اكتشف العلا بطريقة مختلفة مع TOP TRIP">
+<meta property="og:url" content="https://top-trip.pages.dev/">
+<meta property="og:image" content="https://top-trip.pages.dev/images/logo.png?v=3">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://top-trip.pages.dev/images/logo.png?v=3">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* =========================================================
+ROOT
+========================================================= */
+
+:root {
+--sand: #c8a77a;
+--sand-light: #e7d2ae;
+--gold: #d6b277;
+
+--dark: #15110d;
+--dark-2: #1e1812;
+--dark-3: #282018;
+
+--cream: #f4eee4;
+--white: #ffffff;
+--muted: #aaa096;
+
+--border: rgba(255,255,255,.10);
+
+--container: 1240px;
+
+--radius-lg: 30px;
+--radius-md: 20px;
+
+--shadow:
+0 30px 80px rgba(0,0,0,.30);
+
+--transition:
+.35s cubic-bezier(.2,.8,.2,1);
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: "Cairo", sans-serif;
+background: var(--dark);
+color: var(--white);
+overflow-x: hidden;
+}
+
+body.no-scroll {
+overflow: hidden;
+}
+
+img {
+width: 100%;
+display: block;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+button {
+font: inherit;
+}
+
+::selection {
+background: var(--sand);
+color: var(--dark);
+}
+
+/* =========================================================
+LOADER
+========================================================= */
+
+.loader {
+position: fixed;
+inset: 0;
+background: #15110d;
+z-index: 99999;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+transition: .7s ease;
+}
+
+.loader.hide {
+opacity: 0;
+visibility: hidden;
+}
+
+.loader-inner {
+text-align: center;
+}
+
+.loader-logo {
+width: 100px;
+height: 100px;
+object-fit: contain;
+margin: auto;
+animation: pulseLogo 1.5s infinite;
+}
+
+.loader-line {
+width: 100px;
+height: 2px;
+margin: 22px auto 0;
+background: linear-gradient(
+90deg,
+transparent,
+var(--sand),
+transparent
+);
+animation: loaderLine 1.3s infinite;
+}
+
+@keyframes pulseLogo {
+50% {
+transform: scale(1.06);
+opacity: .75;
+}
+}
+
+@keyframes loaderLine {
+50% {
+transform: scaleX(.4);
+opacity: .4;
+}
+}
+
+/* =========================================================
+UTILITIES
+========================================================= */
+
+.container {
+width: min(
+calc(100% - 40px),
+var(--container)
+);
+margin-inline: auto;
+}
+
+.section {
+padding: 120px 0;
+position: relative;
+}
+
+.section-header {
+max-width: 760px;
+margin-bottom: 55px;
+}
+
+.eyebrow {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+
+color: var(--gold);
+font-size: 13px;
+font-weight: 800;
+
+letter-spacing: 2px;
+text-transform: uppercase;
+
+margin-bottom: 15px;
+}
+
+.eyebrow::before {
+content: "";
+width: 32px;
+height: 1px;
+background: var(--gold);
+}
+
+.section-title {
+font-size: clamp(34px, 5vw, 64px);
+line-height: 1.12;
+font-weight: 900;
+letter-spacing: -1px;
+}
+
+.section-text {
+color: var(--muted);
+line-height: 2;
+margin-top: 18px;
+font-size: 16px;
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.header {
+position: fixed;
+top: 0;
+right: 0;
+left: 0;
+z-index: 1000;
+
+transition: var(--transition);
+}
+
+.header.scrolled {
+background: rgba(21,17,13,.86);
+backdrop-filter: blur(20px);
+border-bottom: 1px solid var(--border);
+}
+
+.nav {
+height: 90px;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 30px;
+}
+
+.brand {
+display: flex;
+align-items: center;
+gap: 12px;
+
+flex-shrink: 0;
+}
+
+.brand img {
+width: 58px;
+height: 58px;
+object-fit: contain;
+}
+
+.brand-name {
+font-size: 21px;
+font-weight: 900;
+letter-spacing: 2px;
+}
+
+.brand-name span {
+display: block;
+color: var(--gold);
+font-size: 10px;
+letter-spacing: 4px;
+font-weight: 700;
+margin-top: -5px;
+}
+
+.nav-links {
+display: flex;
+align-items: center;
+gap: 30px;
+}
+
+.nav-links a {
+position: relative;
+color: rgba(255,255,255,.78);
+font-size: 14px;
+font-weight: 600;
+transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+color: var(--white);
+}
+
+.nav-links a::after {
+content: "";
+position: absolute;
+right: 0;
+bottom: -8px;
+
+width: 0;
+height: 1px;
+
+background: var(--gold);
+transition: var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+width: 100%;
+}
+
+.nav-actions {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.header-book {
+padding: 12px 20px;
+border-radius: 100px;
+
+background: var(--white);
+color: var(--dark);
+
+font-size: 13px;
+font-weight: 800;
+
+transition: var(--transition);
+}
+
+.header-book:hover {
+transform: translateY(-3px);
+background: var(--sand-light);
+}
+
+.menu-btn {
+display: none;
+
+width: 45px;
+height: 45px;
+
+border: 1px solid var(--border);
+background: rgba(255,255,255,.05);
+
+color: white;
+border-radius: 50%;
+
+cursor: pointer;
+}
+
+/* =========================================================
+MOBILE MENU
+========================================================= */
+
+.mobile-menu {
+position: fixed;
+inset: 0;
+z-index: 2000;
+
+background: rgba(10,8,6,.97);
+backdrop-filter: blur(20px);
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+opacity: 0;
+visibility: hidden;
+transition: .4s ease;
+}
+
+.mobile-menu.open {
+opacity: 1;
+visibility: visible;
+}
+
+.mobile-menu-close {
+position: absolute;
+top: 25px;
+left: 25px;
+
+width: 45px;
+height: 45px;
+
+border: 1px solid var(--border);
+border-radius: 50%;
+
+background: transparent;
+color: white;
+
+cursor: pointer;
+}
+
+.mobile-links {
+display: flex;
+flex-direction: column;
+gap: 25px;
+text-align: center;
+}
+
+.mobile-links a {
+font-size: 25px;
+font-weight: 800;
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.hero {
+min-height: 100vh;
+position: relative;
+
+display: flex;
+align-items: center;
+
+overflow: hidden;
+}
+
+.hero-bg {
+position: absolute;
+inset: 0;
+background:
+linear-gradient(
+90deg,
+rgba(13,10,7,.25),
+rgba(13,10,7,.70)
+),
+linear-gradient(
+0deg,
+rgba(13,10,7,.92),
+transparent 65%
+),
+url("/images/hero.jpg") center/cover no-repeat;
+
+transform: scale(1.04);
+animation: heroZoom 12s ease-out forwards;
+}
+
+@keyframes heroZoom {
+to {
+transform: scale(1);
+}
+}
+
+.hero::after {
+content: "";
+position: absolute;
+inset: 0;
+
+background:
+radial-gradient(
+circle at 25% 50%,
+transparent,
+rgba(0,0,0,.45)
+);
+
+pointer-events: none;
+}
+
+.hero-content {
+position: relative;
+z-index: 2;
+
+padding-top: 100px;
+max-width: 800px;
+}
+
+.hero-mini {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+
+padding: 8px 14px;
+border: 1px solid rgba(255,255,255,.18);
+border-radius: 100px;
+
+background: rgba(255,255,255,.06);
+backdrop-filter: blur(10px);
+
+color: #e9ddcb;
+font-size: 12px;
+font-weight: 700;
+
+margin-bottom: 25px;
+}
+
+.hero-mini i {
+color: var(--gold);
+}
+
+.hero-title {
+font-size: clamp(55px, 9vw, 115px);
+line-height: .9;
+font-weight: 900;
+letter-spacing: -5px;
+}
+
+.hero-title span {
+color: var(--sand-light);
+display: block;
+}
+
+.hero-subtitle {
+font-size: clamp(19px, 3vw, 30px);
+font-weight: 600;
+margin-top: 28px;
+}
+
+.hero-description {
+max-width: 650px;
+margin-top: 18px;
+
+color: rgba(255,255,255,.72);
+line-height: 2;
+font-size: 16px;
+}
+
+.hero-buttons {
+display: flex;
+gap: 14px;
+flex-wrap: wrap;
+
+margin-top: 35px;
+}
+
+.btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+
+min-height: 54px;
+padding: 0 25px;
+
+border-radius: 100px;
+
+font-size: 14px;
+font-weight: 800;
+
+cursor: pointer;
+border: 1px solid transparent;
+
+transition: var(--transition);
+}
+
+.btn-primary {
+background: var(--white);
+color: var(--dark);
+}
+
+.btn-primary:hover {
+transform: translateY(-4px);
+box-shadow: 0 15px 35px rgba(0,0,0,.25);
+background: var(--sand-light);
+}
+
+.btn-outline {
+color: white;
+border-color: rgba(255,255,255,.25);
+background: rgba(255,255,255,.05);
+backdrop-filter: blur(10px);
+}
+
+.btn-outline:hover {
+transform: translateY(-4px);
+border-color: var(--gold);
+}
+
+.hero-bottom {
+position: absolute;
+z-index: 3;
+bottom: 35px;
+right: 50%;
+
+transform: translateX(50%);
+
+width: min(calc(100% - 40px), var(--container));
+
+display: flex;
+justify-content: space-between;
+align-items: end;
+}
+
+.hero-scroll {
+display: flex;
+align-items: center;
+gap: 12px;
+
+color: rgba(255,255,255,.65);
+font-size: 11px;
+letter-spacing: 2px;
+}
+
+.scroll-line {
+width: 45px;
+height: 1px;
+background: rgba(255,255,255,.4);
+}
+
+.hero-location {
+display: flex;
+align-items: center;
+gap: 8px;
+
+color: rgba(255,255,255,.75);
+font-size: 12px;
+}
+
+.hero-location i {
+color: var(--gold);
+}
+
+/* =========================================================
+INTRO
+========================================================= */
+
+.intro {
+background:
+radial-gradient(
+circle at 80% 20%,
+rgba(200,167,122,.08),
+transparent 30%
+),
+var(--dark);
+}
+
+.intro-grid {
+display: grid;
+grid-template-columns: 1.05fr .95fr;
+gap: 70px;
+align-items: center;
+}
+
+.intro-image {
+position: relative;
+border-radius: var(--radius-lg);
+overflow: hidden;
+
+min-height: 600px;
+
+box-shadow: var(--shadow);
+}
+
+.intro-image img {
+height: 100%;
+object-fit: cover;
+}
+
+.image-label {
+position: absolute;
+right: 25px;
+bottom: 25px;
+
+padding: 12px 16px;
+border: 1px solid rgba(255,255,255,.2);
+border-radius: 100px;
+
+background: rgba(0,0,0,.35);
+backdrop-filter: blur(15px);
+
+font-size: 12px;
+}
+
+.intro-copy p {
+color: var(--muted);
+line-height: 2.1;
+margin-top: 25px;
+font-size: 17px;
+}
+
+.intro-points {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+margin-top: 35px;
+}
+
+.intro-point {
+padding: 18px;
+
+border: 1px solid var(--border);
+border-radius: 18px;
+
+background: rgba(255,255,255,.025);
+}
+
+.intro-point i {
+color: var(--gold);
+margin-bottom: 10px;
+}
+
+.intro-point strong {
+display: block;
+font-size: 14px;
+}
+
+.intro-point span {
+display: block;
+color: var(--muted);
+font-size: 11px;
+margin-top: 3px;
+}
+
+/* =========================================================
+EXPERIENCES
+========================================================= */
+
+.experiences {
+background:
+linear-gradient(
+180deg,
+#1b1510,
+#15110d
+);
+}
+
+.experience-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 25px;
+}
+
+.experience-card {
+position: relative;
+min-height: 620px;
+
+overflow: hidden;
+border-radius: 28px;
+
+background: #211a14;
+
+border: 1px solid rgba(255,255,255,.08);
+
+isolation: isolate;
+}
+
+.experience-image {
+position: absolute;
+inset: 0;
+z-index: -2;
+}
+
+.experience-image img {
+height: 100%;
+object-fit: cover;
+transition: transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.experience-card:hover .experience-image img {
+transform: scale(1.07);
+}
+
+.experience-card::after {
+content: "";
+position: absolute;
+inset: 0;
+z-index: -1;
+
+background:
+linear-gradient(
+0deg,
+rgba(0,0,0,.92),
+rgba(0,0,0,.08) 65%
+);
+}
+
+.experience-content {
+position: absolute;
+right: 30px;
+left: 30px;
+bottom: 30px;
+}
+
+.experience-badge {
+display: inline-flex;
+padding: 7px 12px;
+
+border-radius: 100px;
+
+background: rgba(255,255,255,.1);
+border: 1px solid rgba(255,255,255,.18);
+
+backdrop-filter: blur(12px);
+
+font-size: 11px;
+margin-bottom: 15px;
+}
+
+.experience-title {
+font-size: 32px;
+font-weight: 900;
+}
+
+.experience-description {
+color: rgba(255,255,255,.7);
+font-size: 13px;
+line-height: 1.9;
+margin-top: 8px;
+}
+
+.experience-meta {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 15px;
+
+padding-top: 20px;
+margin-top: 20px;
+
+border-top: 1px solid rgba(255,255,255,.15);
+}
+
+.experience-info {
+display: flex;
+gap: 18px;
+}
+
+.meta-item {
+display: flex;
+align-items: center;
+gap: 7px;
+
+color: rgba(255,255,255,.75);
+font-size: 12px;
+}
+
+.meta-item i {
+color: var(--gold);
+}
+
+.price {
+font-size: 28px;
+font-weight: 900;
+}
+
+.price small {
+font-size: 11px;
+color: var(--muted);
+font-weight: 500;
+}
+
+.card-button {
+width: 48px;
+height: 48px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 50%;
+background: white;
+color: var(--dark);
+
+transition: var(--transition);
+}
+
+.card-button:hover {
+transform: rotate(-45deg);
+background: var(--sand-light);
+}
+
+/* =========================================================
+FEATURES
+========================================================= */
+
+.features {
+background: #f0e9df;
+color: var(--dark);
+}
+
+.features .eyebrow {
+color: #8f6d40;
+}
+
+.features .eyebrow::before {
+background: #8f6d40;
+}
+
+.features .section-text {
+color: #756c62;
+}
+
+.features-grid {
+display: grid;
+grid-template-columns: repeat(4,1fr);
+gap: 16px;
+}
+
+.feature {
+min-height: 250px;
+
+padding: 30px;
+
+background: rgba(255,255,255,.7);
+border: 1px solid rgba(50,35,20,.10);
+border-radius: 24px;
+
+transition: var(--transition);
+}
+
+.feature:hover {
+transform: translateY(-8px);
+box-shadow: 0 25px 50px rgba(60,40,20,.12);
+}
+
+.feature-icon {
+width: 52px;
+height: 52px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 15px;
+
+background: #e4d3ba;
+color: #765630;
+
+font-size: 19px;
+
+margin-bottom: 35px;
+}
+
+.feature h3 {
+font-size: 18px;
+margin-bottom: 9px;
+}
+
+.feature p {
+color: #786f66;
+line-height: 1.8;
+font-size: 13px;
+}
+
+/* =========================================================
+SAFETY
+========================================================= */
+
+.safety {
+position: relative;
+overflow: hidden;
+}
+
+.safety::before {
+content: "SAFETY";
+position: absolute;
+left: -40px;
+bottom: -90px;
+
+font-size: 220px;
+font-weight: 900;
+
+color: rgba(255,255,255,.025);
+pointer-events: none;
+}
+
+.safety-grid {
+display: grid;
+grid-template-columns: .8fr 1.2fr;
+gap: 70px;
+align-items: center;
+}
+
+.safety-visual {
+min-height: 550px;
+border-radius: 30px;
+overflow: hidden;
+position: relative;
+}
+
+.safety-visual img {
+height: 100%;
+object-fit: cover;
+}
+
+.safety-overlay {
+position: absolute;
+inset: 20px;
+
+border: 1px solid rgba(255,255,255,.3);
+border-radius: 22px;
+}
+
+.safety-list {
+display: grid;
+gap: 12px;
+margin-top: 30px;
+}
+
+.safety-item {
+display: flex;
+align-items: center;
+gap: 15px;
+
+padding: 18px 20px;
+
+border: 1px solid var(--border);
+border-radius: 17px;
+
+background: rgba(255,255,255,.025);
+}
+
+.safety-item i {
+color: var(--gold);
+font-size: 18px;
+}
+
+.safety-item span {
+color: #c2b9af;
+font-size: 13px;
+}
+
+/* =========================================================
+ALULA
+========================================================= */
+
+.alula {
+min-height: 700px;
+
+display: flex;
+align-items: center;
+
+background:
+linear-gradient(
+90deg,
+rgba(15,11,8,.88),
+rgba(15,11,8,.25)
+),
+url("/images/alula.jpg") center/cover fixed;
+}
+
+.alula-content {
+max-width: 700px;
+}
+
+.alula-title {
+font-size: clamp(45px, 7vw, 90px);
+line-height: 1;
+font-weight: 900;
+}
+
+.alula-title span {
+color: var(--sand-light);
+}
+
+.alula p {
+max-width: 600px;
+margin-top: 25px;
+
+color: rgba(255,255,255,.72);
+line-height: 2;
+}
+
+/* =========================================================
+GALLERY
+========================================================= */
+
+.gallery {
+background: #f0e9df;
+color: var(--dark);
+}
+
+.gallery .eyebrow {
+color: #8f6d40;
+}
+
+.gallery .eyebrow::before {
+background: #8f6d40;
+}
+
+.gallery .section-text {
+color: #756c62;
+}
+
+.gallery-grid {
+display: grid;
+grid-template-columns: repeat(12,1fr);
+grid-auto-rows: 190px;
+gap: 14px;
+}
+
+.gallery-item {
+position: relative;
+overflow: hidden;
+
+border-radius: 20px;
+cursor: pointer;
+}
+
+.gallery-item:nth-child(1) {
+grid-column: span 5;
+grid-row: span 2;
+}
+
+.gallery-item:nth-child(2) {
+grid-column: span 4;
+grid-row: span 1;
+}
+
+.gallery-item:nth-child(3) {
+grid-column: span 3;
+grid-row: span 2;
+}
+
+.gallery-item:nth-child(4) {
+grid-column: span 4;
+grid-row: span 1;
+}
+
+.gallery-item:nth-child(5) {
+grid-column: span 4;
+grid-row: span 1;
+}
+
+.gallery-item:nth-child(6) {
+grid-column: span 4;
+grid-row: span 1;
+}
+
+.gallery-item img {
+height: 100%;
+object-fit: cover;
+transition: .6s ease;
+}
+
+.gallery-item::after {
+content: "\f00e";
+
+pointer-events: none;
+
+position: absolute;
+inset: 0;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+font-family: "Font Awesome 6 Free";
+font-weight: 900;
+
+font-size: 20px;
+
+color: white;
+background: rgba(0,0,0,.25);
+
+opacity: 0;
+transition: var(--transition);
+}
+
+.gallery-item:hover img {
+transform: scale(1.08);
+}
+
+.gallery-item:hover::after {
+opacity: 1;
+}
+
+/* =========================================================
+VIDEOS
+========================================================= */
+
+.videos {
+background: #15110d;
+}
+
+.video-grid {
+display: grid;
+grid-template-columns: repeat(3,1fr);
+gap: 18px;
+}
+
+.video-card {
+position: relative;
+min-height: 450px;
+
+overflow: hidden;
+border-radius: 24px;
+
+background: #211a14;
+}
+
+.video-card video {
+position: absolute;
+inset: 0;
+
+width: 100%;
+height: 100%;
+
+object-fit: cover;
+}
+
+.video-card::after {
+content: "";
+position: absolute;
+inset: 0;
+
+background:
+linear-gradient(
+0deg,
+rgba(0,0,0,.85),
+transparent 70%
+);
+}
+
+.video-label {
+position: absolute;
+z-index: 2;
+
+right: 22px;
+bottom: 22px;
+left: 22px;
+}
+
+.video-label h3 {
+font-size: 19px;
+}
+
+.video-label span {
+color: #aaa;
+font-size: 11px;
+}
+
+/* =========================================================
+CONTACT
+========================================================= */
+
+.contact {
+background:
+radial-gradient(
+circle at 15% 20%,
+rgba(200,167,122,.1),
+transparent 25%
+),
+#1b1510;
+}
+
+.contact-box {
+padding: 65px;
+
+border: 1px solid var(--border);
+border-radius: 32px;
+
+background:
+linear-gradient(
+135deg,
+rgba(255,255,255,.06),
+rgba(255,255,255,.015)
+);
+
+display: grid;
+grid-template-columns: 1fr .8fr;
+gap: 60px;
+}
+
+.contact-title {
+font-size: clamp(38px, 5vw, 70px);
+line-height: 1;
+font-weight: 900;
+}
+
+.contact-title span {
+color: var(--sand-light);
+}
+
+.contact-copy {
+color: var(--muted);
+line-height: 2;
+margin-top: 20px;
+max-width: 600px;
+}
+
+.contact-actions {
+display: grid;
+gap: 12px;
+align-content: center;
+}
+
+.contact-link {
+display: flex;
+align-items: center;
+gap: 15px;
+
+padding: 18px 20px;
+
+border: 1px solid var(--border);
+border-radius: 17px;
+
+background: rgba(255,255,255,.025);
+
+transition: var(--transition);
+}
+
+.contact-link:hover {
+transform: translateX(-6px);
+border-color: rgba(214,178,119,.4);
+}
+
+.contact-link-icon {
+width: 45px;
+height: 45px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 13px;
+
+background: rgba(214,178,119,.12);
+color: var(--gold);
+}
+
+.contact-link strong {
+display: block;
+font-size: 13px;
+}
+
+.contact-link small {
+color: var(--muted);
+font-size: 11px;
+}
+
+/* =========================================================
+MAP
+========================================================= */
+
+.location {
+background: #f0e9df;
+color: var(--dark);
+}
+
+.location-grid {
+display: grid;
+grid-template-columns: .8fr 1.2fr;
+gap: 40px;
+align-items: stretch;
+}
+
+.location-info {
+padding: 40px;
+background: white;
+border-radius: 25px;
+}
+
+.location-info h3 {
+font-size: 30px;
+margin-bottom: 20px;
+}
+
+.location-info p {
+color: #756c62;
+line-height: 2;
+}
+
+.location-detail {
+display: flex;
+align-items: flex-start;
+gap: 14px;
+
+padding: 18px 0;
+border-bottom: 1px solid #eee4d7;
+}
+
+.location-detail i {
+color: #987648;
+margin-top: 5px;
+}
+
+.map-frame {
+min-height: 430px;
+border-radius: 25px;
+overflow: hidden;
+background: #ddd;
+}
+
+.map-frame iframe {
+width: 100%;
+height: 100%;
+min-height: 430px;
+border: 0;
+filter: grayscale(.25) contrast(.95);
+}
+
+/* =========================================================
+CTA
+========================================================= */
+
+.final-cta {
+position: relative;
+padding: 120px 20px;
+
+text-align: center;
+
+background:
+linear-gradient(
+rgba(20,15,10,.78),
+rgba(20,15,10,.92)
+),
+url("/images/cta.jpg") center/cover;
+}
+
+.final-cta h2 {
+font-size: clamp(42px, 7vw, 90px);
+font-weight: 900;
+line-height: 1;
+}
+
+.final-cta p {
+max-width: 600px;
+margin: 22px auto 30px;
+
+color: rgba(255,255,255,.65);
+line-height: 2;
+}
+
+/* =========================================================
+FOOTER
+========================================================= */
+
+footer {
+background: #0e0b08;
+padding: 70px 0 25px;
+border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+display: grid;
+grid-template-columns: 1.3fr 1fr 1fr;
+gap: 50px;
+}
+
+.footer-brand {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.footer-brand img {
+width: 65px;
+height: 65px;
+object-fit: contain;
+}
+
+.footer-brand strong {
+font-size: 22px;
+}
+
+.footer-description {
+color: var(--muted);
+line-height: 1.9;
+font-size: 13px;
+max-width: 450px;
+margin-top: 20px;
+}
+
+.footer-column h4 {
+font-size: 14px;
+margin-bottom: 20px;
+}
+
+.footer-links {
+display: grid;
+gap: 10px;
+}
+
+.footer-links a {
+color: var(--muted);
+font-size: 12px;
+transition: var(--transition);
+}
+
+.footer-links a:hover {
+color: var(--gold);
+transform: translateX(-3px);
+}
+
+.socials {
+display: flex;
+gap: 8px;
+margin-top: 22px;
+}
+
+.social {
+width: 40px;
+height: 40px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border: 1px solid var(--border);
+border-radius: 50%;
+
+color: #aaa;
+
+transition: var(--transition);
+}
+
+.social:hover {
+color: var(--dark);
+background: var(--sand);
+border-color: var(--sand);
+transform: translateY(-4px);
+}
+
+.footer-bottom {
+display: flex;
+justify-content: space-between;
+gap: 20px;
+
+padding-top: 30px;
+margin-top: 50px;
+
+border-top: 1px solid var(--border);
+
+color: #68615a;
+font-size: 11px;
+}
+
+.footer-legal {
+display: flex;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+gap: 18px;
+
+padding-top: 18px;
+
+font-size: 12px;
+}
+
+.footer-legal a {
+color: var(--muted);
+transition: var(--transition);
+}
+
+.footer-legal a:hover {
+color: var(--gold);
+}
+
+.footer-legal i {
+width: 3px;
+height: 3px;
+border-radius: 50%;
+background: #4a433c;
+}
+
+/* =========================================================
+LIGHTBOX
+========================================================= */
+
+.lightbox {
+position: fixed;
+inset: 0;
+z-index: 5000;
+
+background: rgba(0,0,0,.94);
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+padding: 30px;
+
+opacity: 0;
+visibility: hidden;
+transition: .35s ease;
+}
+
+.lightbox.open {
+opacity: 1;
+visibility: visible;
+}
+
+.lightbox img {
+max-width: 1100px;
+max-height: 85vh;
+width: auto;
+
+object-fit: contain;
+border-radius: 15px;
+}
+
+.lightbox-close {
+position: absolute;
+top: 25px;
+left: 25px;
+
+width: 50px;
+height: 50px;
+
+border: 1px solid rgba(255,255,255,.2);
+background: rgba(255,255,255,.08);
+
+color: white;
+border-radius: 50%;
+
+cursor: pointer;
+font-size: 20px;
+}
+
+/* =========================================================
+BOOKING MODAL
+========================================================= */
+
+.modal {
+position: fixed;
+inset: 0;
+z-index: 4000;
+
+background: rgba(0,0,0,.72);
+backdrop-filter: blur(12px);
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+padding: 20px;
+
+opacity: 0;
+visibility: hidden;
+transition: .3s ease;
+}
+
+.modal.open {
+opacity: 1;
+visibility: visible;
+}
+
+.modal-box {
+width: min(560px, 100%);
+
+background: #211a14;
+border: 1px solid var(--border);
+border-radius: 28px;
+
+padding: 35px;
+
+transform: translateY(20px);
+transition: .4s ease;
+}
+
+.modal.open .modal-box {
+transform: translateY(0);
+}
+
+.modal-top {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 20px;
+}
+
+.modal-top h3 {
+font-size: 26px;
+}
+
+.modal-close {
+width: 42px;
+height: 42px;
+
+border-radius: 50%;
+border: 1px solid var(--border);
+
+background: transparent;
+color: white;
+
+cursor: pointer;
+}
+
+.modal-selected {
+margin-top: 25px;
+padding: 20px;
+
+border-radius: 18px;
+background: rgba(255,255,255,.04);
+}
+
+.modal-selected strong {
+display: block;
+color: var(--sand-light);
+font-size: 18px;
+}
+
+.modal-selected span {
+display: block;
+color: var(--muted);
+font-size: 12px;
+margin-top: 5px;
+}
+
+.booking-options {
+display: grid;
+gap: 10px;
+margin-top: 20px;
+}
+
+.booking-option {
+display: flex;
+align-items: center;
+gap: 14px;
+
+padding: 17px;
+
+border: 1px solid var(--border);
+border-radius: 16px;
+
+transition: var(--transition);
+}
+
+.booking-option:hover {
+border-color: rgba(214,178,119,.5);
+background: rgba(214,178,119,.05);
+}
+
+.booking-option i {
+color: var(--gold);
+width: 20px;
+}
+
+.booking-option strong {
+display: block;
+font-size: 13px;
+}
+
+.booking-option small {
+display: block;
+color: var(--muted);
+margin-top: 2px;
+}
+
+/* =========================================================
+REVEAL
+========================================================= */
+
+.reveal {
+opacity: 0;
+transform: translateY(35px);
+transition: .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.show {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+.nav-links {
+display: none;
+}
+
+.menu-btn {
+display: block;
+}
+
+.intro-grid,
+.safety-grid,
+.contact-box,
+.location-grid {
+grid-template-columns: 1fr;
+}
+
+.features-grid {
+grid-template-columns: repeat(2,1fr);
+}
+
+.video-grid {
+grid-template-columns: repeat(2,1fr);
+}
+
+.intro-image {
+min-height: 500px;
+}
+
+.safety-visual {
+min-height: 450px;
+}
+
+.contact-actions {
+max-width: 600px;
+}
+
+.footer-grid {
+grid-template-columns: 1fr 1fr;
+}
+
+.footer-grid > :first-child {
+grid-column: 1 / -1;
+}
+}
+
+@media (max-width: 750px) {
+
+.container {
+width: min(
+calc(100% - 28px),
+var(--container)
+);
+}
+
+.section {
+padding: 80px 0;
+}
+
+.header-book {
+display: none;
+}
+
+.brand-name {
+font-size: 17px;
+}
+
+.brand img {
+width: 48px;
+height: 48px;
+}
+
+.hero-content {
+padding-top: 80px;
+}
+
+.hero-title {
+font-size: 58px;
+letter-spacing: -3px;
+}
+
+.hero-description {
+font-size: 14px;
+}
+
+.hero-bottom {
+bottom: 20px;
+}
+
+.hero-location {
+display: none;
+}
+
+.experience-grid {
+grid-template-columns: 1fr;
+}
+
+.experience-card {
+min-height: 580px;
+}
+
+.features-grid {
+grid-template-columns: 1fr;
+}
+
+.intro-points {
+grid-template-columns: 1fr;
+}
+
+.gallery-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-auto-rows: 180px;
+}
+
+.gallery-item,
+.gallery-item:nth-child(n) {
+grid-column: span 1;
+grid-row: span 1;
+}
+
+.gallery-item:first-child {
+grid-column: span 2;
+grid-row: span 2;
+}
+
+.video-grid {
+grid-template-columns: 1fr;
+}
+
+.video-card {
+min-height: 430px;
+}
+
+.contact-box {
+padding: 30px 22px;
+}
+
+.location-info {
+padding: 28px;
+}
+
+.footer-grid {
+grid-template-columns: 1fr;
+}
+
+.footer-grid > :first-child {
+grid-column: auto;
+}
+
+.footer-bottom {
+flex-direction: column;
+}
+}
+
+@media (max-width: 450px) {
+
+.hero-title {
+font-size: 50px;
+}
+
+.hero-buttons {
+flex-direction: column;
+}
+
+.hero-buttons .btn {
+width: 100%;
+}
+
+.experience-content {
+right: 20px;
+left: 20px;
+bottom: 20px;
+}
+
+.experience-title {
+font-size: 27px;
+}
+
+.experience-meta {
+align-items: flex-end;
+}
+
+.experience-info {
+gap: 10px;
+flex-direction: column;
+}
+
+.price {
+font-size: 23px;
+}
+
+.modal-box {
+padding: 25px 20px;
+}
+}
+
+
+/* =========================================================
+LANGUAGE SWITCH
+========================================================= */
+
+.lang-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+
+height: 45px;
+padding: 0 16px;
+
+border: 1px solid var(--border);
+background: rgba(255,255,255,.05);
+
+color: var(--white);
+border-radius: 100px;
+
+font-size: 13px;
+font-weight: 800;
+letter-spacing: 1px;
+
+cursor: pointer;
+transition: var(--transition);
+}
+
+.lang-btn i {
+color: var(--gold);
+font-size: 14px;
+transition: var(--transition);
+}
+
+.lang-btn:hover {
+background: var(--white);
+color: var(--dark);
+border-color: var(--white);
+}
+
+.lang-btn:hover i {
+color: var(--dark);
+}
+
+.mobile-links .lang-btn {
+align-self: center;
+margin-top: 10px;
+}
+
+/* =========================================================
+ENGLISH / LTR OVERRIDES
+========================================================= */
+
+html[dir="ltr"] .nav-links a::after {
+right: auto;
+left: 0;
+}
+
+html[dir="ltr"] .image-label {
+right: auto;
+left: 25px;
+}
+
+html[dir="ltr"] .mobile-menu-close,
+html[dir="ltr"] .lightbox-close {
+left: auto;
+right: 25px;
+}
+
+html[dir="ltr"] .contact-link:hover {
+transform: translateX(6px);
+}
+
+html[dir="ltr"] .footer-links a:hover {
+transform: translateX(3px);
+}
+
+html[dir="ltr"] .safety::before {
+left: auto;
+right: -40px;
+}
+
+html[dir="ltr"] .hero-bg {
+background:
+linear-gradient(
+270deg,
+rgba(13,10,7,.25),
+rgba(13,10,7,.70)
+),
+linear-gradient(
+0deg,
+rgba(13,10,7,.92),
+transparent 65%
+),
+url("/images/hero.jpg") center/cover no-repeat;
+}
+
+html[dir="ltr"] .hero::after {
+background:
+radial-gradient(
+circle at 75% 50%,
+transparent,
+rgba(0,0,0,.45)
+);
+}
+
+html[dir="ltr"] .intro {
+background:
+radial-gradient(
+circle at 20% 20%,
+rgba(200,167,122,.08),
+transparent 30%
+),
+var(--dark);
+}
+
+html[dir="ltr"] .alula {
+background:
+linear-gradient(
+270deg,
+rgba(15,11,8,.88),
+rgba(15,11,8,.25)
+),
+url("/images/alula.jpg") center/cover fixed;
+}
+
+
+/* =========================================================
+REPORTS SYSTEM
+========================================================= */
+.rp-fab{position:fixed;bottom:22px;inset-inline-end:22px;z-index:900;display:flex;align-items:center;gap:10px;padding:14px 22px;border:0;border-radius:100px;background:linear-gradient(135deg,var(--sand-light),var(--gold) 55%,#b8864a);color:var(--dark);font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 12px 40px rgba(214,178,119,.35);transition:var(--transition);animation:rpPulse 3s infinite}
+.rp-fab:hover{transform:translateY(-4px) scale(1.04)}
+.rp-fab b{min-width:22px;height:22px;display:grid;place-items:center;border-radius:50%;background:var(--dark);color:var(--gold);font-size:12px}
+.rp-fab b[hidden]{display:none}
+@keyframes rpPulse{50%{box-shadow:0 12px 55px rgba(214,178,119,.65)}}
+.rp{position:fixed;inset:0;z-index:4500;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(8,6,4,.82);backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:.4s ease}
+.rp.open{opacity:1;visibility:visible}
+.rp-box{position:relative;width:min(100%,560px);max-height:92vh;overflow:auto;padding:34px 28px 28px;border-radius:var(--radius-lg);background:radial-gradient(circle at 85% 0,rgba(214,178,119,.20),transparent 45%),radial-gradient(circle at 0 100%,rgba(200,167,122,.10),transparent 50%),var(--dark-2);border:1px solid rgba(214,178,119,.30);box-shadow:var(--shadow),0 0 90px rgba(214,178,119,.14);transform:translateY(30px) scale(.96);transition:.5s cubic-bezier(.2,.8,.2,1)}
+.rp.open .rp-box{transform:none}
+.rp-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.rp-x{position:absolute;top:16px;inset-inline-end:16px;width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:rgba(255,255,255,.05);color:#fff;cursor:pointer;transition:var(--transition)}
+.rp-x:hover{background:#fff;color:var(--dark);transform:rotate(90deg)}
+.rp-head{padding-inline-end:48px}
+.rp-head h3{font-size:30px;font-weight:900;line-height:1.2}
+.rp-head p{color:var(--muted);line-height:1.9;margin-top:8px;font-size:14px}
+.rp-view{display:none;margin-top:26px}
+.rp-view.show{display:block;animation:rpIn .45s ease}
+@keyframes rpIn{from{opacity:0;transform:translateY(14px)}}
+.rp-grid{display:grid;gap:14px}
+.rp-card{display:flex;align-items:center;gap:16px;width:100%;padding:20px;border:1px solid var(--border);border-radius:var(--radius-md);background:rgba(255,255,255,.03);color:#fff;text-align:start;cursor:pointer;transition:var(--transition)}
+.rp-card:hover{transform:translateY(-4px);border-color:rgba(214,178,119,.55);background:rgba(214,178,119,.07);box-shadow:0 18px 45px rgba(0,0,0,.35)}
+.rp-card>i{flex:none;width:54px;height:54px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(135deg,var(--sand-light),var(--gold));color:var(--dark);font-size:21px}
+.rp-card strong{display:block;font-size:17px}
+.rp-card span{display:block;color:var(--muted);font-size:13px;margin-top:3px;word-break:break-all}
+.rp-field{margin-bottom:18px}
+.rp-field label{display:block;margin-bottom:8px;color:var(--sand-light);font-weight:800;font-size:14px}
+.rp-field input,.rp-field textarea{width:100%;padding:15px 16px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:16px;outline:0;transition:var(--transition)}
+.rp-field textarea{min-height:150px;resize:vertical;line-height:1.8}
+.rp-field input:focus,.rp-field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(214,178,119,.15)}
+.rp-field ::placeholder{color:#7d746b}
+.rp-err{min-height:22px;margin-bottom:10px;color:#ff8f7a;font-size:13px;font-weight:700}
+.rp-btn{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;width:100%;padding:16px;border:0;border-radius:100px;background:linear-gradient(135deg,var(--sand-light),var(--gold) 55%,#b8864a);color:var(--dark);font-weight:900;font-size:16px;cursor:pointer;transition:var(--transition)}
+.rp-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55),transparent 70%);transform:translateX(-120%);transition:.7s}
+.rp-btn:hover{transform:translateY(-3px);box-shadow:0 14px 38px rgba(214,178,119,.4)}
+.rp-btn:hover::after{transform:translateX(120%)}
+.rp-link{display:block;margin:16px auto 0;background:none;border:0;color:var(--muted);font-weight:700;cursor:pointer;transition:var(--transition)}
+.rp-link:hover{color:var(--gold)}
+.rp-center{text-align:center}
+.rp-center h4{font-size:22px;font-weight:900;margin-bottom:8px}
+.rp-center p{color:var(--muted);line-height:1.9;margin-bottom:18px;font-size:14px}
+.rp-grid{margin-top:18px}
+.rp-big{display:grid;place-items:center;width:84px;height:84px;margin:0 auto 20px;border-radius:50%;background:linear-gradient(135deg,var(--sand-light),var(--gold));color:var(--dark);font-size:32px;box-shadow:0 0 0 10px rgba(214,178,119,.12),0 0 50px rgba(214,178,119,.35)}
+.rp-note{padding:18px;margin-bottom:18px;border:1px solid rgba(214,178,119,.3);border-radius:18px;background:rgba(214,178,119,.07);color:var(--sand-light);font-size:14px;line-height:2;text-align:center}
+.rp-list{display:grid;gap:14px}
+.rp-item{padding:18px;border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.03);animation:rpIn .45s ease;cursor:pointer;transition:var(--transition)}
+.rp-item:hover{border-color:rgba(214,178,119,.4);background:rgba(255,255,255,.05)}
+.rp-status{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;margin-bottom:12px;border-radius:100px;font-size:12px;font-weight:800}
+.rp-status.unread{background:rgba(255,196,80,.12);color:#ffc85a;box-shadow:0 0 22px rgba(255,196,80,.15)}
+.rp-status.read{background:rgba(110,220,150,.12);color:#7be0a0;box-shadow:0 0 22px rgba(110,220,150,.15)}
+.rp-item h5{font-size:17px;font-weight:900;word-break:break-word}
+.rp-item p{margin-top:6px;color:var(--muted);font-size:13px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
+.rp-meta{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);color:#8c8278;font-size:12px}
+.rp-meta i{color:var(--gold);margin-inline-end:6px}
+.rp-empty{padding:40px 10px;text-align:center;color:var(--muted)}
+.rp-empty i{display:block;margin-bottom:12px;color:var(--gold);font-size:40px;opacity:.7}
+@media (max-width:750px){.rp{padding:0;align-items:flex-end}.rp-box{width:100%;max-height:94vh;padding:30px 18px 22px;border-radius:26px 26px 0 0}.rp-fab{padding:16px}.rp-fab span{display:none}}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+LOADER
+========================================================= -->
+
+<div class="loader" id="loader">
+<div class="loader-inner">
+<img src="/images/logo.png" class="loader-logo" alt="TOP TRIP">
+<div class="loader-line"></div>
+</div>
+</div>
+
+<!-- =========================================================
+HEADER
+========================================================= -->
+
+<header class="header" id="header">
+
+<div class="container">
+
+<nav class="nav">
+
+<a href="#home" class="brand">
+
+<img src="/images/logo.png" alt="TOP TRIP">
+
+<div class="brand-name">
+TOP TRIP
+<span>ALULA</span>
+</div>
+
+</a>
+
+<div class="nav-links">
+
+<a href="#home">الرئيسية</a>
+<a href="#about">عن Top Trip</a>
+<a href="#experiences">الجولات</a>
+<a href="#why">لماذا نحن؟</a>
+<a href="#gallery">المعرض</a>
+<a href="#contact">تواصل معنا</a>
+
+</div>
+
+<div class="nav-actions">
+
+<button class="lang-btn" type="button" aria-label="Switch to English">
+<i class="fa-solid fa-globe"></i>
+<span class="lang-label">EN</span>
+</button>
+
+<a href="#experiences" class="header-book">
+احجز تجربتك
+</a>
+
+<button class="menu-btn" id="menuBtn">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+</div>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- =========================================================
+MOBILE MENU
+========================================================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+<button class="mobile-menu-close" id="mobileClose">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+<div class="mobile-links">
+
+<a href="#home">الرئيسية</a>
+<a href="#about">عن Top Trip</a>
+<a href="#experiences">الجولات</a>
+<a href="#why">لماذا نحن؟</a>
+<a href="#gallery">المعرض</a>
+<a href="#contact">تواصل معنا</a>
+
+<button class="lang-btn" type="button" aria-label="Switch to English">
+<i class="fa-solid fa-globe"></i>
+<span class="lang-label">EN</span>
+</button>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+<div class="hero-bg"></div>
+
+<div class="container">
+
+<div class="hero-content reveal">
+
+<div class="hero-mini">
+<i class="fa-solid fa-location-dot"></i>
+ALULA · SAUDI ARABIA
+</div>
+
+<h1 class="hero-title">
+TOP
+<span>TRIP</span>
+</h1>
+
+<h2 class="hero-subtitle">
+اكتشف العلا بطريقة مختلفة
+</h2>
+
+<p class="hero-description">
+نضمن لك تقديم خدمات تشمل رحلات باجي في الصحراء،
+ومغامرات استكشافية في طبيعة العلا، مع السعي لتقديم
+تجربة مغامرات حقيقية تترك بصمة لا تُنسى، مع الالتزام
+بأعلى معايير السلامة والجودة والإثارة والابتكار.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#experiences" class="btn btn-primary">
+استكشف الجولات
+<i class="fa-solid fa-arrow-left"></i>
+</a>
+
+<a href="#about" class="btn btn-outline">
+تعرّف على Top Trip
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-bottom">
+
+<div class="hero-scroll">
+<span class="scroll-line"></span>
+SCROLL TO EXPLORE
+</div>
+
+<div class="hero-location">
+<i class="fa-solid fa-location-dot"></i>
+العلا، المملكة العربية السعودية
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+ABOUT
+========================================================= -->
+
+<section class="section intro" id="about">
+
+<div class="container">
+
+<div class="intro-grid">
+
+<div class="intro-image reveal">
+
+<img src="/images/about.jpg"
+alt="Top Trip AlUla"
+loading="lazy">
+
+<div class="image-label">
+TOP TRIP · ALULA
+</div>
+
+</div>
+
+<div class="intro-copy reveal">
+
+<div class="eyebrow">
+ABOUT TOP TRIP
+</div>
+
+<h2 class="section-title">
+تجربة مختلفة
+<br>
+في قلب العلا
+</h2>
+
+<p>
+نضمن لك تقديم خدمات تشمل رحلات باجي في الصحراء،
+مغامرات جبلية، وتجارب تخييم تحت النجوم.
+نسعى نحن شركة "TOP TRIP" لإلهام المشاركين بتجربة
+مغامرات حقيقية نترك بصمة لا تُنسى، مع التزامِ
+بأعلى معايير السلامة والجودة وتقديم رحلة
+استكشافية تنبض بالإثارة والابتكار.
+</p>
+
+<div class="intro-points">
+
+<div class="intro-point">
+<i class="fa-solid fa-mountain-sun"></i>
+<strong>مغامرات العلا</strong>
+<span>استكشف الطبيعة بطريقة مختلفة</span>
+</div>
+
+<div class="intro-point">
+<i class="fa-solid fa-car-side"></i>
+<strong>رحلات الباجي</strong>
+<span>تجربة قيادة واستكشاف</span>
+</div>
+
+<div class="intro-point">
+<i class="fa-solid fa-shield-halved"></i>
+<strong>السلامة والجودة</strong>
+<span>التزام بمعايير السلامة</span>
+</div>
+
+<div class="intro-point">
+<i class="fa-solid fa-star"></i>
+<strong>تجربة لا تُنسى</strong>
+<span>مغامرة بطابع مختلف</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+EXPERIENCES
+========================================================= -->
+
+<section class="section experiences" id="experiences">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="eyebrow">
+OUR EXPERIENCES
+</div>
+
+<h2 class="section-title">
+اختر تجربتك
+</h2>
+
+<p class="section-text">
+اختر المغامرة التي تناسبك واستمتع بتجربة استكشاف
+مختلفة في طبيعة العلا.
+</p>
+
+</div>
+
+<div class="experience-grid">
+
+<!-- EXPERIENCE 1 -->
+
+<article class="experience-card reveal">
+
+<div class="experience-image">
+<img src="/images/buggy-30.jpg"
+alt="رحلة باجي 30 دقيقة"
+loading="lazy">
+</div>
+
+<div class="experience-content">
+
+<div class="experience-badge">
+الأكثر مغامرة
+</div>
+
+<h3 class="experience-title">
+رحلة الباجي — 30 دقيقة
+</h3>
+
+<p class="experience-description">
+رحلة استكشافية لمدة 30 دقيقة، مع توقف عند
+النقوش، ثم العودة إلى موقع الانطلاق.
+</p>
+
+<div class="experience-meta">
+
+<div>
+
+<div class="experience-info">
+
+<div class="meta-item">
+<i class="fa-regular fa-clock"></i>
+30 دقيقة
+</div>
+
+<div class="meta-item">
+<i class="fa-solid fa-location-dot"></i>
+توقف عند النقوش
+</div>
+
+</div>
+
+<div class="price">
+500
+<small>ريال</small>
+</div>
+
+</div>
+
+<button
+class="card-button book-btn"
+data-tour="رحلة الباجي — 30 دقيقة"
+data-price="500 ريال">
+<i class="fa-solid fa-arrow-left"></i>
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+<!-- EXPERIENCE 2 -->
+
+<article class="experience-card reveal">
+
+<div class="experience-image">
+<img src="/images/buggy-15.jpg"
+alt="رحلة باجي 15 دقيقة"
+loading="lazy">
+</div>
+
+<div class="experience-content">
+
+<div class="experience-badge">
+تجربة سريعة
+</div>
+
+<h3 class="experience-title">
+رحلة الباجي — 15 دقيقة
+</h3>
+
+<p class="experience-description">
+تجربة باجي لمدة 15 دقيقة بدون توقف،
+ثم العودة إلى موقع الانطلاق.
+</p>
+
+<div class="experience-meta">
+
+<div>
+
+<div class="experience-info">
+
+<div class="meta-item">
+<i class="fa-regular fa-clock"></i>
+15 دقيقة
+</div>
+
+<div class="meta-item">
+<i class="fa-solid fa-flag"></i>
+بدون توقف
+</div>
+
+</div>
+
+<div class="price">
+250
+<small>ريال</small>
+</div>
+
+</div>
+
+<button
+class="card-button book-btn"
+data-tour="رحلة الباجي — 15 دقيقة"
+data-price="250 ريال">
+<i class="fa-solid fa-arrow-left"></i>
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+WHY TOP TRIP
+========================================================= -->
+
+<section class="section features" id="why">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="eyebrow">
+WHY TOP TRIP
+</div>
+
+<h2 class="section-title">
+أكثر من مجرد رحلة
+</h2>
+
+<p class="section-text">
+تجربة تجمع بين المغامرة والاستكشاف والطبيعة،
+مع الاهتمام بالتفاصيل التي تصنع تجربة مختلفة.
+</p>
+
+</div>
+
+<div class="features-grid">
+
+<div class="feature reveal">
+
+<div class="feature-icon">
+<i class="fa-solid fa-car-side"></i>
+</div>
+
+<h3>رحلات الباجي</h3>
+
+<p>
+مغامرات استكشافية في طبيعة العلا باستخدام
+مركبات الباجي.
+</p>
+
+</div>
+
+<div class="feature reveal">
+
+<div class="feature-icon">
+<i class="fa-solid fa-mountain"></i>
+</div>
+
+<h3>طبيعة العلا</h3>
+
+<p>
+تجربة وسط التضاريس والمناظر الطبيعية
+المميزة للعلا.
+</p>
+
+</div>
+
+<div class="feature reveal">
+
+<div class="feature-icon">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+
+<h3>السلامة أولًا</h3>
+
+<p>
+الالتزام بمعايير السلامة والجودة ضمن
+التجارب المقدمة.
+</p>
+
+</div>
+
+<div class="feature reveal">
+
+<div class="feature-icon">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+</div>
+
+<h3>تجربة مختلفة</h3>
+
+<p>
+رحلة استكشافية تنبض بالإثارة والابتكار
+وتترك ذكرى لا تُنسى.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+SAFETY
+========================================================= -->
+
+<section class="section safety">
+
+<div class="container">
+
+<div class="safety-grid">
+
+<div class="safety-visual reveal">
+
+<img src="/images/safety.jpg"
+alt="السلامة في Top Trip"
+loading="lazy">
+
+<div class="safety-overlay"></div>
+
+</div>
+
+<div class="reveal">
+
+<div class="eyebrow">
+SAFETY FIRST
+</div>
+
+<h2 class="section-title">
+السلامة
+<br>
+أولًا
+</h2>
+
+<p class="section-text">
+لأن المغامرة الحقيقية تحتاج إلى تجربة مسؤولة،
+تلتزم Top Trip بأعلى معايير السلامة والجودة
+ضمن التجارب التي تقدمها.
+</p>
+
+<div class="safety-list">
+
+<div class="safety-item">
+<i class="fa-solid fa-shield-halved"></i>
+<span>
+الالتزام بمعايير السلامة والجودة.
+</span>
+</div>
+
+<div class="safety-item">
+<i class="fa-solid fa-car"></i>
+<span>
+الاهتمام بتجهيز المركبات للتجارب.
+</span>
+</div>
+
+<div class="safety-item">
+<i class="fa-solid fa-user-shield"></i>
+<span>
+إرشادات وتجهيزات السلامة أثناء التجربة.
+</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+ALULA
+========================================================= -->
+
+<section class="section alula">
+
+<div class="container">
+
+<div class="alula-content reveal">
+
+<div class="eyebrow">
+DISCOVER ALULA
+</div>
+
+<h2 class="alula-title">
+العلا...
+<br>
+<span>حيث تبدأ المغامرة</span>
+</h2>
+
+<p>
+بين الصخور والتضاريس والمناظر الطبيعية،
+تقدم العلا مساحة استثنائية للاكتشاف والمغامرة.
+ومع Top Trip تصبح الرحلة طريقة مختلفة لرؤية المكان.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+GALLERY
+========================================================= -->
+
+<section class="section gallery" id="gallery">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="eyebrow">
+TOP TRIP GALLERY
+</div>
+
+<h2 class="section-title">
+لحظات من المغامرة
+</h2>
+
+<p class="section-text">
+صور من تجارب Top Trip وطبيعة العلا.
+</p>
+
+</div>
+
+<div class="gallery-grid">
+
+<div class="gallery-item reveal">
+<img src="/images/gallery-1.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+<div class="gallery-item reveal">
+<img src="/images/gallery-2.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+<div class="gallery-item reveal">
+<img src="/images/gallery-3.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+<div class="gallery-item reveal">
+<img src="/images/gallery-4.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+<div class="gallery-item reveal">
+<img src="/images/gallery-5.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+<div class="gallery-item reveal">
+<img src="/images/gallery-6.jpg"
+alt="Top Trip"
+loading="lazy">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+VIDEOS
+========================================================= -->
+
+<section class="section videos">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="eyebrow">
+TOP TRIP STORIES
+</div>
+
+<h2 class="section-title">
+شاهد المغامرة
+</h2>
+
+<p class="section-text">
+مقاطع من أعمال وتجارب Top Trip.
+</p>
+
+</div>
+
+<div class="video-grid">
+
+<div class="video-card reveal">
+
+<video
+src="videos/toptrip-1.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+<div class="video-label">
+<h3>أجواء المغامرة</h3>
+<span>TOP TRIP · ALULA</span>
+</div>
+
+</div>
+
+<div class="video-card reveal">
+
+<video
+src="videos/toptrip-2.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+<div class="video-label">
+<h3>رحلات الباجي</h3>
+<span>TOP TRIP · ALULA</span>
+</div>
+
+</div>
+
+<div class="video-card reveal">
+
+<video
+src="videos/toptrip-3.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+<div class="video-label">
+<h3>استكشف العلا</h3>
+<span>TOP TRIP · ALULA</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+LOCATION
+========================================================= -->
+
+<section class="section location">
+
+<div class="container">
+
+<div class="location-grid">
+
+<div class="location-info reveal">
+
+<div class="eyebrow">
+OUR LOCATION
+</div>
+
+<h3>
+موقع Top Trip
+</h3>
+
+<p>
+موقع الانطلاق في العلا.
+</p>
+
+<div class="location-detail">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<div>
+<strong>العنوان</strong>
+<br>
+السعودية، 43543 المنقا، العلا
+</div>
+
+</div>
+
+<div class="location-detail">
+
+<i class="fa-solid fa-phone"></i>
+
+<div>
+<strong>رقم التواصل</strong>
+<br>
++966 59 330 4444
+</div>
+
+</div>
+
+<a
+href="https://www.google.com/maps/search/?api=1&query=Top+Trip+AlUla"
+target="_blank"
+rel="noopener"
+class="btn btn-primary"
+style="margin-top:25px;">
+فتح الموقع في الخرائط
+<i class="fa-solid fa-arrow-left"></i>
+</a>
+
+</div>
+
+<div class="map-frame reveal">
+
+<iframe
+src="https://www.google.com/maps?q=Top%20Trip%20AlUla&output=embed"
+loading="lazy"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+CONTACT
+========================================================= -->
+
+<section class="section contact" id="contact">
+
+<div class="container">
+
+<div class="contact-box reveal">
+
+<div>
+
+<div class="eyebrow">
+GET IN TOUCH
+</div>
+
+<h2 class="contact-title">
+مستعد
+<br>
+<span>للمغامرة؟</span>
+</h2>
+
+<p class="contact-copy">
+للحجز والاستفسار تواصل مع Top Trip عبر
+قنوات التواصل الرسمية.
+</p>
+
+</div>
+
+<div class="contact-actions">
+
+<a
+href="tel:+966593304444"
+class="contact-link">
+
+<div class="contact-link-icon">
+<i class="fa-solid fa-phone"></i>
+</div>
+
+<div>
+<strong>اتصل الآن</strong>
+<small>+966 59 330 4444</small>
+</div>
+
+</a>
+
+<a
+href="mailto:Toptrip50@gmail.com"
+class="contact-link">
+
+<div class="contact-link-icon">
+<i class="fa-solid fa-envelope"></i>
+</div>
+
+<div>
+<strong>البريد الإلكتروني</strong>
+<small>Toptrip50@gmail.com</small>
+</div>
+
+</a>
+
+<a
+href="https://linktr.ee/toptrip00"
+target="_blank"
+rel="noopener"
+class="contact-link">
+
+<div class="contact-link-icon">
+<i class="fa-solid fa-link"></i>
+</div>
+
+<div>
+<strong>جميع حساباتنا</strong>
+<small>Instagram · WhatsApp · وغيرها</small>
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+FINAL CTA
+========================================================= -->
+
+<section class="final-cta">
+
+<div class="reveal">
+
+<div class="eyebrow"
+style="justify-content:center;">
+TOP TRIP ALULA
+</div>
+
+<h2>
+اكتشف العلا
+<br>
+بطريقة مختلفة
+</h2>
+
+<p>
+اختر تجربتك وتواصل مع Top Trip للحجز والاستفسار.
+</p>
+
+<a href="#experiences" class="btn btn-primary">
+استكشف الجولات
+<i class="fa-solid fa-arrow-left"></i>
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<div class="footer-brand">
+
+<img src="/images/logo.png" alt="TOP TRIP">
+
+<strong>
+TOP TRIP
+</strong>
+
+</div>
+
+<p class="footer-description">
+تجارب مغامرة واستكشاف في قلب العلا،
+مع التركيز على الجودة والسلامة وصناعة
+تجربة لا تُنسى.
+</p>
+
+<div class="socials">
+
+<a
+href="https://linktr.ee/toptrip00"
+target="_blank"
+rel="noopener"
+class="social"
+aria-label="جميع الحسابات">
+<i class="fa-solid fa-link"></i>
+</a>
+
+<a
+href="https://www.instagram.com/toptrip.50/"
+target="_blank"
+rel="noopener"
+class="social"
+aria-label="Instagram">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a
+href="https://www.linkedin.com/company/toptripsa/"
+target="_blank"
+rel="noopener"
+class="social"
+aria-label="LinkedIn">
+<i class="fa-brands fa-linkedin-in"></i>
+</a>
+
+</div>
+
+</div>
+
+<div class="footer-column">
+
+<h4>
+روابط سريعة
+</h4>
+
+<div class="footer-links">
+
+<a href="#home">الرئيسية</a>
+<a href="#about">عن Top Trip</a>
+<a href="#experiences">الجولات</a>
+<a href="#why">لماذا نحن؟</a>
+<a href="#gallery">معرض الصور</a>
+<a href="#contact">تواصل معنا</a>
+
+</div>
+
+</div>
+
+<div class="footer-column">
+
+<h4>
+تواصل معنا
+</h4>
+
+<div class="footer-links">
+
+<a href="tel:+966593304444">
++966 59 330 4444
+</a>
+
+<a href="mailto:Toptrip50@gmail.com">
+Toptrip50@gmail.com
+</a>
+
+<a
+href="https://linktr.ee/toptrip00"
+target="_blank"
+rel="noopener">
+جميع حسابات التواصل
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<span>
+© TOP TRIP AlUla — جميع الحقوق محفوظة
+</span>
+
+<span>
+EXPERIENCE OFFROAD ADVENTURE
+</span>
+
+</div>
+
+<div class="footer-legal">
+
+<a href="/privacy-policy.html">سياسة الخصوصية</a>
+
+<i aria-hidden="true"></i>
+
+<a href="/terms-of-use.html">شروط الاستخدام</a>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- =========================================================
+LIGHTBOX
+========================================================= -->
+
+<div class="lightbox" id="lightbox">
+
+<button class="lightbox-close" id="lightboxClose">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+<img id="lightboxImage" src="" alt="Top Trip">
+
+</div>
+
+<!-- =========================================================
+BOOKING MODAL
+========================================================= -->
+
+<div class="modal" id="bookingModal">
+
+<div class="modal-box">
+
+<div class="modal-top">
+
+<h3>
+للحجز والاستفسار
+</h3>
+
+<button class="modal-close" id="modalClose">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+</div>
+
+<div class="modal-selected">
+
+<strong id="selectedTour">
+رحلة الباجي
+</strong>
+
+<span id="selectedPrice">
+500 ريال
+</span>
+
+</div>
+
+<div class="booking-options">
+
+<a
+href="tel:+966593304444"
+class="booking-option">
+
+<i class="fa-solid fa-phone"></i>
+
+<div>
+<strong>اتصل الآن</strong>
+<small>
++966 59 330 4444
+</small>
+</div>
+
+</a>
+
+<a
+href="https://linktr.ee/toptrip00"
+target="_blank"
+rel="noopener"
+class="booking-option">
+
+<i class="fa-solid fa-link"></i>
+
+<div>
+<strong>جميع حسابات التواصل</strong>
+<small>
+WhatsApp · Instagram · وغيرها
+</small>
+</div>
+
+</a>
+
+<a
+href="mailto:Toptrip50@gmail.com"
+class="booking-option">
+
+<i class="fa-solid fa-envelope"></i>
+
+<div>
+<strong>البريد الإلكتروني</strong>
+<small>
+Toptrip50@gmail.com
+</small>
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+REPORTS SYSTEM
+========================================================= -->
+
+<button class="rp-fab" id="rpOpen" type="button" aria-label="البلاغات">
+<i class="fa-solid fa-bullhorn"></i>
+<span>البلاغات</span>
+</button>
+
+<div class="rp" id="rpPanel" role="dialog" aria-modal="true" aria-hidden="true">
+<div class="rp-box">
+<button class="rp-x" id="rpClose" type="button" aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
+
+<div class="rp-head">
+<div class="eyebrow">TOP TRIP · REPORTS</div>
+<h3>مركز البلاغات</h3>
+<p>أنشئ بلاغاً جديداً أو استعرض سجل البلاغات.</p>
+</div>
+
+<!-- القائمة الرئيسية (زر إنشاء بلاغ + زر سجل البلاغات) -->
+<div class="rp-view show" id="rpHome">
+<div class="rp-grid" style="margin-top:20px">
+<button type="button" class="rp-card" data-go="rpNew">
+<i class="fa-solid fa-pen-to-square"></i>
+<div><strong>إنشاء بلاغ</strong><span>أرسل بلاغك أو ملاحظتك لفريقنا</span></div>
+</button>
+<button type="button" class="rp-card" data-go="rpLog">
+<i class="fa-solid fa-clock-rotate-left"></i>
+<div><strong>سجل البلاغات</strong><span>عرض البلاغات السابقة وحالة فتح الرسالة</span></div>
+</button>
+</div>
+</div>
+
+<!-- نموذج إنشاء البلاغ -->
+<div class="rp-view" id="rpNew">
+<form id="rpForm" novalidate>
+<div class="rp-field">
+<label for="rpType">نوع البلاغ</label>
+<input id="rpType" type="text" maxlength="60" placeholder="اكتب نوع البلاغ" autocomplete="off">
+</div>
+<div class="rp-field">
+<label for="rpDetails">التفاصيل</label>
+<textarea id="rpDetails" maxlength="1000" placeholder="اكتب تفاصيل البلاغ"></textarea>
+</div>
+<div class="rp-err" id="rpErr" role="alert"></div>
+<button type="submit" class="rp-btn">إرسال</button>
+<button type="button" class="rp-link" data-go="rpHome">رجوع</button>
+</form>
+</div>
+
+<!-- رسالة التأكيد -->
+<div class="rp-view" id="rpConfirm">
+<div class="rp-center"><div class="rp-big"><i class="fa-solid fa-envelope-circle-check"></i></div></div>
+<div class="rp-note">يتم إرسال البلاغ إلى إيميل الشركة، ونتمنى منك تصفّح تطبيق رسائل البريد الإلكتروني ليصلك ردّنا وتتمكن من رؤية الرد.</div>
+<button type="button" class="rp-btn" id="rpSendConfirm">تأكيد ارسال</button>
+<button type="button" class="rp-link" data-go="rpNew">رجوع</button>
+</div>
+
+<!-- سجل البلاغات -->
+<div class="rp-view" id="rpLog">
+<div class="rp-list" id="rpList"></div>
+<button type="button" class="rp-link" data-go="rpHome" style="margin-top:18px">رجوع</button>
+</div>
+
+</div>
+</div>
+
+<!-- =========================================================
+JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+LOADER
+========================================================= */
+
+window.addEventListener("load", () => {
+
+setTimeout(() => {
+
+document
+.getElementById("loader")
+.classList.add("hide");
+
+}, 500);
+
+});
+
+/* =========================================================
+HEADER SCROLL
+========================================================= */
+
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+
+if (window.scrollY > 50) {
+
+header.classList.add("scrolled");
+
+} else {
+
+header.classList.remove("scrolled");
+
+}
+
+});
+
+/* =========================================================
+MOBILE MENU
+========================================================= */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const mobileMenu =
+document.getElementById("mobileMenu");
+
+const mobileClose =
+document.getElementById("mobileClose");
+
+function closeMobileMenu() {
+
+mobileMenu.classList.remove("open");
+document.body.classList.remove("no-scroll");
+
+}
+
+menuBtn.addEventListener("click", () => {
+
+mobileMenu.classList.add("open");
+document.body.classList.add("no-scroll");
+
+});
+
+mobileClose.addEventListener(
+"click",
+closeMobileMenu
+);
+
+document
+.querySelectorAll(".mobile-links a")
+.forEach(link => {
+
+link.addEventListener(
+"click",
+closeMobileMenu
+);
+
+});
+
+/* =========================================================
+REVEAL ON SCROLL
+========================================================= */
+
+const revealObserver =
+new IntersectionObserver(
+entries => {
+
+entries.forEach(entry => {
+
+if (entry.isIntersecting) {
+
+entry.target.classList.add("show");
+
+revealObserver.unobserve(
+entry.target
+);
+
+}
+
+});
+
+},
+{
+threshold: .12
+}
+);
+
+document
+.querySelectorAll(".reveal")
+.forEach(element => {
+
+revealObserver.observe(element);
+
+});
+
+/* =========================================================
+LIGHTBOX
+========================================================= */
+
+const lightbox =
+document.getElementById("lightbox");
+
+const lightboxImage =
+document.getElementById("lightboxImage");
+
+const lightboxClose =
+document.getElementById("lightboxClose");
+
+document
+.querySelectorAll(".gallery-item img")
+.forEach(image => {
+
+image.addEventListener("click", () => {
+
+lightboxImage.src =
+image.src;
+
+lightbox.classList.add("open");
+
+document.body.classList.add(
+"no-scroll"
+);
+
+});
+
+});
+
+function closeLightbox() {
+
+lightbox.classList.remove("open");
+
+document.body.classList.remove(
+"no-scroll"
+);
+
+}
+
+lightboxClose.addEventListener(
+"click",
+closeLightbox
+);
+
+lightbox.addEventListener(
+"click",
+event => {
+
+if (event.target === lightbox) {
+
+closeLightbox();
+
+}
+
+}
+);
+
+/* =========================================================
+BOOKING MODAL
+========================================================= */
+
+const bookingModal =
+document.getElementById(
+"bookingModal"
+);
+
+const modalClose =
+document.getElementById(
+"modalClose"
+);
+
+const selectedTour =
+document.getElementById(
+"selectedTour"
+);
+
+const selectedPrice =
+document.getElementById(
+"selectedPrice"
+);
+
+document
+.querySelectorAll(".book-btn")
+.forEach(button => {
+
+button.addEventListener(
+"click",
+() => {
+
+lastBooked = button;
+refreshModal();
+
+bookingModal.classList.add(
+"open"
+);
+
+document.body.classList.add(
+"no-scroll"
+);
+
+}
+);
+
+});
+
+function closeBooking() {
+
+bookingModal.classList.remove(
+"open"
+);
+
+document.body.classList.remove(
+"no-scroll"
+);
+
+}
+
+modalClose.addEventListener(
+"click",
+closeBooking
+);
+
+bookingModal.addEventListener(
+"click",
+event => {
+
+if (event.target === bookingModal) {
+
+closeBooking();
+
+}
+
+}
+);
+
+/* =========================================================
+ESC KEY
+========================================================= */
+
+document.addEventListener(
+"keydown",
+event => {
+
+if (event.key === "Escape") {
+
+closeMobileMenu();
+closeLightbox();
+closeBooking();
+
+}
+
+}
+);
+
+/* =========================================================
+ACTIVE NAV
+========================================================= */
+
+const sections =
+document.querySelectorAll(
+"section[id]"
+);
+
+const navLinks =
+document.querySelectorAll(
+".nav-links a"
+);
+
+window.addEventListener(
+"scroll",
+() => {
+
+let current = "";
+
+sections.forEach(section => {
+
+const sectionTop =
+section.offsetTop - 160;
+
+if (
+window.scrollY >= sectionTop
+) {
+
+current =
+section.getAttribute("id");
+
+}
+
+});
+
+navLinks.forEach(link => {
+
+link.classList.remove("active");
+
+if (
+link.getAttribute("href") ===
+"#" + current
+) {
+
+link.classList.add("active");
+
+}
+
+});
+
+}
+);
+
+
+/* =========================================================
+LANGUAGE SWITCH (AR / EN)
+========================================================= */
+
+var I18N = {
+ "البلاغات": "Reports",
+ "إغلاق": "Close",
+ "مركز البلاغات": "Reports Center",
+ "أنشئ بلاغاً جديداً أو استعرض سجل البلاغات.": "Create a new report or view the reports log.",
+ "إنشاء بلاغ": "Create a Report",
+ "أرسل بلاغك أو ملاحظتك لفريقنا": "Send your report or feedback to our team",
+ "سجل البلاغات": "Reports Log",
+ "عرض البلاغات السابقة وحالة فتح الرسالة": "View previous reports and message open status",
+ "نوع البلاغ": "Report Type",
+ "التفاصيل": "Details",
+ "إرسال": "Send",
+ "رجوع": "Back",
+ "تأكيد ارسال": "Confirm Sending",
+ "يتم إرسال البلاغ إلى إيميل الشركة، ونتمنى منك تصفّح تطبيق رسائل البريد الإلكتروني ليصلك ردّنا وتتمكن من رؤية الرد.": "The report will be sent to the company's email. We kindly ask you to check your email app so you can receive our reply and view it.",
+ "لا توجد بلاغات حتى الآن": "No reports yet",
+ "الرجاء كتابة نوع البلاغ": "Please enter the report type",
+ "الرجاء كتابة تفاصيل البلاغ": "Please enter the report details",
+ "اكتب نوع البلاغ": "Write the report type",
+ "اكتب تفاصيل البلاغ": "Write the report details",
+ "غير مفتوحة": "Unopened",
+ "تم فتح الرساله": "Message opened",
+ "الرئيسية": "Home",
+ "عن Top Trip": "About Top Trip",
+ "الجولات": "Tours",
+ "لماذا نحن؟": "Why Us?",
+ "المعرض": "Gallery",
+ "تواصل معنا": "Contact Us",
+ "احجز تجربتك": "Book Your Experience",
+ "اكتشف العلا بطريقة مختلفة": "Discover AlUla in a Different Way",
+ "نضمن لك تقديم خدمات تشمل رحلات باجي في الصحراء، ومغامرات استكشافية في طبيعة العلا، مع السعي لتقديم تجربة مغامرات حقيقية تترك بصمة لا تُنسى، مع الالتزام بأعلى معايير السلامة والجودة والإثارة والابتكار.": "We guarantee services that include buggy trips in the desert and exploratory adventures in the nature of AlUla, striving to deliver a genuine adventure experience that leaves an unforgettable mark, with the highest standards of safety, quality, excitement and innovation.",
+ "استكشف الجولات": "Explore Tours",
+ "تعرّف على Top Trip": "Get to Know Top Trip",
+ "العلا، المملكة العربية السعودية": "AlUla, Saudi Arabia",
+ "تجربة مختلفة": "A Different Experience",
+ "في قلب العلا": "in the Heart of AlUla",
+ "مغامرات العلا": "AlUla Adventures",
+ "استكشف الطبيعة بطريقة مختلفة": "Explore nature in a different way",
+ "رحلات الباجي": "Buggy Trips",
+ "تجربة قيادة واستكشاف": "A driving and exploration experience",
+ "السلامة والجودة": "Safety & Quality",
+ "التزام بمعايير السلامة": "Committed to safety standards",
+ "تجربة لا تُنسى": "An Unforgettable Experience",
+ "مغامرة بطابع مختلف": "An adventure with a different character",
+ "اختر تجربتك": "Choose Your Experience",
+ "اختر المغامرة التي تناسبك واستمتع بتجربة استكشاف مختلفة في طبيعة العلا.": "Choose the adventure that suits you and enjoy a different exploration experience in the nature of AlUla.",
+ "الأكثر مغامرة": "Most Adventurous",
+ "رحلة الباجي — 30 دقيقة": "Buggy Ride — 30 Minutes",
+ "رحلة استكشافية لمدة 30 دقيقة، مع توقف عند النقوش، ثم العودة إلى موقع الانطلاق.": "A 30-minute exploratory ride, with a stop at the rock inscriptions, then a return to the starting point.",
+ "30 دقيقة": "30 minutes",
+ "توقف عند النقوش": "Stop at the inscriptions",
+ "ريال": "SAR",
+ "تجربة سريعة": "Quick Experience",
+ "رحلة الباجي — 15 دقيقة": "Buggy Ride — 15 Minutes",
+ "تجربة باجي لمدة 15 دقيقة بدون توقف، ثم العودة إلى موقع الانطلاق.": "A 15-minute buggy experience with no stops, then a return to the starting point.",
+ "15 دقيقة": "15 minutes",
+ "بدون توقف": "No stops",
+ "أكثر من مجرد رحلة": "More Than Just a Trip",
+ "تجربة تجمع بين المغامرة والاستكشاف والطبيعة، مع الاهتمام بالتفاصيل التي تصنع تجربة مختلفة.": "An experience that combines adventure, exploration and nature, with attention to the details that make a different experience.",
+ "مغامرات استكشافية في طبيعة العلا باستخدام مركبات الباجي.": "Exploratory adventures in the nature of AlUla using buggy vehicles.",
+ "طبيعة العلا": "AlUla Nature",
+ "تجربة وسط التضاريس والمناظر الطبيعية المميزة للعلا.": "An experience amid the distinctive terrain and natural landscapes of AlUla.",
+ "السلامة أولًا": "Safety First",
+ "الالتزام بمعايير السلامة والجودة ضمن التجارب المقدمة.": "A commitment to safety and quality standards across the experiences offered.",
+ "رحلة استكشافية تنبض بالإثارة والابتكار وتترك ذكرى لا تُنسى.": "An exploratory journey full of excitement and innovation that leaves an unforgettable memory.",
+ "السلامة": "Safety",
+ "أولًا": "First",
+ "لأن المغامرة الحقيقية تحتاج إلى تجربة مسؤولة، تلتزم Top Trip بأعلى معايير السلامة والجودة ضمن التجارب التي تقدمها.": "Because a real adventure requires a responsible experience, Top Trip is committed to the highest standards of safety and quality across the experiences it offers.",
+ "الالتزام بمعايير السلامة والجودة.": "Commitment to safety and quality standards.",
+ "الاهتمام بتجهيز المركبات للتجارب.": "Careful preparation of the vehicles for the experiences.",
+ "إرشادات وتجهيزات السلامة أثناء التجربة.": "Safety guidance and equipment during the experience.",
+ "العلا...": "AlUla...",
+ "حيث تبدأ المغامرة": "where the adventure begins",
+ "بين الصخور والتضاريس والمناظر الطبيعية، تقدم العلا مساحة استثنائية للاكتشاف والمغامرة. ومع Top Trip تصبح الرحلة طريقة مختلفة لرؤية المكان.": "Among the rocks, terrain and natural landscapes, AlUla offers an exceptional space for discovery and adventure. With Top Trip, the journey becomes a different way of seeing the place.",
+ "لحظات من المغامرة": "Moments of Adventure",
+ "صور من تجارب Top Trip وطبيعة العلا.": "Photos from Top Trip experiences and the nature of AlUla.",
+ "شاهد المغامرة": "Watch the Adventure",
+ "مقاطع من أعمال وتجارب Top Trip.": "Clips from the work and experiences of Top Trip.",
+ "أجواء المغامرة": "Adventure Vibes",
+ "استكشف العلا": "Explore AlUla",
+ "موقع Top Trip": "Top Trip Location",
+ "موقع الانطلاق في العلا.": "Our starting point in AlUla.",
+ "العنوان": "Address",
+ "السعودية، 43543 المنقا، العلا": "Saudi Arabia, 43543 Al Manqa, AlUla",
+ "رقم التواصل": "Contact Number",
+ "فتح الموقع في الخرائط": "Open Location in Maps",
+ "مستعد": "Ready",
+ "للمغامرة؟": "for Adventure?",
+ "للحجز والاستفسار تواصل مع Top Trip عبر قنوات التواصل الرسمية.": "To book or inquire, contact Top Trip through our official channels.",
+ "اتصل الآن": "Call Now",
+ "البريد الإلكتروني": "Email",
+ "جميع حساباتنا": "All Our Accounts",
+ "Instagram · WhatsApp · وغيرها": "Instagram · WhatsApp · and more",
+ "نضمن لك تقديم خدمات تشمل رحلات باجي في الصحراء، مغامرات جبلية، وتجارب تخييم تحت النجوم. نسعى نحن شركة \"TOP TRIP\" لإلهام المشاركين بتجربة مغامرات حقيقية نترك بصمة لا تُنسى، مع التزامِ بأعلى معايير السلامة والجودة وتقديم رحلة استكشافية تنبض بالإثارة والابتكار.": "We guarantee services that include desert buggy trips, mountain adventures, and camping experiences under the stars. At \"TOP TRIP\", we strive to inspire participants with a genuine adventure experience that leaves an unforgettable mark, with a commitment to the highest standards of safety and quality, and an exploratory journey full of excitement and innovation.",
+ "WhatsApp · Instagram · وغيرها": "WhatsApp · Instagram · and more",
+ "اكتشف العلا": "Discover AlUla",
+ "بطريقة مختلفة": "in a Different Way",
+ "اختر تجربتك وتواصل مع Top Trip للحجز والاستفسار.": "Choose your experience and contact Top Trip to book or inquire.",
+ "تجارب مغامرة واستكشاف في قلب العلا، مع التركيز على الجودة والسلامة وصناعة تجربة لا تُنسى.": "Adventure and exploration experiences in the heart of AlUla, focusing on quality and safety and creating an unforgettable experience.",
+ "روابط سريعة": "Quick Links",
+ "معرض الصور": "Photo Gallery",
+ "جميع حسابات التواصل": "All Contact Accounts",
+ "© TOP TRIP AlUla — جميع الحقوق محفوظة": "© TOP TRIP AlUla — All Rights Reserved",
+ "للحجز والاستفسار": "Booking & Inquiries",
+ "رحلة الباجي": "Buggy Ride",
+ "500 ريال": "500 SAR",
+ "رحلة باجي 30 دقيقة": "Buggy ride, 30 minutes",
+ "رحلة باجي 15 دقيقة": "Buggy ride, 15 minutes",
+ "السلامة في Top Trip": "Safety at Top Trip",
+ "جميع الحسابات": "All accounts",
+ "250 ريال": "250 SAR",
+ "TOP TRIP AlUla | اكتشف العلا بطريقة مختلفة": "TOP TRIP AlUla | Discover AlUla in a Different Way",
+ "TOP TRIP AlUla — رحلات باجي في الصحراء وتجارب مغامرة في قلب العلا.": "TOP TRIP AlUla — desert buggy rides and adventure experiences in the heart of AlUla.",
+ "اكتشف العلا بطريقة مختلفة مع TOP TRIP": "Discover AlUla in a different way with TOP TRIP",
+ "سياسة الخصوصية": "Privacy Policy",
+ "شروط الاستخدام": "Terms of Use"
+};
+
+var lang = "ar";
+var lastBooked = null;
+var textItems = [];
+var attrItems = [];
+var arrowIcons = [];
+
+var modalDefault = [
+selectedTour.textContent.trim(),
+selectedPrice.textContent.trim()
+];
+
+var metaDesc = document.querySelector('meta[name="description"]');
+var ogDesc = document.querySelector('meta[property="og:description"]');
+var origTitle = document.title;
+var origMetaDesc = metaDesc ? metaDesc.getAttribute("content") : "";
+var origOgDesc = ogDesc ? ogDesc.getAttribute("content") : "";
+
+function hasKey(key) {
+return Object.prototype.hasOwnProperty.call(I18N, key);
+}
+
+function tr(value) {
+if (lang !== "en") return value;
+var key = String(value).replace(/\s+/g, " ").trim();
+return hasKey(key) ? I18N[key] : value;
+}
+
+(function collectTranslatable() {
+
+var walker = document.createTreeWalker(
+document.body,
+NodeFilter.SHOW_TEXT,
+null
+);
+
+var node;
+
+while ((node = walker.nextNode())) {
+
+var parent = node.parentNode;
+
+if (!parent || /^(SCRIPT|STYLE|NOSCRIPT)$/.test(parent.nodeName)) continue;
+
+if (parent.closest && parent.closest("#selectedTour, #selectedPrice")) continue;
+
+var key = node.nodeValue.replace(/\s+/g, " ").trim();
+
+if (hasKey(key)) {
+textItems.push({ node: node, orig: node.nodeValue, key: key });
+}
+
+}
+
+document
+.querySelectorAll("[alt], [aria-label]")
+.forEach(function (el) {
+
+["alt", "aria-label"].forEach(function (attr) {
+
+var value = el.getAttribute(attr);
+
+if (value && hasKey(value.trim())) {
+attrItems.push({
+el: el,
+attr: attr,
+orig: value,
+key: value.trim()
+});
+}
+
+});
+
+});
+
+arrowIcons = Array.prototype.slice.call(
+document.querySelectorAll(".fa-arrow-left")
+);
+
+})();
+
+function refreshModal() {
+
+if (lastBooked) {
+selectedTour.textContent = tr(lastBooked.dataset.tour);
+selectedPrice.textContent = tr(lastBooked.dataset.price);
+} else {
+selectedTour.textContent = tr(modalDefault[0]);
+selectedPrice.textContent = tr(modalDefault[1]);
+}
+
+}
+
+function setLang(next) {
+
+lang = next === "en" ? "en" : "ar";
+
+var en = lang === "en";
+
+document.documentElement.lang = lang;
+document.documentElement.dir = en ? "ltr" : "rtl";
+
+textItems.forEach(function (item) {
+
+if (!en) {
+item.node.nodeValue = item.orig;
+return;
+}
+
+var parts = item.orig.match(/^(\s*)[\s\S]*?(\s*)$/);
+
+item.node.nodeValue = parts[1] + I18N[item.key] + parts[2];
+
+});
+
+attrItems.forEach(function (item) {
+item.el.setAttribute(item.attr, en ? I18N[item.key] : item.orig);
+});
+
+arrowIcons.forEach(function (icon) {
+
+if (en) {
+icon.classList.remove("fa-arrow-left");
+icon.classList.add("fa-arrow-right");
+} else {
+icon.classList.remove("fa-arrow-right");
+icon.classList.add("fa-arrow-left");
+}
+
+});
+
+document.title = en ? I18N[origTitle] : origTitle;
+
+if (metaDesc) {
+metaDesc.setAttribute("content", en ? I18N[origMetaDesc] : origMetaDesc);
+}
+
+if (ogDesc) {
+ogDesc.setAttribute("content", en ? I18N[origOgDesc] : origOgDesc);
+}
+
+document.querySelectorAll(".lang-btn").forEach(function (btn) {
+
+btn.querySelector(".lang-label").textContent = en ? "\u0639\u0631\u0628\u064A" : "EN";
+
+btn.setAttribute(
+"aria-label",
+en ? "\u0627\u0644\u062A\u0628\u062F\u064A\u0644 \u0625\u0644\u0649 \u0627\u0644\u0639\u0631\u0628\u064A\u0629" : "Switch to English"
+);
+
+});
+
+refreshModal();
+
+try {
+localStorage.setItem("tt-lang", lang);
+} catch (error) {}
+
+}
+
+document.querySelectorAll(".lang-btn").forEach(function (btn) {
+
+btn.addEventListener("click", function () {
+setLang(lang === "en" ? "ar" : "en");
+});
+
+});
+
+(function initLanguage() {
+
+var wanted = "ar";
+
+try {
+wanted = localStorage.getItem("tt-lang") || "ar";
+} catch (error) {}
+
+var fromUrl = new URLSearchParams(window.location.search).get("lang");
+
+if (fromUrl === "en" || fromUrl === "ar") wanted = fromUrl;
+
+setLang(wanted);
+
+})();
+
+
+/* =========================================================
+REPORTS SYSTEM
+========================================================= */
+
+(function () {
+
+var $ = function (id) { return document.getElementById(id); };
+
+var mk = function (tag, cls, txt) {
+var n = document.createElement(tag);
+if (cls) n.className = cls;
+if (txt != null) n.textContent = txt;
+return n;
+};
+
+var mailA = document.querySelector('a[href^="mailto:"]');
+var EMAIL = mailA ? mailA.getAttribute("href").replace("mailto:", "").split("?")[0] : "Toptrip50@gmail.com";
+
+var KEY = "tt-reports-v2";
+var panel = $("rpPanel"), box = panel.querySelector(".rp-box");
+var form = $("rpForm"), fType = $("rpType"), fDet = $("rpDetails");
+var err = $("rpErr"), listEl = $("rpList");
+var draft = null, list = [];
+
+try { list = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+if (!Array.isArray(list)) list = [];
+
+function save() {
+try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
+}
+
+function fmt(iso) {
+try {
+return new Date(iso).toLocaleString(
+lang === "en" ? "en-GB" : "ar-SA-u-ca-gregory-nu-latn",
+{ dateStyle: "medium", timeStyle: "short" }
+);
+} catch (e) { return ""; }
+}
+
+function withIcon(tag, cls, icon, text) {
+var n = mk(tag, cls);
+n.appendChild(mk("i", icon));
+n.appendChild(document.createTextNode(text));
+return n;
+}
+
+function render() {
+listEl.textContent = "";
+
+if (!list.length) {
+var em = mk("div", "rp-empty");
+em.appendChild(mk("i", "fa-solid fa-inbox"));
+em.appendChild(mk("div", "", tr("لا توجد بلاغات حتى الآن")));
+listEl.appendChild(em);
+return;
+}
+
+list.forEach(function (r, index) {
+var isRead = r.read;
+var it = mk("div", "rp-item");
+
+var stClass = isRead ? "rp-status read" : "rp-status unread";
+var stText = isRead ? "تم فتح الرساله" : "غير مفتوحة";
+var stIcon = isRead ? "fa-circle-check" : "fa-circle-exclamation";
+
+it.appendChild(withIcon("div", stClass, "fa-solid " + stIcon, tr(stText)));
+it.appendChild(mk("h5", "", String(r.type)));
+it.appendChild(mk("p", "", String(r.details)));
+
+var meta = mk("div", "rp-meta");
+meta.appendChild(withIcon("span", "", "fa-regular fa-clock", fmt(r.date)));
+meta.appendChild(withIcon("span", "", "fa-solid fa-envelope", EMAIL));
+it.appendChild(meta);
+
+// عند النقر على عنصر البلاغ في السجل يتم تحديث حالته إلى "تم فتح الرساله"
+it.addEventListener("click", function () {
+list[index].read = true;
+save();
+render();
+});
+
+listEl.appendChild(it);
+});
+}
+
+function show(id) {
+Array.prototype.forEach.call(panel.querySelectorAll(".rp-view"), function (v) {
+v.classList.toggle("show", v.id === id);
+});
+if (id === "rpLog") render();
+box.scrollTop = 0;
+}
+
+function rpOpen() {
+panel.classList.add("open");
+panel.setAttribute("aria-hidden", "false");
+document.body.classList.add("no-scroll");
+show("rpHome");
+}
+
+function rpClose() {
+panel.classList.remove("open");
+panel.setAttribute("aria-hidden", "true");
+document.body.classList.remove("no-scroll");
+}
+
+$("rpOpen").addEventListener("click", rpOpen);
+$("rpClose").addEventListener("click", rpClose);
+
+panel.addEventListener("click", function (e) {
+if (e.target === panel) rpClose();
+var go = e.target.closest("[data-go]");
+if (go) show(go.getAttribute("data-go"));
+});
+
+form.addEventListener("submit", function (e) {
+e.preventDefault();
+var t = fType.value.trim(), d = fDet.value.trim();
+
+if (!t) { err.textContent = tr("الرجاء كتابة نوع البلاغ"); fType.focus(); return; }
+if (!d) { err.textContent = tr("الرجاء كتابة تفاصيل البلاغ"); fDet.focus(); return; }
+
+err.textContent = "";
+draft = { type: t, details: d };
+show("rpConfirm");
+});
+
+$("rpSendConfirm").addEventListener("click", function () {
+if (!draft) { show("rpNew"); return; }
+
+var newReport = {
+id: Date.now(),
+type: draft.type,
+details: draft.details,
+date: new Date().toISOString(),
+read: false
+};
+
+list.unshift(newReport);
+save();
+
+var mailWindow = window.open("mailto:" + EMAIL +
+"?subject=" + encodeURIComponent((lang === "en" ? "Report: " : "بلاغ: ") + newReport.type) +
+"&body=" + encodeURIComponent(
+tr("نوع البلاغ") + ": " + newReport.type + "\n" +
+tr("التفاصيل") + ": " + newReport.details + "\n\n" + fmt(newReport.date)
+), "_blank");
+
+draft = null;
+fType.value = "";
+fDet.value = "";
+
+show("rpLog");
+});
+
+document.addEventListener("keydown", function (e) {
+if (e.key === "Escape") rpClose();
+});
+
+function applyLang() {
+fType.placeholder = tr("اكتب نوع البلاغ");
+fDet.placeholder = tr("اكتب تفاصيل البلاغ");
+err.textContent = "";
+render();
+}
+
+var baseSetLang = setLang;
+setLang = function (next) {
+baseSetLang(next);
+applyLang();
+};
+
+applyLang();
+
+})();
+
+</script>
+
+</body>
+</html>

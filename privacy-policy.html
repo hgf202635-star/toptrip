@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>سياسة الخصوصية | TOP TRIP AlUla</title>
+<meta name="description" content="سياسة الخصوصية لشركة TOP TRIP AlUla: ما البيانات التي نجمعها، ولماذا، وكيف نحميها، وما حقوقك.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ====== الألوان والخطوط: عدّلها من هنا لتطابق موقعك بالضبط ====== */
+:root{
+  --bg:#17130f;          /* لون خلفية الموقع */
+  --bg-soft:#1e1812;
+  --card:#251d15;
+  --line:rgba(226,184,120,.18);
+  --gold:#e2b878;        /* لون التمييز (رمال العلا) */
+  --gold-deep:#c98a3d;
+  --clay:#b8582f;        /* لون ثانوي (صخور العلا) */
+  --text:#f4ece0;
+  --muted:#b9aa95;
+  --radius:18px;
+  --font:'Tajawal','Segoe UI',Tahoma,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.95;
+  font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+
+/* ====== الشريط العلوي ====== */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(23,19,15,.88);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .in{
+  max-width:1180px;margin:auto;padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:12px;color:var(--text)}
+.brand:hover{text-decoration:none}
+.brand img{width:44px;height:44px;object-fit:contain;border-radius:10px}
+.brand b{display:block;font-size:19px;letter-spacing:.14em;font-weight:800;line-height:1.2}
+.brand small{display:block;font-size:11px;letter-spacing:.34em;color:var(--gold);font-weight:500}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 22px;border-radius:999px;font-weight:700;font-size:15px;
+  border:1px solid var(--gold);color:var(--gold);transition:.25s;
+}
+.btn:hover{background:var(--gold);color:#17130f;text-decoration:none}
+.btn.solid{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#17130f;border-color:transparent}
+.btn.solid:hover{filter:brightness(1.08)}
+
+/* ====== الواجهة ====== */
+.hero{
+  position:relative;overflow:hidden;text-align:center;
+  padding:78px 20px 64px;
+  background:
+    radial-gradient(900px 380px at 50% -10%,rgba(201,138,61,.28),transparent 70%),
+    radial-gradient(600px 300px at 90% 100%,rgba(184,88,47,.18),transparent 70%),
+    var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.hero::after{ /* خطوط كثبان خفيفة */
+  content:"";position:absolute;inset:auto 0 0 0;height:90px;opacity:.5;
+  background:
+    radial-gradient(120% 100% at 20% 100%,transparent 58%,rgba(226,184,120,.10) 59%,transparent 61%),
+    radial-gradient(120% 100% at 75% 100%,transparent 52%,rgba(226,184,120,.08) 53%,transparent 55%);
+  pointer-events:none;
+}
+.eyebrow{
+  display:inline-block;font-size:12px;letter-spacing:.38em;color:var(--gold);
+  font-weight:500;margin-bottom:18px;direction:ltr;
+}
+.hero h1{font-size:clamp(34px,6vw,58px);font-weight:800;line-height:1.3}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:640px;margin:18px auto 0;color:var(--muted);font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+.chip{
+  font-size:14px;padding:6px 16px;border-radius:999px;
+  border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.02);
+}
+.chip b{color:var(--text);font-weight:700}
+
+/* ====== التخطيط ====== */
+.layout{
+  max-width:1180px;margin:auto;padding:48px 20px 70px;
+  display:grid;grid-template-columns:260px 1fr;gap:44px;align-items:start;
+}
+.toc{
+  position:sticky;top:96px;
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 18px;
+}
+.toc h2{font-size:13px;letter-spacing:.3em;color:var(--gold);font-weight:500;margin-bottom:12px;direction:ltr;text-align:right}
+.toc a{
+  display:block;padding:7px 12px;border-radius:10px;color:var(--muted);
+  font-size:15px;line-height:1.6;transition:.2s;
+}
+.toc a:hover{background:rgba(226,184,120,.08);color:var(--text);text-decoration:none}
+.toc a.active{background:rgba(226,184,120,.14);color:var(--gold);font-weight:700}
+
+/* ====== البطاقات ====== */
+.sec{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px 34px;margin-bottom:22px;position:relative;
+}
+.sec h2{
+  font-size:25px;font-weight:800;margin-bottom:14px;
+  display:flex;align-items:center;gap:14px;line-height:1.5;
+}
+.sec h2 .n{
+  flex:none;width:40px;height:40px;border-radius:12px;
+  display:grid;place-items:center;font-size:17px;font-weight:800;
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#17130f;
+}
+.sec p{color:#e5dccd;margin-bottom:12px}
+.sec p:last-child{margin-bottom:0}
+.sec strong{color:var(--text)}
+.sec ul{list-style:none;margin:8px 0 4px}
+.sec li{
+  position:relative;padding-inline-start:26px;margin-bottom:8px;color:#e5dccd;
+}
+.sec li::before{
+  content:"";position:absolute;inset-inline-start:2px;top:.85em;
+  width:9px;height:9px;border-radius:3px;background:var(--gold);transform:rotate(45deg) translateY(-50%);
+}
+
+/* بطاقات البيانات */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+.mini{
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:18px 20px;
+}
+.mini h3{font-size:17px;color:var(--gold);margin-bottom:6px;font-weight:700}
+.mini p{font-size:15.5px;color:var(--muted);margin:0;line-height:1.85}
+
+/* تنويه بارز */
+.callout{
+  display:flex;gap:16px;align-items:flex-start;margin-top:16px;
+  padding:18px 22px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(226,184,120,.14),rgba(184,88,47,.10));
+  border:1px solid rgba(226,184,120,.35);
+}
+.callout .ic{flex:none;font-size:26px;line-height:1.2}
+.callout p{margin:0;color:var(--text);font-weight:500}
+
+/* جدول المدد */
+.table{margin-top:12px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.row{display:flex;justify-content:space-between;gap:18px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row:nth-child(odd){background:rgba(255,255,255,.02)}
+.row span:first-child{color:var(--text);font-weight:500}
+.row span:last-child{color:var(--gold);font-weight:700;text-align:left}
+
+/* الحقوق */
+.rights{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+.right{
+  display:flex;gap:14px;align-items:flex-start;
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+}
+.right .ic{
+  flex:none;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  background:rgba(226,184,120,.12);color:var(--gold);font-size:18px;
+}
+.right p{margin:0;font-size:15.5px;color:#e5dccd;line-height:1.8}
+
+/* حقول تحتاج تعبئة */
+.todo{
+  background:rgba(226,184,120,.18);color:var(--gold);
+  padding:1px 8px;border-radius:6px;border:1px dashed rgba(226,184,120,.55);
+  font-weight:500;font-size:.95em;
+}
+
+/* بطاقة التواصل */
+.contact{
+  text-align:center;padding:42px 28px;
+  background:
+    radial-gradient(500px 220px at 50% 0%,rgba(201,138,61,.25),transparent 70%),
+    var(--card);
+}
+.contact h2{justify-content:center}
+.contact .info{color:var(--muted);margin:6px 0 4px}
+.contact .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px}
+
+/* ====== التذييل ====== */
+footer{
+  border-top:1px solid var(--line);background:#120f0b;text-align:center;
+  padding:34px 20px;color:var(--muted);font-size:14.5px;
+}
+footer .logo{font-weight:800;letter-spacing:.2em;color:var(--text);font-size:17px;margin-bottom:6px}
+footer .tag{letter-spacing:.3em;font-size:11px;color:var(--gold);margin-top:8px;direction:ltr}
+
+/* ====== الجوال ====== */
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;gap:22px;padding-top:30px}
+  .toc{position:static;padding:16px}
+  .toc nav{display:flex;flex-wrap:wrap;gap:6px}
+  .toc a{padding:6px 12px;border:1px solid var(--line);font-size:14px}
+  .sec{padding:24px 20px}
+  .sec h2{font-size:21px}
+  .grid,.rights{grid-template-columns:1fr}
+  .hero{padding:56px 20px 50px}
+  .brand small{display:none}
+}
+@media print{
+  .topbar,.toc,footer .tag,.actions{display:none}
+  body{background:#fff;color:#000}
+  .sec,.mini,.right,.table{background:#fff;border-color:#ccc}
+  .sec p,.sec li,.mini p,.right p,.row span{color:#000!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="in">
+    <a class="brand" href="https://top-trip.pages.dev/">
+      <img src="https://top-trip.pages.dev/images/logo.png" alt="TOP TRIP" onerror="this.style.display='none'">
+      <span><b>TOPTRIP</b><small>ALULA</small></span>
+    </a>
+    <a class="btn" href="https://top-trip.pages.dev/">العودة للموقع</a>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="eyebrow">PRIVACY POLICY</span>
+  <h1>سياسة <span>الخصوصية</span></h1>
+  <p>خصوصيتك تهمنا، ونريدك أن تعرف بوضوح ما الذي نعرفه عنك ولماذا. كتبنا هذه الصفحة بلغة بسيطة، وهي تسري على موقعنا وعلى حجوزاتنا في العلا، وفق نظام حماية البيانات الشخصية في المملكة العربية السعودية.</p>
+  <div class="chips">
+    <span class="chip">آخر تحديث: <b>2 أكتوبر 2026</b></span>
+    <span class="chip">السجل التجاري: <b>7025748307</b></span>
+  </div>
+</section>
+
+<div class="layout">
+
+  <aside class="toc">
+    <h2>CONTENTS</h2>
+    <nav>
+      <a href="#who">من نحن</a>
+      <a href="#data">البيانات التي نطلبها</a>
+      <a href="#photos">الصور والفيديو</a>
+      <a href="#use">كيف نستخدم بياناتك</a>
+      <a href="#share">المشاركة مع الغير</a>
+      <a href="#retention">مدة الاحتفاظ</a>
+      <a href="#security">حماية البيانات</a>
+      <a href="#rights">حقوقك</a>
+      <a href="#kids">الأطفال</a>
+      <a href="#changes">تعديل السياسة</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <section class="sec" id="who">
+      <h2><span class="n">1</span>من نحن</h2>
+      <p>TOP TRIP شركة سعودية تقدّم رحلات الباجي والمغامرات الصحراوية في العلا. سجلنا التجاري رقم 7025748307، ومقرنا في المنقا، العلا (43543).</p>
+      <p>للتواصل معنا في أي شيء يخص بياناتك: <a href="mailto:Toptrip50@gmail.com">Toptrip50@gmail.com</a> أو <a href="tel:+966593304444" dir="ltr">+966 59 330 4444</a>.</p>
+    </section>
+
+    <section class="sec" id="data">
+      <h2><span class="n">2</span>ما البيانات التي نطلبها منك؟</h2>
+      <p>القليل فقط، وبقدر ما نحتاجه لتنظيم رحلتك وضمان سلامتك.</p>
+      <div class="grid">
+        <div class="mini">
+          <h3>عند الحجز</h3>
+          <p>نطلب اسمك وبيانات هويتك وتوقيعك، للتأكد من هوية المشارك ولتوثيق أنك اطلعت على الشروط وتعليمات السلامة ووافقت عليها. وإن كان المشارك طفلاً، نأخذها من ولي أمره.</p>
+        </div>
+        <div class="mini">
+          <h3>عند التواصل معنا</h3>
+          <p>بالهاتف أو واتساب أو البريد، قد يصلنا رقم جوالك وتفاصيل ما تريده: نوع الرحلة وموعدها وعدد الأشخاص.</p>
+        </div>
+        <div class="mini">
+          <h3>عند إرسال بلاغ</h3>
+          <p>من الموقع يصلنا نوع البلاغ وما كتبته في التفاصيل، وقد نعرف بريدك الإلكتروني لأن الرد يأتيك عبره. نفضّل ألا تكتب في البلاغ معلومات خاصة لا داعي لها.</p>
+        </div>
+        <div class="mini">
+          <h3>أثناء تصفح الموقع</h3>
+          <p>مثل أي موقع، قد تُسجَّل تلقائياً معلومات تقنية بسيطة عن زيارتك، كنوع المتصفح والجهاز، وذلك لتشغيل الموقع وحمايته فقط. لا نستخدم هذه المعلومات لتتبعك أو لمعرفة هويتك.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <span class="ic">💳</span>
+        <p>الدفع يتم عند الاستقبال في موقع الانطلاق، لذلك لا يطلب موقعنا أي بيانات بطاقة ولا يستقبل مدفوعات.</p>
+      </div>
+    </section>
+
+    <section class="sec" id="photos">
+      <h2><span class="n">3</span>وماذا عن الصور؟</h2>
+      <p>نحب نشر لقطات المغامرة، لكن <strong>لا نصوّرك ولا ننشر صورك إلا بإذنك</strong>. وإن غيّرت رأيك بعد النشر، راسلنا وسنزيل الصورة أو المقطع من قنواتنا. يصعب علينا فقط سحب ما أعاد غيرنا نشره في أماكن أخرى.</p>
+    </section>
+
+    <section class="sec" id="use">
+      <h2><span class="n">4</span>كيف نستخدم بياناتك؟</h2>
+      <ul>
+        <li>تأكيد حجزك والتواصل معك.</li>
+        <li>التحقق من هوية المشاركين وتوثيق إقرارهم بالشروط والسلامة.</li>
+        <li>الرد على استفساراتك وملاحظاتك.</li>
+        <li>تنظيم الرحلات بما يضمن سلامة الجميع.</li>
+        <li>الالتزام بالأنظمة المعمول بها.</li>
+      </ul>
+      <p style="margin-top:10px">ولا نستخدمها لشيء آخر دون إذنك.</p>
+      <div class="callout">
+        <span class="ic">🤝</span>
+        <p>لا نبيع بياناتك ولا نؤجرها لأحد.</p>
+      </div>
+    </section>
+
+    <section class="sec" id="share">
+      <h2><span class="n">5</span>هل نشارك بياناتك مع أحد؟</h2>
+      <p>فقط عند الحاجة. قد نستعين بجهات تساعدنا في تشغيل الموقع والبريد والتواصل (كالاستضافة وواتساب)، وقد نُلزَم بتزويد جهة رسمية ببيانات إذا طلبت ذلك نظاماً.</p>
+      <p>وفي موقعنا خريطة من قوقل، وروابط إلى حساباتنا على إنستغرام ولينكدإن ولينكتري. هذه جهات مستقلة لها سياسات خصوصية خاصة بها، ولا نتحكم فيها. وإذا كانت بعض الخدمات التي نستعين بها (كالبريد أو الاستضافة) خارج المملكة، فنلتزم بالضوابط النظامية لنقل البيانات.</p>
+    </section>
+
+    <section class="sec" id="retention">
+      <h2><span class="n">6</span>كم نحتفظ ببياناتك؟</h2>
+      <p>نحتفظ بها بقدر الحاجة فقط، ثم نحذفها بطريقة آمنة، إلا إذا ألزمنا النظام بالاحتفاظ بها مدة أطول.</p>
+      <div class="table">
+        <div class="row"><span>بيانات الحجز والتواصل</span><span><span class="todo">12 شهراً من تاريخ الرحلة</span></span></div>
+        <div class="row"><span>الهوية والتوقيع</span><span><span class="todo">12 شهراً، أو أطول إذا لزم لحفظ حقوق الطرفين</span></span></div>
+        <div class="row"><span>البلاغات والمراسلات</span><span><span class="todo">24 شهراً</span></span></div>
+        <div class="row"><span>الصور والفيديوهات</span><span>حتى تطلب إزالتها</span></div>
+      </div>
+    </section>
+
+    <section class="sec" id="security">
+      <h2><span class="n">7</span>كيف نحميها؟</h2>
+      <p>نحصر الوصول إلى بياناتك في من يحتاجها من فريقنا، ونحفظ بيانات الهوية والتوقيعات في مكان آمن. ومع ذلك، لا توجد وسيلة تخزين أو إرسال إلكتروني آمنة تماماً، ونعمل على تقليل المخاطر قدر الإمكان.</p>
+    </section>
+
+    <section class="sec" id="rights">
+      <h2><span class="n">8</span>حقوقك</h2>
+      <p>من حقك أن:</p>
+      <div class="rights">
+        <div class="right"><span class="ic">👁</span><p>تعرف ما البيانات التي لدينا عنك وكيف نستخدمها، وتحصل على نسخة منها.</p></div>
+        <div class="right"><span class="ic">✎</span><p>تطلب تصحيح أي معلومة غير صحيحة.</p></div>
+        <div class="right"><span class="ic">🗑</span><p>تطلب حذف بياناتك متى انتهت الحاجة إليها.</p></div>
+        <div class="right"><span class="ic">↩</span><p>تسحب موافقتك في أي وقت، كالموافقة على نشر صورتك.</p></div>
+      </div>
+      <p style="margin-top:16px">راسلنا على <a href="mailto:Toptrip50@gmail.com">Toptrip50@gmail.com</a> أو اتصل بنا، وسنرد عليك خلال <span class="todo">[30 يوماً]</span>. وإن رأيت أن حقك لم يُحفظ، فلك أن تتقدم بشكوى إلى الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا).</p>
+    </section>
+
+    <section class="sec" id="kids">
+      <h2><span class="n">9</span>الأطفال</h2>
+      <p>يبدأ العمر المسموح للمشاركة في رحلاتنا من <strong>7 سنوات</strong>. نتعامل في حجوزات الأطفال مع ولي الأمر دائماً، ولا نصوّر الطفل ولا ننشر صوره إلا بموافقة وليّ أمره.</p>
+    </section>
+
+    <section class="sec" id="changes">
+      <h2><span class="n">10</span>إذا عدّلنا هذه السياسة</h2>
+      <p>قد نحدّثها من وقت لآخر، وسننشر النسخة الجديدة هنا مع تاريخ التحديث.</p>
+    </section>
+
+    <section class="sec contact" id="contact">
+      <h2>تواصل معنا</h2>
+      <p class="info">TOP TRIP AlUla · المنقا، العلا، المملكة العربية السعودية</p>
+      <div class="actions">
+        <a class="btn solid" href="tel:+966593304444"><span dir="ltr">+966 59 330 4444</span> · اتصل الآن</a>
+        <a class="btn" href="mailto:Toptrip50@gmail.com">Toptrip50@gmail.com</a>
+        <a class="btn" href="https://linktr.ee/toptrip00">جميع حساباتنا</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="logo">TOP TRIP</div>
+  <div>© TOP TRIP AlUla — جميع الحقوق محفوظة</div>
+  <div class="tag">EXPERIENCE OFFROAD ADVENTURE</div>
+</footer>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var map={};
+  links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+  if(!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){l.classList.remove('active')});
+        var a=map[e.target.id]; if(a) a.classList.add('active');
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  document.querySelectorAll('main section[id]').forEach(function(s){io.observe(s)});
+})();
+</script>
+</body>
+</html>

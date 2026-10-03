@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>شروط الاستخدام | TOP TRIP AlUla</title>
+<meta name="description" content="شروط الاستخدام لشركة TOP TRIP AlUla: الحجز والدفع والإلغاء والسلامة والمسؤولية.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ====== الألوان والخطوط: عدّلها من هنا لتطابق موقعك بالضبط ====== */
+:root{
+  --bg:#17130f;          /* لون خلفية الموقع */
+  --bg-soft:#1e1812;
+  --card:#251d15;
+  --line:rgba(226,184,120,.18);
+  --gold:#e2b878;        /* لون التمييز (رمال العلا) */
+  --gold-deep:#c98a3d;
+  --clay:#b8582f;        /* لون ثانوي (صخور العلا) */
+  --text:#f4ece0;
+  --muted:#b9aa95;
+  --radius:18px;
+  --font:'Tajawal','Segoe UI',Tahoma,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.95;
+  font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+
+/* ====== الشريط العلوي ====== */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(23,19,15,.88);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .in{
+  max-width:1180px;margin:auto;padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:12px;color:var(--text)}
+.brand:hover{text-decoration:none}
+.brand img{width:44px;height:44px;object-fit:contain;border-radius:10px}
+.brand b{display:block;font-size:19px;letter-spacing:.14em;font-weight:800;line-height:1.2}
+.brand small{display:block;font-size:11px;letter-spacing:.34em;color:var(--gold);font-weight:500}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 22px;border-radius:999px;font-weight:700;font-size:15px;
+  border:1px solid var(--gold);color:var(--gold);transition:.25s;
+}
+.btn:hover{background:var(--gold);color:#17130f;text-decoration:none}
+.btn.solid{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#17130f;border-color:transparent}
+.btn.solid:hover{filter:brightness(1.08)}
+
+/* ====== الواجهة ====== */
+.hero{
+  position:relative;overflow:hidden;text-align:center;
+  padding:78px 20px 64px;
+  background:
+    radial-gradient(900px 380px at 50% -10%,rgba(201,138,61,.28),transparent 70%),
+    radial-gradient(600px 300px at 90% 100%,rgba(184,88,47,.18),transparent 70%),
+    var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.hero::after{ /* خطوط كثبان خفيفة */
+  content:"";position:absolute;inset:auto 0 0 0;height:90px;opacity:.5;
+  background:
+    radial-gradient(120% 100% at 20% 100%,transparent 58%,rgba(226,184,120,.10) 59%,transparent 61%),
+    radial-gradient(120% 100% at 75% 100%,transparent 52%,rgba(226,184,120,.08) 53%,transparent 55%);
+  pointer-events:none;
+}
+.eyebrow{
+  display:inline-block;font-size:12px;letter-spacing:.38em;color:var(--gold);
+  font-weight:500;margin-bottom:18px;direction:ltr;
+}
+.hero h1{font-size:clamp(34px,6vw,58px);font-weight:800;line-height:1.3}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:640px;margin:18px auto 0;color:var(--muted);font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+.chip{
+  font-size:14px;padding:6px 16px;border-radius:999px;
+  border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.02);
+}
+.chip b{color:var(--text);font-weight:700}
+
+/* ====== التخطيط ====== */
+.layout{
+  max-width:1180px;margin:auto;padding:48px 20px 70px;
+  display:grid;grid-template-columns:260px 1fr;gap:44px;align-items:start;
+}
+.toc{
+  position:sticky;top:96px;
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 18px;
+}
+.toc h2{font-size:13px;letter-spacing:.3em;color:var(--gold);font-weight:500;margin-bottom:12px;direction:ltr;text-align:right}
+.toc a{
+  display:block;padding:7px 12px;border-radius:10px;color:var(--muted);
+  font-size:15px;line-height:1.6;transition:.2s;
+}
+.toc a:hover{background:rgba(226,184,120,.08);color:var(--text);text-decoration:none}
+.toc a.active{background:rgba(226,184,120,.14);color:var(--gold);font-weight:700}
+
+/* ====== البطاقات ====== */
+.sec{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px 34px;margin-bottom:22px;position:relative;
+}
+.sec h2{
+  font-size:25px;font-weight:800;margin-bottom:14px;
+  display:flex;align-items:center;gap:14px;line-height:1.5;
+}
+.sec h2 .n{
+  flex:none;width:40px;height:40px;border-radius:12px;
+  display:grid;place-items:center;font-size:17px;font-weight:800;
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#17130f;
+}
+.sec p{color:#e5dccd;margin-bottom:12px}
+.sec p:last-child{margin-bottom:0}
+.sec strong{color:var(--text)}
+.sec ul{list-style:none;margin:8px 0 4px}
+.sec li{
+  position:relative;padding-inline-start:26px;margin-bottom:8px;color:#e5dccd;
+}
+.sec li::before{
+  content:"";position:absolute;inset-inline-start:2px;top:.85em;
+  width:9px;height:9px;border-radius:3px;background:var(--gold);transform:rotate(45deg) translateY(-50%);
+}
+
+/* بطاقات البيانات */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+.mini{
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:18px 20px;
+}
+.mini h3{font-size:17px;color:var(--gold);margin-bottom:6px;font-weight:700}
+.mini p{font-size:15.5px;color:var(--muted);margin:0;line-height:1.85}
+
+/* تنويه بارز */
+.callout{
+  display:flex;gap:16px;align-items:flex-start;margin-top:16px;
+  padding:18px 22px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(226,184,120,.14),rgba(184,88,47,.10));
+  border:1px solid rgba(226,184,120,.35);
+}
+.callout .ic{flex:none;font-size:26px;line-height:1.2}
+.callout p{margin:0;color:var(--text);font-weight:500}
+
+/* جدول المدد */
+.table{margin-top:12px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.row{display:flex;justify-content:space-between;gap:18px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row:nth-child(odd){background:rgba(255,255,255,.02)}
+.row span:first-child{color:var(--text);font-weight:500}
+.row span:last-child{color:var(--gold);font-weight:700;text-align:left}
+
+/* الحقوق */
+.rights{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+.right{
+  display:flex;gap:14px;align-items:flex-start;
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+}
+.right .ic{
+  flex:none;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  background:rgba(226,184,120,.12);color:var(--gold);font-size:18px;
+}
+.right p{margin:0;font-size:15.5px;color:#e5dccd;line-height:1.8}
+
+/* حقول تحتاج تعبئة */
+.todo{
+  background:rgba(226,184,120,.18);color:var(--gold);
+  padding:1px 8px;border-radius:6px;border:1px dashed rgba(226,184,120,.55);
+  font-weight:500;font-size:.95em;
+}
+
+/* بطاقة التواصل */
+.contact{
+  text-align:center;padding:42px 28px;
+  background:
+    radial-gradient(500px 220px at 50% 0%,rgba(201,138,61,.25),transparent 70%),
+    var(--card);
+}
+.contact h2{justify-content:center}
+.contact .info{color:var(--muted);margin:6px 0 4px}
+.contact .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px}
+
+/* ====== التذييل ====== */
+footer{
+  border-top:1px solid var(--line);background:#120f0b;text-align:center;
+  padding:34px 20px;color:var(--muted);font-size:14.5px;
+}
+footer .logo{font-weight:800;letter-spacing:.2em;color:var(--text);font-size:17px;margin-bottom:6px}
+footer .tag{letter-spacing:.3em;font-size:11px;color:var(--gold);margin-top:8px;direction:ltr}
+
+/* ====== الجوال ====== */
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;gap:22px;padding-top:30px}
+  .toc{position:static;padding:16px}
+  .toc nav{display:flex;flex-wrap:wrap;gap:6px}
+  .toc a{padding:6px 12px;border:1px solid var(--line);font-size:14px}
+  .sec{padding:24px 20px}
+  .sec h2{font-size:21px}
+  .grid,.rights{grid-template-columns:1fr}
+  .hero{padding:56px 20px 50px}
+  .brand small{display:none}
+}
+@media print{
+  .topbar,.toc,footer .tag,.actions{display:none}
+  body{background:#fff;color:#000}
+  .sec,.mini,.right,.table{background:#fff;border-color:#ccc}
+  .sec p,.sec li,.mini p,.right p,.row span{color:#000!important}
+}
+
+/* إضافات صفحة الشروط */
+.price{font-size:30px;font-weight:800;color:var(--gold)!important;margin:2px 0 6px!important;line-height:1.4}
+.price small{font-size:15px;color:var(--muted);font-weight:500}
+@media (max-width:600px){
+  .row{flex-direction:column;gap:4px}
+  .row span:last-child{text-align:right}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="in">
+    <a class="brand" href="https://top-trip.pages.dev/">
+      <img src="https://top-trip.pages.dev/images/logo.png" alt="TOP TRIP" onerror="this.style.display='none'">
+      <span><b>TOPTRIP</b><small>ALULA</small></span>
+    </a>
+    <a class="btn" href="https://top-trip.pages.dev/">العودة للموقع</a>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="eyebrow">TERMS OF USE</span>
+  <h1>شروط <span>الاستخدام</span></h1>
+  <p>باستخدامك موقعنا أو حجزك إحدى رحلاتنا في العلا، فإنك توافق على الشروط التالية. اقرأها بهدوء، فهي تحفظ حقك وحقنا، وتجعل رحلتك آمنة وممتعة.</p>
+  <div class="chips">
+    <span class="chip">آخر تحديث: <b>3 أكتوبر 2026</b></span>
+    <span class="chip">السجل التجاري: <b>7025748307</b></span>
+  </div>
+</section>
+
+<div class="layout">
+
+  <aside class="toc">
+    <h2>CONTENTS</h2>
+    <nav>
+      <a href="#def">التعريفات</a>
+      <a href="#services">الرحلات والأسعار</a>
+      <a href="#booking">الحجز والدفع</a>
+      <a href="#cancel">الإلغاء والاسترجاع</a>
+      <a href="#safety">السلامة</a>
+      <a href="#eligibility">العمر والحالة الصحية</a>
+      <a href="#risk">المخاطر والمسؤولية</a>
+      <a href="#damage">الأضرار</a>
+      <a href="#weather">الطقس والظروف الطارئة</a>
+      <a href="#photos">التصوير</a>
+      <a href="#ip">الملكية الفكرية</a>
+      <a href="#use">الاستخدام المقبول</a>
+      <a href="#complaints">الشكاوى</a>
+      <a href="#privacy">الخصوصية والروابط</a>
+      <a href="#changes">تعديل الشروط</a>
+      <a href="#law">النظام الواجب التطبيق</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <section class="sec" id="def">
+      <h2><span class="n">1</span>التعريفات</h2>
+      <ul>
+        <li><strong>الشركة أو نحن:</strong> TOP TRIP AlUla، العلا، المملكة العربية السعودية.</li>
+        <li><strong>العميل أو أنت:</strong> كل من يستخدم الموقع أو يحجز أو يشارك في إحدى الرحلات.</li>
+        <li><strong>الرحلة:</strong> أي تجربة تقدمها الشركة، مثل رحلات الباجي.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="services">
+      <h2><span class="n">2</span>الرحلات والأسعار</h2>
+      <p>نقدم رحلات باجي ومغامرات استكشافية في طبيعة العلا، وحالياً لدينا رحلتان:</p>
+      <div class="grid">
+        <div class="mini">
+          <h3>رحلة الباجي — 30 دقيقة</h3>
+          <p class="price">500 <small>ريال</small></p>
+          <p>رحلة استكشافية مع توقف عند النقوش، ثم العودة إلى موقع الانطلاق.</p>
+        </div>
+        <div class="mini">
+          <h3>رحلة الباجي — 15 دقيقة</h3>
+          <p class="price">250 <small>ريال</small></p>
+          <p>تجربة سريعة بدون توقف، ثم العودة إلى موقع الانطلاق.</p>
+        </div>
+      </div>
+      <p style="margin-top:14px">الأسعار بالريال السعودي <strong>وشاملة ضريبة القيمة المضافة</strong>، وقابلة للتعديل، والمعتمد هو السعر المعلن وقت تأكيد حجزك. والباجي الواحد يتسع لـ <strong>3 أشخاص</strong> كحد أقصى.</p>
+      <p>الموقع للتعريف بخدماتنا فقط، ولا يتم الحجز أو الدفع من خلاله.</p>
+    </section>
+
+    <section class="sec" id="booking">
+      <h2><span class="n">3</span>الحجز والدفع</h2>
+      <ul>
+        <li>يتم الحجز والاستفسار <strong>بالاتصال فقط</strong> على رقم الشركة <a href="tel:+966593304444" dir="ltr">+966 59 330 4444</a>.</li>
+        <li>يُعتبر الحجز مؤكداً عندما نؤكده لك صراحةً، هاتفياً أو كتابياً.</li>
+        <li>عند الحجز نطلب منك <strong>اسمك وبيانات هويتك وتوقيعك</strong> (والمشارك القاصر عن طريق ولي أمره). ويُعد توقيعك إقراراً بأنك قرأت هذه الشروط وتعليمات السلامة ووافقت عليها.</li>
+        <li><strong>الدفع عند الاستقبال</strong> في موقع الانطلاق، قبل بدء الرحلة، وتتوفر لدينا جميع طرق الدفع.</li>
+        <li>يلتزم العميل بالحضور في الموعد المحدد، وقد نعتذر عن الرحلة أو نعيد جدولتها عند التأخر الكبير.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="cancel">
+      <h2><span class="n">4</span>الإلغاء والاسترجاع</h2>
+      <div class="table">
+        <div class="row"><span>إلغاء من العميل قبل الرحلة بـ 48 ساعة على الأقل</span><span>بدون أي رسوم</span></div>
+        <div class="row"><span>إلغاء قبل الرحلة بأقل من 48 ساعة</span><span>لا يمكن الإلغاء</span></div>
+        <div class="row"><span>التأخر أو عدم الحضور</span><span>قد نعتذر عن تنفيذ الرحلة، ولا يُسترجع المبلغ إن كان قد دُفع</span></div>
+        <div class="row"><span>إلغاء من الشركة لظروف قاهرة</span><span>إعادة جدولة أو استرجاع كامل</span></div>
+      </div>
+      <p style="margin-top:14px">والظروف القاهرة هي ما يخرج عن إرادتنا، كالأحوال الجوية ودواعي السلامة والأوضاع الأمنية وقرارات الجهات الرسمية.</p>
+    </section>
+
+    <section class="sec" id="safety">
+      <h2><span class="n">5</span>السلامة</h2>
+      <p>السلامة أولوية لدينا، ولذلك يلتزم العميل بما يلي:</p>
+      <ul>
+        <li><strong>القيادة يتولاها سائقونا فقط.</strong> لا يُسمح للعميل بقيادة الباجي.</li>
+        <li>ارتداء <strong>الخوذة</strong> التي نوفرها طوال الرحلة.</li>
+        <li>الاستماع لإرشادات السلامة قبل الرحلة والالتزام بها واتباع تعليمات الفريق.</li>
+        <li>البقاء في مقعدك وعدم النهوض أو الاستعانة بالسائق أثناء حركة المركبة.</li>
+        <li>عدم المشاركة تحت تأثير الكحول أو المخدرات أو أي مواد تؤثر على الانتباه.</li>
+        <li>الحفاظ على الآخرين والبيئة، وعدم العبث بالنقوش والمواقع الأثرية والطبيعية.</li>
+      </ul>
+      <div class="callout">
+        <span class="ic">⛑</span>
+        <p>يحق للشركة رفض مشاركة أي شخص أو إيقاف رحلته إذا رأت أنه لا يلتزم بتعليمات السلامة أو أن مشاركته تعرضه أو تعرض غيره للخطر.</p>
+      </div>
+    </section>
+
+    <section class="sec" id="eligibility">
+      <h2><span class="n">6</span>العمر والحالة الصحية</h2>
+      <div class="grid">
+        <div class="mini">
+          <h3>العمر</h3>
+          <p>الحد الأدنى للمشاركة <strong style="color:var(--text)">7 سنوات</strong>. ويحضر ولي الأمر أو مرافق بالغ مع القاصرين، ويقوم بالحجز والتوقيع نيابة عنهم. وللشركة تقدير ملاءمة الرحلة لحجم المشارك وقدرته.</p>
+        </div>
+        <div class="mini">
+          <h3>لا يُسمح بالمشاركة لـ</h3>
+          <p>الحامل، ومن لديه مشكلة صحية أو إصابة خطيرة مثل الكسور الخطيرة. وأبلغنا قبل الرحلة بأي حالة أخرى قد تتأثر بالمشاركة أو تعرضك للخطر.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="risk">
+      <h2><span class="n">7</span>المخاطر والمسؤولية</h2>
+      <ul>
+        <li>رحلات المغامرة في الصحراء تنطوي بطبيعتها على مخاطر، حتى مع الالتزام بإجراءات السلامة. بمشاركتك تقرّ بعلمك بها.</li>
+        <li><strong>يوقّع العميل على إقرار إخلاء مسؤولية</strong> قبل بدء الرحلة، يثبت فيه علمه بالمخاطر وقبوله المشاركة.</li>
+        <li>نلتزم بتقديم خدماتنا بعناية ومهنية، وبتجهيز المركبات ومعدات السلامة.</li>
+        <li>لا تتحمل الشركة المسؤولية عن الأضرار الناتجة عن مخالفة العميل للتعليمات، أو إخفائه معلومات صحية جوهرية، أو عن ظروف خارجة عن إرادتها.</li>
+      </ul>
+      <div class="callout">
+        <span class="ic">⚖</span>
+        <p>لا تستبعد هذه الشروط أي مسؤولية لا يجيز النظام استبعادها، ولا تؤثر على حقوقك النظامية كمستهلك.</p>
+      </div>
+    </section>
+
+    <section class="sec" id="damage">
+      <h2><span class="n">8</span>الأضرار بالمعدات</h2>
+      <p>يتحمل العميل تكلفة الأضرار التي تلحق بالمركبات أو المعدات (كالخوذة) نتيجة <strong>سوء الاستخدام المتعمد أو المخالفة الجسيمة للتعليمات</strong>، بقدر تكلفة الإصلاح الفعلية. ولا يتحمل العميل الأضرار الناتجة عن الاستخدام الطبيعي أو الأعطال الفنية.</p>
+    </section>
+
+    <section class="sec" id="weather">
+      <h2><span class="n">9</span>الطقس والظروف الطارئة</h2>
+      <p>قد تتأثر الرحلات بالطقس أو الظروف الأمنية أو التنظيمية أو الفنية. وللشركة تأجيل الرحلة أو تعديل مسارها أو إلغاؤها حفاظاً على السلامة، وفق ما ورد في بند الإلغاء والاسترجاع.</p>
+    </section>
+
+    <section class="sec" id="photos">
+      <h2><span class="n">10</span>التصوير والمحتوى</h2>
+      <ul>
+        <li><strong>لا نصوّر العملاء ولا ننشر صورهم أو مقاطعهم إلا بعد موافقتهم.</strong></li>
+        <li>تستطيع سحب موافقتك في أي وقت لنزيل المحتوى من قنواتنا خلال مدة معقولة، ولا يمكننا سحب ما أعاد غيرنا نشره.</li>
+        <li>يحق لك تصوير تجربتك لاستخدامك الشخصي، بشرط عدم تعريض سلامتك أو سلامة غيرك للخطر، وعدم تصوير الآخرين دون إذنهم.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="ip">
+      <h2><span class="n">11</span>الملكية الفكرية</h2>
+      <p>جميع محتويات الموقع، من الشعار والاسم التجاري والنصوص والصور والفيديوهات والتصاميم، مملوكة للشركة أو مرخصة لها ومحمية بأنظمة الملكية الفكرية. ولا يجوز نسخها أو إعادة نشرها أو استخدامها لأغراض تجارية دون موافقة كتابية مسبقة.</p>
+    </section>
+
+    <section class="sec" id="use">
+      <h2><span class="n">12</span>الاستخدام المقبول للموقع</h2>
+      <p>يلتزم المستخدم بعدم:</p>
+      <ul>
+        <li>استخدام الموقع لغرض مخالف للنظام أو الآداب العامة.</li>
+        <li>محاولة اختراق الموقع أو تعطيله أو الوصول غير المصرح به إليه.</li>
+        <li>إرسال بلاغات كاذبة أو مسيئة أو مضللة عبر مركز البلاغات.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="complaints">
+      <h2><span class="n">13</span>مركز البلاغات والشكاوى</h2>
+      <p>أرسل بلاغك أو ملاحظتك عبر «مركز البلاغات» في الموقع أو على <a href="mailto:Toptrip50@gmail.com">Toptrip50@gmail.com</a>. نسعى للرد عليك خلال <span class="todo">[5]</span> أيام عمل. ولك التقدم بشكواك إلى الجهة المختصة بحماية المستهلك إذا لم يُحل الأمر.</p>
+    </section>
+
+    <section class="sec" id="privacy">
+      <h2><span class="n">14</span>الخصوصية والروابط الخارجية</h2>
+      <p>استخدامك للموقع وخدماتنا يخضع كذلك لـ<a href="privacy-policy.html">سياسة الخصوصية</a> الخاصة بنا.</p>
+      <p>وقد يحتوي الموقع على روابط لمواقع ومنصات خارجية، كوسائل التواصل والخرائط. لا نتحكم في محتواها ولا نتحمل مسؤوليتها.</p>
+    </section>
+
+    <section class="sec" id="changes">
+      <h2><span class="n">15</span>تعديل الشروط</h2>
+      <p>يحق لنا تعديل هذه الشروط في أي وقت، وتسري النسخة المحدثة من تاريخ نشرها في الموقع. واستمرارك في استخدام الموقع أو الحجز بعد التحديث يعني قبولك بالتعديلات. أما الحجوزات المؤكدة قبل التعديل فتخضع للشروط السارية وقت الحجز.</p>
+    </section>
+
+    <section class="sec" id="law">
+      <h2><span class="n">16</span>النظام الواجب التطبيق</h2>
+      <p>تخضع هذه الشروط وتُفسَّر وفق الأنظمة المعمول بها في المملكة العربية السعودية، وتختص بالنظر في أي نزاع الجهات القضائية المختصة في المملكة، مع السعي أولاً لحل النزاع ودياً.</p>
+    </section>
+
+    <section class="sec contact" id="contact">
+      <h2>تواصل معنا</h2>
+      <p class="info">TOP TRIP AlUla · المنقا، العلا، المملكة العربية السعودية</p>
+      <div class="actions">
+        <a class="btn solid" href="tel:+966593304444"><span dir="ltr">+966 59 330 4444</span> · اتصل الآن</a>
+        <a class="btn" href="mailto:Toptrip50@gmail.com">Toptrip50@gmail.com</a>
+        <a class="btn" href="https://linktr.ee/toptrip00">جميع حساباتنا</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="logo">TOP TRIP</div>
+  <div>© TOP TRIP AlUla — جميع الحقوق محفوظة</div>
+  <div class="tag">EXPERIENCE OFFROAD ADVENTURE</div>
+</footer>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var map={};
+  links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+  if(!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){l.classList.remove('active')});
+        var a=map[e.target.id]; if(a) a.classList.add('active');
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  document.querySelectorAll('main section[id]').forEach(function(s){io.observe(s)});
+})();
+</script>
+</body>
+</html>

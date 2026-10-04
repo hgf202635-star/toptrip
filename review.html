@@ -1,0 +1,2321 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>قيّم تجربتك | TOP TRIP AlUla</title>
+
+<meta name="description" content="شاركنا رأيك في تجربتك مع TOP TRIP في قلب العلا.">
+<meta name="theme-color" content="#17130f">
+
+<!-- Favicon (browser tab icon) -->
+<link rel="icon" type="image/png" href="/images/logo.png">
+<link rel="shortcut icon" type="image/png" href="/images/logo.png">
+<link rel="apple-touch-icon" href="/images/logo.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="قيّم تجربتك | TOP TRIP AlUla">
+<meta property="og:description" content="شاركنا رأيك في تجربتك مع TOP TRIP في قلب العلا.">
+<meta property="og:url" content="https://top-trip.pages.dev/review.html">
+<meta property="og:image" content="https://top-trip.pages.dev/images/logo.png?v=3">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://top-trip.pages.dev/images/logo.png?v=3">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* =========================================================
+ROOT
+========================================================= */
+
+:root {
+  --sand: #c8a77a;
+  --sand-light: #e7d2ae;
+  --gold: #d6b277;
+
+  --dark: #15110d;
+  --dark-2: #1e1812;
+  --dark-3: #282018;
+
+  --cream: #f4eee4;
+  --white: #ffffff;
+  --muted: #aaa096;
+
+  --border: rgba(255,255,255,.10);
+
+  --container: 1240px;
+
+  --radius-lg: 30px;
+  --radius-md: 20px;
+
+  --shadow: 0 30px 80px rgba(0,0,0,.30);
+  --transition: .35s cubic-bezier(.2,.8,.2,1);
+
+  --grad: linear-gradient(135deg, var(--sand-light), var(--gold) 55%, #b8864a);
+  --danger: #ff8f7a;
+  --ok: #7be0a0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  background: var(--dark);
+  color: var(--white);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: var(--sand);
+  color: var(--dark);
+}
+
+.container {
+  width: min(calc(100% - 40px), var(--container));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  margin-bottom: 15px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.header.scrolled {
+  background: rgba(21,17,13,.86);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.brand img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.brand-name span {
+  display: block;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  margin-top: -5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-links a {
+  position: relative;
+  color: rgba(255,255,255,.78);
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--white);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: 0;
+  bottom: -8px;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-book {
+  padding: 12px 20px;
+  border-radius: 100px;
+  background: var(--white);
+  color: var(--dark);
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.header-book:hover {
+  transform: translateY(-3px);
+  background: var(--sand-light);
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  height: 45px;
+  padding: 0 16px;
+
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.05);
+
+  color: var(--white);
+  border-radius: 100px;
+
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.lang-btn i {
+  color: var(--gold);
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.lang-btn:hover {
+  background: var(--white);
+  color: var(--dark);
+  border-color: var(--white);
+}
+
+.lang-btn:hover i {
+  color: var(--dark);
+}
+
+.menu-btn {
+  display: none;
+  width: 45px;
+  height: 45px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* =========================================================
+MOBILE MENU
+========================================================= */
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+
+  background: rgba(10,8,6,.97);
+  backdrop-filter: blur(20px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: .4s ease;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 25px;
+  inset-inline-start: 25px;
+
+  width: 45px;
+  height: 45px;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  text-align: center;
+}
+
+.mobile-links a {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.mobile-links .lang-btn {
+  align-self: center;
+  margin-top: 10px;
+}
+
+/* =========================================================
+PAGE HERO
+========================================================= */
+
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  text-align: center;
+  padding: 170px 0 60px;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(0deg, #15110d 3%, rgba(21,17,13,.6) 55%, rgba(21,17,13,.82)),
+    url("/images/hero.jpg") center/cover no-repeat;
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 30%, transparent, rgba(0,0,0,.45));
+}
+
+.page-title {
+  font-size: clamp(38px, 7vw, 82px);
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.page-title em {
+  font-style: normal;
+  color: var(--sand-light);
+}
+
+.page-text {
+  max-width: 640px;
+  margin: 22px auto 0;
+  color: rgba(255,255,255,.72);
+  line-height: 2;
+  font-size: 16px;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 9px 16px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 100px;
+
+  background: rgba(255,255,255,.06);
+  backdrop-filter: blur(10px);
+
+  color: #e9ddcb;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.hero-chip i {
+  color: var(--gold);
+}
+
+/* =========================================================
+LAYOUT
+========================================================= */
+
+.review-section {
+  padding: 30px 0 110px;
+  background:
+    radial-gradient(circle at 85% 0%, rgba(214,178,119,.09), transparent 35%),
+    radial-gradient(circle at 10% 90%, rgba(200,167,122,.07), transparent 30%),
+    var(--dark);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+
+  padding: clamp(22px, 4vw, 44px);
+
+  border: 1px solid var(--border);
+  border-radius: 32px;
+
+  background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
+  box-shadow: var(--shadow);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.card h2 {
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.card .sub {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+  margin: 8px 0 30px;
+}
+
+.side {
+  position: sticky;
+  top: 110px;
+  display: grid;
+  gap: 20px;
+}
+
+/* =========================================================
+FORM
+========================================================= */
+
+.field {
+  margin-bottom: 28px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--sand-light);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.req {
+  color: var(--gold);
+  margin-inline-start: 4px;
+}
+
+.opt {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 12px;
+  margin-inline-start: 6px;
+}
+
+.err {
+  display: none;
+  margin-top: 10px;
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.bad .err {
+  display: block;
+}
+
+.bad .rate-box,
+.bad .input {
+  border-color: var(--danger);
+}
+
+.input {
+  width: 100%;
+  padding: 15px 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  background: rgba(255,255,255,.04);
+  color: #fff;
+
+  font-size: 16px;
+  outline: 0;
+  transition: var(--transition);
+}
+
+.input::placeholder {
+  color: #7d746b;
+}
+
+.input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(214,178,119,.15);
+  background: rgba(255,255,255,.06);
+}
+
+textarea.input {
+  min-height: 160px;
+  resize: vertical;
+  line-height: 1.9;
+}
+
+.counter {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: end;
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.note {
+  margin-top: 8px;
+  color: #8c8278;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* ---------- Tours ---------- */
+
+.tours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.tour {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.tour input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tour-body {
+  position: relative;
+  height: 100%;
+  padding: 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background: rgba(255,255,255,.025);
+  transition: var(--transition);
+}
+
+.tour:hover .tour-body {
+  border-color: rgba(214,178,119,.5);
+  transform: translateY(-2px);
+}
+
+.tour strong {
+  display: block;
+  font-size: 15px;
+  padding-inline-end: 26px;
+}
+
+.tour small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.tour-price {
+  display: block;
+  margin-top: 12px;
+  color: var(--gold);
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.tour-check {
+  position: absolute;
+  top: 16px;
+  inset-inline-end: 16px;
+  color: var(--gold);
+  font-size: 18px;
+  opacity: 0;
+  transform: scale(.4);
+  transition: var(--transition);
+}
+
+.tour input:checked + .tour-body {
+  border-color: var(--gold);
+  background: linear-gradient(160deg, rgba(214,178,119,.16), rgba(214,178,119,.04));
+  box-shadow: 0 0 0 4px rgba(214,178,119,.10);
+}
+
+.tour input:checked + .tour-body .tour-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tour input:focus-visible + .tour-body {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ---------- Main rating ---------- */
+
+.rate-box {
+  padding: 28px 12px 24px;
+  text-align: center;
+
+  border: 1px dashed rgba(214,178,119,.38);
+  border-radius: var(--radius-md);
+
+  background:
+    radial-gradient(circle at 50% 0, rgba(214,178,119,.13), transparent 70%),
+    rgba(255,255,255,.02);
+
+  transition: var(--transition);
+}
+
+.stars,
+.mini {
+  display: inline-flex;
+  flex-direction: row-reverse;
+}
+
+.stars {
+  gap: 8px;
+}
+
+.mini {
+  gap: 3px;
+}
+
+.stars input,
+.mini input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
+.stars label {
+  font-size: clamp(34px, 9vw, 50px);
+  line-height: 1;
+  color: rgba(255,255,255,.16);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.stars label:hover,
+.stars label:hover ~ label,
+.stars input:checked ~ label {
+  color: var(--gold);
+  filter: drop-shadow(0 0 14px rgba(214,178,119,.55));
+}
+
+.stars label:hover {
+  transform: scale(1.18) rotate(-6deg);
+}
+
+.mini label {
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(255,255,255,.16);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.mini label:hover,
+.mini label:hover ~ label,
+.mini input:checked ~ label {
+  color: var(--gold);
+}
+
+.stars input:focus-visible + label,
+.mini input:focus-visible + label {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.rate-text {
+  min-height: 34px;
+  margin-top: 14px;
+  color: var(--sand-light);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+/* ---------- Sub ratings ---------- */
+
+.subs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.sub-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  padding: 13px 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255,255,255,.025);
+}
+
+.sub-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.sub-name i {
+  color: var(--gold);
+  width: 18px;
+  text-align: center;
+}
+
+/* ---------- Chips ---------- */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  position: relative;
+}
+
+.chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 100px;
+
+  background: rgba(255,255,255,.03);
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.chip span i {
+  color: var(--gold);
+  transition: var(--transition);
+}
+
+.chip:hover span {
+  border-color: rgba(214,178,119,.55);
+}
+
+.chip input:checked + span {
+  background: var(--grad);
+  border-color: transparent;
+  color: var(--dark);
+  font-weight: 900;
+}
+
+.chip input:checked + span i {
+  color: var(--dark);
+}
+
+.chip input:focus-visible + span {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ---------- Switch ---------- */
+
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  padding: 15px 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255,255,255,.025);
+
+  cursor: pointer;
+}
+
+.switch-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.switch-text i {
+  color: var(--gold);
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switch-track {
+  position: relative;
+  flex: none;
+  width: 54px;
+  height: 30px;
+  border-radius: 30px;
+  background: #3b3226;
+  transition: var(--transition);
+}
+
+.switch-track::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  inset-inline-start: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  transition: var(--transition);
+}
+
+.switch input:checked + .switch-track {
+  background: var(--grad);
+}
+
+.switch input:checked + .switch-track::after {
+  inset-inline-start: 27px;
+}
+
+.switch input:focus-visible + .switch-track {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ---------- Submit ---------- */
+
+.submit {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  padding: 17px;
+
+  border: 0;
+  border-radius: 100px;
+
+  background: var(--grad);
+  color: var(--dark);
+
+  font-weight: 900;
+  font-size: 17px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.submit::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.55), transparent 70%);
+  transform: translateX(-120%);
+  transition: .7s;
+}
+
+.submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 38px rgba(214,178,119,.4);
+}
+
+.submit:hover::after {
+  transform: translateX(120%);
+}
+
+.consent {
+  margin-top: 16px;
+  color: #8c8278;
+  font-size: 12px;
+  line-height: 1.9;
+  text-align: center;
+}
+
+/* =========================================================
+REVIEW CARD (preview)
+========================================================= */
+
+.preview-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.preview-tag::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px var(--gold);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .3; }
+}
+
+.rv-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.rv-stars {
+  display: inline-flex;
+  gap: 4px;
+  font-size: 15px;
+}
+
+.rv-stars i {
+  color: rgba(255,255,255,.16);
+}
+
+.rv-stars i.on {
+  color: var(--gold);
+}
+
+.rv-quote {
+  color: rgba(214,178,119,.35);
+  font-size: 26px;
+}
+
+.rv-text {
+  min-height: 74px;
+  color: #d9cfc2;
+  line-height: 2;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.rv-text.empty {
+  color: #7d746b;
+}
+
+.rv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.rv-tags span {
+  padding: 5px 11px;
+  border-radius: 100px;
+  background: rgba(214,178,119,.12);
+  color: var(--sand-light);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.rv-rec {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--ok);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rv-rec.show {
+  display: flex;
+}
+
+.rv-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+
+  background: var(--grad);
+  color: var(--dark);
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.rv-foot b {
+  display: block;
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.rv-foot small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 1px;
+}
+
+/* ---------- Trust ---------- */
+
+.trust ul {
+  list-style: none;
+  display: grid;
+  gap: 18px;
+}
+
+.trust li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.trust li b {
+  display: block;
+  color: var(--white);
+  font-size: 14px;
+}
+
+.trust .ico {
+  flex: none;
+  display: grid;
+  place-items: center;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+
+  background: rgba(214,178,119,.12);
+  color: var(--gold);
+}
+
+.trust a.phone {
+  color: var(--gold);
+  font-weight: 700;
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+/* =========================================================
+SUCCESS MODAL
+========================================================= */
+
+.rv-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 4500;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  background: rgba(8,6,4,.82);
+  backdrop-filter: blur(14px);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: .4s ease;
+}
+
+.rv-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rv-box {
+  position: relative;
+  width: min(100%, 480px);
+  max-height: 92vh;
+  overflow: auto;
+
+  padding: 40px 28px 28px;
+  text-align: center;
+
+  border: 1px solid rgba(214,178,119,.30);
+  border-radius: var(--radius-lg);
+
+  background:
+    radial-gradient(circle at 85% 0, rgba(214,178,119,.20), transparent 45%),
+    radial-gradient(circle at 0 100%, rgba(200,167,122,.10), transparent 50%),
+    var(--dark-2);
+
+  box-shadow: var(--shadow), 0 0 90px rgba(214,178,119,.14);
+
+  transform: translateY(30px) scale(.96);
+  transition: .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.rv-modal.open .rv-box {
+  transform: none;
+}
+
+.rv-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.rv-x {
+  position: absolute;
+  top: 16px;
+  inset-inline-end: 16px;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.05);
+  color: #fff;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.rv-x:hover {
+  background: #fff;
+  color: var(--dark);
+  transform: rotate(90deg);
+}
+
+.big-check {
+  display: grid;
+  place-items: center;
+
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+  background: var(--grad);
+  color: var(--dark);
+  font-size: 34px;
+
+  box-shadow: 0 0 0 10px rgba(214,178,119,.12), 0 0 50px rgba(214,178,119,.35);
+}
+
+.rv-box h3 {
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.rv-box p {
+  margin: 10px 0 24px;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.rv-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 52px;
+  padding: 0 22px;
+
+  border: 1px solid transparent;
+  border-radius: 100px;
+
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-gold {
+  background: var(--grad);
+  color: var(--dark);
+}
+
+.btn-gold:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 38px rgba(214,178,119,.4);
+}
+
+.btn-outline {
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.25);
+  color: #fff;
+}
+
+.btn-outline:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+
+/* =========================================================
+FOOTER
+========================================================= */
+
+footer {
+  background: #0e0b08;
+  padding: 40px 0 28px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #68615a;
+  font-size: 11px;
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding-top: 18px;
+  font-size: 12px;
+}
+
+.footer-legal a {
+  color: var(--muted);
+  transition: var(--transition);
+}
+
+.footer-legal a:hover {
+  color: var(--gold);
+}
+
+.footer-legal i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #4a433c;
+}
+
+/* =========================================================
+ANIMATION
+========================================================= */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp .9s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.fade-up.d1 { animation-delay: .12s; }
+.fade-up.d2 { animation-delay: .24s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .fade-up {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 1199px) {
+  .nav-links { display: none; }
+  .menu-btn { display: block; }
+}
+
+@media (max-width: 980px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { position: static; }
+}
+
+@media (max-width: 750px) {
+  .container { width: min(calc(100% - 28px), var(--container)); }
+
+  .header-book { display: none; }
+
+  .brand-name { font-size: 17px; }
+
+  .brand img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .page-hero { padding: 135px 0 40px; }
+
+  .review-section { padding-bottom: 80px; }
+
+  .footer-bottom { flex-direction: column; }
+}
+
+@media (max-width: 560px) {
+  .tours,
+  .subs,
+  .two {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+HEADER
+========================================================= -->
+
+<header class="header" id="header">
+  <div class="container">
+    <nav class="nav">
+
+      <a href="/#home" class="brand">
+        <img src="/images/logo.png" alt="TOP TRIP">
+        <div class="brand-name">
+          TOP TRIP
+          <span>ALULA</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="/#home" data-i="nav_home">الرئيسية</a>
+        <a href="/#about" data-i="nav_about">عن Top Trip</a>
+        <a href="/#experiences" data-i="nav_tours">الجولات</a>
+        <a href="/#why" data-i="nav_why">لماذا نحن؟</a>
+        <a href="/#gallery" data-i="nav_gallery">المعرض</a>
+        <a href="/#reviews" data-i="nav_reviews">التقييمات</a>
+        <a href="/#contact" data-i="nav_contact">تواصل معنا</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="lang-btn" type="button" aria-label="Switch to English">
+          <i class="fa-solid fa-globe"></i>
+          <span class="lang-label">EN</span>
+        </button>
+
+        <a href="/" class="header-book" data-i="back_site">العودة للموقع</a>
+
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+    </nav>
+  </div>
+</header>
+
+<!-- =========================================================
+MOBILE MENU
+========================================================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+  <button class="mobile-menu-close" id="mobileClose" type="button" aria-label="إغلاق" data-al="close">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+
+  <div class="mobile-links">
+    <a href="/#home" data-i="nav_home">الرئيسية</a>
+    <a href="/#about" data-i="nav_about">عن Top Trip</a>
+    <a href="/#experiences" data-i="nav_tours">الجولات</a>
+    <a href="/#why" data-i="nav_why">لماذا نحن؟</a>
+    <a href="/#gallery" data-i="nav_gallery">المعرض</a>
+    <a href="/#reviews" data-i="nav_reviews">التقييمات</a>
+    <a href="/#contact" data-i="nav_contact">تواصل معنا</a>
+
+    <button class="lang-btn" type="button" aria-label="Switch to English">
+      <i class="fa-solid fa-globe"></i>
+      <span class="lang-label">EN</span>
+    </button>
+  </div>
+
+</div>
+
+<main>
+
+<!-- =========================================================
+HERO
+========================================================= -->
+
+<section class="page-hero">
+  <div class="container">
+
+    <div class="eyebrow fade-up">YOUR REVIEW · ALULA</div>
+
+    <h1 class="page-title fade-up d1">
+      <span data-i="h1a">كيف كانت</span>
+      <em data-i="h1b">مغامرتك</em>
+      <span data-i="h1c">معنا؟</span>
+    </h1>
+
+    <p class="page-text fade-up d2" data-i="hero_text">
+      رأيك يصنع الفرق. شاركنا تجربتك في قلب العلا، وساعد غيرك على اختيار مغامرته القادمة.
+    </p>
+
+    <div class="hero-chips fade-up d2">
+      <div class="hero-chip"><i class="fa-regular fa-clock"></i><span data-i="chip1">تستغرق أقل من دقيقة</span></div>
+      <div class="hero-chip"><i class="fa-solid fa-envelope-open-text"></i><span data-i="chip2">نقرأ كل تقييم</span></div>
+      <div class="hero-chip"><i class="fa-solid fa-wand-magic-sparkles"></i><span data-i="chip3">رأيك يطوّر التجربة</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================================
+FORM + PREVIEW
+========================================================= -->
+
+<section class="review-section">
+  <div class="container">
+    <div class="layout">
+
+      <!-- ================= FORM ================= -->
+
+      <form class="card" id="reviewForm" novalidate>
+
+        <h2 data-i="form_title">اكتب تقييمك</h2>
+        <p class="sub" data-i="form_sub">الحقول المعلّمة بنجمة مطلوبة، والبقية اختيارية.</p>
+
+        <!-- Tour -->
+        <div class="field">
+          <span class="label" data-i="f_tour">أي جولة جرّبت؟</span>
+
+          <div class="tours">
+
+            <label class="tour">
+              <input type="radio" name="tour" value="رحلة الباجي — 30 دقيقة" checked>
+              <div class="tour-body">
+                <i class="fa-solid fa-circle-check tour-check"></i>
+                <strong data-i="tour30">رحلة الباجي — 30 دقيقة</strong>
+                <small data-i="tour30_meta">مع توقف عند النقوش</small>
+                <span class="tour-price" data-i="price500">500 ريال</span>
+              </div>
+            </label>
+
+            <label class="tour">
+              <input type="radio" name="tour" value="رحلة الباجي — 15 دقيقة">
+              <div class="tour-body">
+                <i class="fa-solid fa-circle-check tour-check"></i>
+                <strong data-i="tour15">رحلة الباجي — 15 دقيقة</strong>
+                <small data-i="tour15_meta">بدون توقف</small>
+                <span class="tour-price" data-i="price250">250 ريال</span>
+              </div>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Overall rating -->
+        <div class="field" id="fRate">
+          <span class="label"><span data-i="f_rate">تقييمك العام</span><span class="req">*</span></span>
+
+          <div class="rate-box">
+            <div class="stars" role="radiogroup" aria-label="تقييمك العام" data-al="f_rate">
+              <input type="radio" name="rate" id="r5" value="5"><label for="r5" title="5"><i class="fa-solid fa-star"></i></label>
+              <input type="radio" name="rate" id="r4" value="4"><label for="r4" title="4"><i class="fa-solid fa-star"></i></label>
+              <input type="radio" name="rate" id="r3" value="3"><label for="r3" title="3"><i class="fa-solid fa-star"></i></label>
+              <input type="radio" name="rate" id="r2" value="2"><label for="r2" title="2"><i class="fa-solid fa-star"></i></label>
+              <input type="radio" name="rate" id="r1" value="1"><label for="r1" title="1"><i class="fa-solid fa-star"></i></label>
+            </div>
+
+            <div class="rate-text" id="rateText" aria-live="polite"></div>
+          </div>
+
+          <div class="err" data-i="err_rate">فضلاً اختر تقييمك العام.</div>
+        </div>
+
+        <!-- Sub ratings -->
+        <div class="field">
+          <span class="label"><span data-i="f_sub">قيّم التفاصيل</span><span class="opt" data-i="optional">(اختياري)</span></span>
+          <div class="subs" id="subs"></div>
+        </div>
+
+        <!-- Tags -->
+        <div class="field">
+          <span class="label"><span data-i="f_tags">ما الذي أعجبك؟</span><span class="opt" data-i="optional">(اختياري)</span></span>
+          <div class="chips" id="chips"></div>
+        </div>
+
+        <!-- Text -->
+        <div class="field" id="fText">
+          <label class="label" for="text"><span data-i="f_text">اكتب تجربتك</span><span class="req">*</span></label>
+          <textarea class="input" id="text" name="text" maxlength="600"
+            placeholder="احكِ لنا: كيف كانت الرحلة؟ وما أكثر لحظة أعجبتك؟"
+            data-ph="ph_text"></textarea>
+          <div class="counter"><span id="cnt">0</span> / 600</div>
+          <div class="err" data-i="err_text">فضلاً اكتب تقييمك (10 أحرف على الأقل).</div>
+        </div>
+
+        <!-- Name + contact -->
+        <div class="field two">
+
+          <div id="fName">
+            <label class="label" for="name"><span data-i="f_name">الاسم</span><span class="req">*</span></label>
+            <input class="input" type="text" id="name" name="name" maxlength="40" autocomplete="name"
+              placeholder="مثال: محمد العتيبي" data-ph="ph_name">
+            <div class="err" data-i="err_name">فضلاً اكتب اسمك.</div>
+          </div>
+
+          <div>
+            <label class="label" for="contact"><span data-i="f_contact">الجوال أو البريد الإلكتروني</span><span class="opt" data-i="optional">(اختياري)</span></label>
+            <input class="input" type="text" id="contact" name="contact" maxlength="80" dir="auto" autocomplete="off"
+              placeholder="لا يظهر للعامة" data-ph="ph_contact">
+          </div>
+
+        </div>
+
+        <!-- Recommend -->
+        <div class="field">
+          <label class="switch">
+            <span class="switch-text">
+              <i class="fa-solid fa-thumbs-up"></i>
+              <span data-i="f_rec">أنصح غيري بتجربة Top Trip</span>
+            </span>
+            <input type="checkbox" id="recommend" name="recommend" checked>
+            <span class="switch-track"></span>
+          </label>
+        </div>
+
+        <button class="submit" type="submit">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span data-i="submit">إرسال التقييم</span>
+        </button>
+
+        <p class="consent" data-i="consent">
+          بإرسالك التقييم توافق على عرضه في موقع Top Trip باسمك كما كتبته. بيانات التواصل لا تُعرض للعامة.
+        </p>
+
+      </form>
+
+      <!-- ================= SIDE ================= -->
+
+      <aside class="side">
+
+        <div class="card">
+          <div class="preview-tag" data-i="pv_tag">معاينة مباشرة</div>
+
+          <div class="rv-top">
+            <div class="rv-stars" id="pvStars" aria-hidden="true"></div>
+            <i class="fa-solid fa-quote-right rv-quote"></i>
+          </div>
+
+          <p class="rv-text empty" id="pvText">هنا سيظهر تقييمك كما سيراه الآخرون…</p>
+
+          <div class="rv-tags" id="pvTags"></div>
+
+          <div class="rv-rec" id="pvRec">
+            <i class="fa-solid fa-thumbs-up"></i>
+            <span data-i="pv_rec">ينصح بالتجربة</span>
+          </div>
+
+          <div class="rv-foot">
+            <div class="avatar" id="pvAvatar">؟</div>
+            <div>
+              <b id="pvName">اسمك</b>
+              <small id="pvTour">رحلة الباجي — 30 دقيقة</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="card trust">
+          <ul>
+            <li>
+              <span class="ico"><i class="fa-solid fa-mountain-sun"></i></span>
+              <div><b data-i="tr1_t">مغامرات العلا</b><span data-i="tr1_d">استكشف الطبيعة بطريقة مختلفة.</span></div>
+            </li>
+            <li>
+              <span class="ico"><i class="fa-solid fa-shield-halved"></i></span>
+              <div><b data-i="tr2_t">السلامة أولًا</b><span data-i="tr2_d">التزام بأعلى معايير السلامة والجودة.</span></div>
+            </li>
+            <li>
+              <span class="ico"><i class="fa-solid fa-phone"></i></span>
+              <div><b data-i="tr3_t">تواصل معنا</b><a class="phone" href="tel:+966593304444">+966 59 330 4444</a></div>
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================================================
+FOOTER
+========================================================= -->
+
+<footer>
+  <div class="container">
+
+    <div class="footer-bottom">
+      <span data-i="copy">© TOP TRIP AlUla — جميع الحقوق محفوظة</span>
+      <span>EXPERIENCE OFFROAD ADVENTURE</span>
+    </div>
+
+    <div class="footer-legal">
+      <a href="/privacy-policy.html" data-i="privacy">سياسة الخصوصية</a>
+      <i aria-hidden="true"></i>
+      <a href="/terms-of-use.html" data-i="terms">شروط الاستخدام</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- =========================================================
+SUCCESS MODAL
+========================================================= -->
+
+<div class="rv-modal" id="rvModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mTitle">
+  <div class="rv-box">
+
+    <button class="rv-x" id="rvClose" type="button" aria-label="إغلاق" data-al="close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="big-check"><i class="fa-solid fa-check"></i></div>
+
+    <h3 id="mTitle"><span data-i="m_title">شكراً لك</span> <span id="mName"></span></h3>
+
+    <p data-i="m_text">تم حفظ تقييمك. أرسله لفريقنا عبر البريد ليتم نشره في الموقع بعد المراجعة.</p>
+
+    <div class="rv-actions">
+      <a class="btn btn-gold" id="mailBtn" href="#">
+        <i class="fa-solid fa-envelope"></i>
+        <span data-i="m_send">إرسال التقييم للفريق</span>
+      </a>
+
+      <a class="btn btn-outline" href="/#reviews">
+        <i class="fa-regular fa-star"></i>
+        <span data-i="m_view">مشاهدة التقييمات في الموقع</span>
+      </a>
+
+      <button class="btn btn-outline" id="againBtn" type="button">
+        <i class="fa-solid fa-pen-to-square"></i>
+        <span data-i="m_again">كتابة تقييم آخر</span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================================================
+JAVASCRIPT
+========================================================= -->
+
+<script>
+(function () {
+"use strict";
+
+var $ = function (s, r) { return (r || document).querySelector(s); };
+var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+var KEY = "tt-reviews-v1";
+var EMAIL = "Toptrip50@gmail.com";
+var lang = "ar";
+
+/* ---------------------------------------------------------
+TEXTS (AR / EN)
+--------------------------------------------------------- */
+
+var D = {
+  title: { ar: "قيّم تجربتك | TOP TRIP AlUla", en: "Rate Your Experience | TOP TRIP AlUla" },
+  close: { ar: "إغلاق", en: "Close" },
+
+  nav_home: { ar: "الرئيسية", en: "Home" },
+  nav_about: { ar: "عن Top Trip", en: "About Top Trip" },
+  nav_tours: { ar: "الجولات", en: "Tours" },
+  nav_why: { ar: "لماذا نحن؟", en: "Why Us?" },
+  nav_gallery: { ar: "المعرض", en: "Gallery" },
+  nav_reviews: { ar: "التقييمات", en: "Reviews" },
+  nav_contact: { ar: "تواصل معنا", en: "Contact Us" },
+  back_site: { ar: "العودة للموقع", en: "Back to Site" },
+
+  h1a: { ar: "كيف كانت", en: "How was your" },
+  h1b: { ar: "مغامرتك", en: "adventure" },
+  h1c: { ar: "معنا؟", en: "with us?" },
+  hero_text: {
+    ar: "رأيك يصنع الفرق. شاركنا تجربتك في قلب العلا، وساعد غيرك على اختيار مغامرته القادمة.",
+    en: "Your opinion makes a difference. Share your experience in the heart of AlUla and help others choose their next adventure."
+  },
+  chip1: { ar: "تستغرق أقل من دقيقة", en: "Takes under a minute" },
+  chip2: { ar: "نقرأ كل تقييم", en: "We read every review" },
+  chip3: { ar: "رأيك يطوّر التجربة", en: "Your feedback shapes the experience" },
+
+  form_title: { ar: "اكتب تقييمك", en: "Write Your Review" },
+  form_sub: { ar: "الحقول المعلّمة بنجمة مطلوبة، والبقية اختيارية.", en: "Fields marked with an asterisk are required; the rest are optional." },
+  optional: { ar: "(اختياري)", en: "(optional)" },
+
+  f_tour: { ar: "أي جولة جرّبت؟", en: "Which tour did you take?" },
+  tour30: { ar: "رحلة الباجي — 30 دقيقة", en: "Buggy Ride — 30 Minutes" },
+  tour30_meta: { ar: "مع توقف عند النقوش", en: "With a stop at the inscriptions" },
+  tour15: { ar: "رحلة الباجي — 15 دقيقة", en: "Buggy Ride — 15 Minutes" },
+  tour15_meta: { ar: "بدون توقف", en: "No stops" },
+  price500: { ar: "500 ريال", en: "500 SAR" },
+  price250: { ar: "250 ريال", en: "250 SAR" },
+
+  f_rate: { ar: "تقييمك العام", en: "Your overall rating" },
+  rate_hint: { ar: "اضغط على النجوم", en: "Tap the stars" },
+  rate_1: { ar: "سيئة", en: "Poor" },
+  rate_2: { ar: "مقبولة", en: "Fair" },
+  rate_3: { ar: "جيدة", en: "Good" },
+  rate_4: { ar: "ممتازة", en: "Excellent" },
+  rate_5: { ar: "استثنائية!", en: "Outstanding!" },
+  err_rate: { ar: "فضلاً اختر تقييمك العام.", en: "Please choose your overall rating." },
+
+  f_sub: { ar: "قيّم التفاصيل", en: "Rate the details" },
+  sub_safety: { ar: "السلامة", en: "Safety" },
+  sub_vehicle: { ar: "المركبة", en: "Vehicle" },
+  sub_guide: { ar: "المرشد", en: "Guide" },
+  sub_value: { ar: "القيمة", en: "Value" },
+
+  f_tags: { ar: "ما الذي أعجبك؟", en: "What did you like?" },
+  tag_thrill: { ar: "إثارة", en: "Thrilling" },
+  tag_views: { ar: "مناظر ساحرة", en: "Stunning views" },
+  tag_team: { ar: "فريق محترف", en: "Professional team" },
+  tag_safe: { ar: "أمان عالٍ", en: "Very safe" },
+  tag_value: { ar: "يستحق السعر", en: "Worth the price" },
+  tag_family: { ar: "مناسب للعائلة", en: "Family friendly" },
+  tag_photo: { ar: "تصوير رائع", en: "Great photos" },
+
+  f_text: { ar: "اكتب تجربتك", en: "Write your experience" },
+  ph_text: { ar: "احكِ لنا: كيف كانت الرحلة؟ وما أكثر لحظة أعجبتك؟", en: "Tell us: how was the ride? What was your favourite moment?" },
+  err_text: { ar: "فضلاً اكتب تقييمك (10 أحرف على الأقل).", en: "Please write your review (at least 10 characters)." },
+
+  f_name: { ar: "الاسم", en: "Name" },
+  ph_name: { ar: "مثال: محمد العتيبي", en: "e.g. Mohammed Al-Otaibi" },
+  err_name: { ar: "فضلاً اكتب اسمك.", en: "Please enter your name." },
+  f_contact: { ar: "الجوال أو البريد الإلكتروني", en: "Phone or email" },
+  ph_contact: { ar: "لا يظهر للعامة", en: "Not shown publicly" },
+
+  f_rec: { ar: "أنصح غيري بتجربة Top Trip", en: "I recommend Top Trip to others" },
+  submit: { ar: "إرسال التقييم", en: "Submit Review" },
+  consent: {
+    ar: "بإرسالك التقييم توافق على عرضه في موقع Top Trip باسمك كما كتبته. بيانات التواصل لا تُعرض للعامة.",
+    en: "By submitting, you agree to display your review on the Top Trip website under the name you entered. Contact details are never shown publicly."
+  },
+
+  pv_tag: { ar: "معاينة مباشرة", en: "Live preview" },
+  pv_name: { ar: "اسمك", en: "Your name" },
+  pv_text: { ar: "هنا سيظهر تقييمك كما سيراه الآخرون…", en: "Your review will appear here exactly as others will see it…" },
+  pv_rec: { ar: "ينصح بالتجربة", en: "Recommends the experience" },
+
+  tr1_t: { ar: "مغامرات العلا", en: "AlUla Adventures" },
+  tr1_d: { ar: "استكشف الطبيعة بطريقة مختلفة.", en: "Explore nature in a different way." },
+  tr2_t: { ar: "السلامة أولًا", en: "Safety First" },
+  tr2_d: { ar: "التزام بأعلى معايير السلامة والجودة.", en: "Committed to the highest safety and quality standards." },
+  tr3_t: { ar: "تواصل معنا", en: "Contact Us" },
+
+  m_title: { ar: "شكراً لك", en: "Thank you" },
+  m_text: {
+    ar: "تم حفظ تقييمك. أرسله لفريقنا عبر البريد ليتم نشره في الموقع بعد المراجعة.",
+    en: "Your review has been saved. Send it to our team by email so it can be published on the website after review."
+  },
+  m_send: { ar: "إرسال التقييم للفريق", en: "Send Review to the Team" },
+  m_view: { ar: "مشاهدة التقييمات في الموقع", en: "See Reviews on the Website" },
+  m_again: { ar: "كتابة تقييم آخر", en: "Write Another Review" },
+
+  copy: { ar: "© TOP TRIP AlUla — جميع الحقوق محفوظة", en: "© TOP TRIP AlUla — All Rights Reserved" },
+  privacy: { ar: "سياسة الخصوصية", en: "Privacy Policy" },
+  terms: { ar: "شروط الاستخدام", en: "Terms of Use" }
+};
+
+function t(key) {
+  var e = D[key];
+  return e ? (e[lang] || e.ar) : key;
+}
+
+/* ---------------------------------------------------------
+DATA
+--------------------------------------------------------- */
+
+var SUBS = [
+  { k: "safety", ic: "fa-shield-halved", i: "sub_safety" },
+  { k: "vehicle", ic: "fa-car-side", i: "sub_vehicle" },
+  { k: "guide", ic: "fa-compass", i: "sub_guide" },
+  { k: "value", ic: "fa-coins", i: "sub_value" }
+];
+
+var TAGS = [
+  { k: "thrill", ic: "fa-fire" },
+  { k: "views", ic: "fa-mountain-sun" },
+  { k: "team", ic: "fa-medal" },
+  { k: "safe", ic: "fa-shield-halved" },
+  { k: "value", ic: "fa-coins" },
+  { k: "family", ic: "fa-people-group" },
+  { k: "photo", ic: "fa-camera" }
+];
+
+var TOUR_KEYS = {
+  "رحلة الباجي — 30 دقيقة": "tour30",
+  "رحلة الباجي — 15 دقيقة": "tour15"
+};
+
+/* ---------------------------------------------------------
+BUILD DYNAMIC CONTROLS
+--------------------------------------------------------- */
+
+function el(tag, cls, txt) {
+  var n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (txt != null) n.textContent = txt;
+  return n;
+}
+
+function buildSubs() {
+  var box = $("#subs");
+
+  SUBS.forEach(function (s) {
+    var row = el("div", "sub-row");
+
+    var name = el("span", "sub-name");
+    var ic = el("i", "fa-solid " + s.ic);
+    var tx = el("b", "", t(s.i));
+    tx.setAttribute("data-i", s.i);
+    name.appendChild(ic);
+    name.appendChild(tx);
+
+    var mini = el("div", "mini");
+    mini.setAttribute("role", "radiogroup");
+
+    for (var v = 5; v >= 1; v--) {
+      var id = "sub_" + s.k + "_" + v;
+
+      var input = el("input");
+      input.type = "radio";
+      input.name = "sub_" + s.k;
+      input.id = id;
+      input.value = String(v);
+
+      var label = el("label");
+      label.setAttribute("for", id);
+      label.setAttribute("title", String(v));
+      label.appendChild(el("i", "fa-solid fa-star"));
+
+      mini.appendChild(input);
+      mini.appendChild(label);
+    }
+
+    row.appendChild(name);
+    row.appendChild(mini);
+    box.appendChild(row);
+  });
+}
+
+function buildChips() {
+  var box = $("#chips");
+
+  TAGS.forEach(function (g) {
+    var label = el("label", "chip");
+
+    var input = el("input");
+    input.type = "checkbox";
+    input.name = "tags";
+    input.value = g.k;
+
+    var span = el("span");
+    span.appendChild(el("i", "fa-solid " + g.ic));
+
+    var tx = el("b", "", t("tag_" + g.k));
+    tx.setAttribute("data-i", "tag_" + g.k);
+    tx.style.fontWeight = "inherit";
+    span.appendChild(tx);
+
+    label.appendChild(input);
+    label.appendChild(span);
+    box.appendChild(label);
+  });
+}
+
+buildSubs();
+buildChips();
+
+/* ---------------------------------------------------------
+LANGUAGE
+--------------------------------------------------------- */
+
+var form = $("#reviewForm");
+
+function setLang(next) {
+  lang = next === "en" ? "en" : "ar";
+  var en = lang === "en";
+
+  document.documentElement.lang = lang;
+  document.documentElement.dir = en ? "ltr" : "rtl";
+  document.title = t("title");
+
+  $$("[data-i]").forEach(function (n) {
+    n.textContent = t(n.getAttribute("data-i"));
+  });
+
+  $$("[data-ph]").forEach(function (n) {
+    n.setAttribute("placeholder", t(n.getAttribute("data-ph")));
+  });
+
+  $$("[data-al]").forEach(function (n) {
+    n.setAttribute("aria-label", t(n.getAttribute("data-al")));
+  });
+
+  $$(".lang-btn").forEach(function (btn) {
+    btn.querySelector(".lang-label").textContent = en ? "عربي" : "EN";
+    btn.setAttribute(
+      "aria-label",
+      en ? "التبديل إلى العربية" : "Switch to English"
+    );
+  });
+
+  try { localStorage.setItem("tt-lang", lang); } catch (e) {}
+
+  refresh();
+}
+
+$$(".lang-btn").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    setLang(lang === "en" ? "ar" : "en");
+  });
+});
+
+/* ---------------------------------------------------------
+HEADER + MOBILE MENU
+--------------------------------------------------------- */
+
+var header = $("#header");
+
+function onScroll() {
+  header.classList.toggle("scrolled", window.scrollY > 50);
+}
+
+window.addEventListener("scroll", onScroll);
+onScroll();
+
+var mobileMenu = $("#mobileMenu");
+
+function closeMenu() {
+  mobileMenu.classList.remove("open");
+  document.body.classList.remove("no-scroll");
+}
+
+$("#menuBtn").addEventListener("click", function () {
+  mobileMenu.classList.add("open");
+  document.body.classList.add("no-scroll");
+});
+
+$("#mobileClose").addEventListener("click", closeMenu);
+
+$$(".mobile-links a").forEach(function (a) {
+  a.addEventListener("click", closeMenu);
+});
+
+/* ---------------------------------------------------------
+LIVE PREVIEW
+--------------------------------------------------------- */
+
+function getTags() {
+  return $$("#chips input:checked").map(function (i) { return i.value; });
+}
+
+function tourName() {
+  return form.elements.tour.value;
+}
+
+function tourLabel(name) {
+  return TOUR_KEYS[name] ? t(TOUR_KEYS[name]) : name;
+}
+
+function drawStars(box, n) {
+  box.textContent = "";
+  for (var i = 1; i <= 5; i++) {
+    box.appendChild(el("i", "fa-solid fa-star" + (i <= n ? " on" : "")));
+  }
+}
+
+function refresh() {
+  var rate = parseInt(form.elements.rate.value, 10) || 0;
+  var name = $("#name").value.trim();
+  var text = $("#text").value.trim();
+
+  $("#rateText").textContent = rate ? t("rate_" + rate) : t("rate_hint");
+
+  drawStars($("#pvStars"), rate);
+
+  $("#pvName").textContent = name || t("pv_name");
+  $("#pvAvatar").textContent = name ? Array.from(name)[0] : "?";
+  $("#pvTour").textContent = tourLabel(tourName());
+
+  var pt = $("#pvText");
+  pt.textContent = text || t("pv_text");
+  pt.classList.toggle("empty", !text);
+
+  $("#cnt").textContent = String($("#text").value.length);
+
+  var tagBox = $("#pvTags");
+  tagBox.textContent = "";
+  getTags().forEach(function (k) {
+    tagBox.appendChild(el("span", "", t("tag_" + k)));
+  });
+
+  $("#pvRec").classList.toggle("show", $("#recommend").checked);
+}
+
+form.addEventListener("input", refresh);
+form.addEventListener("change", refresh);
+
+/* ---------------------------------------------------------
+STORAGE
+--------------------------------------------------------- */
+
+function readAll() {
+  try {
+    var a = JSON.parse(localStorage.getItem(KEY));
+    return Array.isArray(a) ? a : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveReview(review) {
+  var list = readAll();
+  list.unshift(review);
+  try {
+    localStorage.setItem(KEY, JSON.stringify(list.slice(0, 50)));
+  } catch (e) {}
+}
+
+function newId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+}
+
+/* ---------------------------------------------------------
+VALIDATE + SUBMIT
+--------------------------------------------------------- */
+
+function mark(id, ok) {
+  $(id).classList.toggle("bad", !ok);
+  return ok;
+}
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  var okRate = mark("#fRate", !!form.elements.rate.value);
+  var okText = mark("#fText", $("#text").value.trim().length >= 10);
+  var okName = mark("#fName", $("#name").value.trim().length > 0);
+
+  if (!(okRate && okText && okName)) {
+    var bad = $(".bad");
+    if (bad) bad.scrollIntoView({ behavior: "smooth", block: "center" });
+    return;
+  }
+
+  var sub = {};
+  SUBS.forEach(function (s) {
+    var v = parseInt(form.elements["sub_" + s.k].value, 10);
+    if (v) sub[s.k] = v;
+  });
+
+  var review = {
+    id: newId(),
+    name: $("#name").value.trim(),
+    tour: tourName(),
+    rating: parseInt(form.elements.rate.value, 10),
+    sub: sub,
+    tags: getTags(),
+    text: $("#text").value.trim(),
+    recommend: $("#recommend").checked,
+    contact: $("#contact").value.trim(),
+    date: new Date().toISOString()
+  };
+
+  saveReview(review);
+  openModal(review);
+});
+
+/* ---------------------------------------------------------
+SUCCESS MODAL
+--------------------------------------------------------- */
+
+var modal = $("#rvModal");
+var lastFocus = null;
+
+function mailHref(r) {
+  var tagNames = r.tags.map(function (k) { return D["tag_" + k].ar; }).join("، ") || "—";
+
+  var subs = SUBS.map(function (s) {
+    return D[s.i].ar + ": " + (r.sub[s.k] || "—");
+  }).join(" | ");
+
+  var body =
+    "التقييم العام: " + r.rating + "/5\n" +
+    "الجولة: " + r.tour + "\n" +
+    subs + "\n" +
+    "ما أعجبه: " + tagNames + "\n" +
+    "ينصح بالتجربة: " + (r.recommend ? "نعم" : "لا") + "\n\n" +
+    r.text + "\n\n" +
+    "— " + r.name + "\n" +
+    "التواصل: " + (r.contact || "—") + "\n" +
+    "المعرّف: " + r.id;
+
+  return "mailto:" + EMAIL +
+    "?subject=" + encodeURIComponent("تقييم جديد من " + r.name + " (" + r.rating + "/5)") +
+    "&body=" + encodeURIComponent(body);
+}
+
+function openModal(r) {
+  lastFocus = document.activeElement;
+
+  $("#mName").textContent = r.name;
+  $("#mailBtn").setAttribute("href", mailHref(r));
+
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("no-scroll");
+
+  $("#mailBtn").focus();
+}
+
+function closeModal() {
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("no-scroll");
+
+  if (lastFocus && lastFocus.focus) lastFocus.focus();
+}
+
+function resetForm() {
+  form.reset();
+  $$(".bad").forEach(function (f) { f.classList.remove("bad"); });
+  refresh();
+}
+
+$("#rvClose").addEventListener("click", function () {
+  closeModal();
+  resetForm();
+});
+
+$("#againBtn").addEventListener("click", function () {
+  closeModal();
+  resetForm();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+modal.addEventListener("click", function (e) {
+  if (e.target === modal) {
+    closeModal();
+    resetForm();
+  }
+});
+
+document.addEventListener("keydown", function (e) {
+  if (e.key !== "Escape") return;
+
+  if (modal.classList.contains("open")) {
+    closeModal();
+    resetForm();
+  }
+
+  closeMenu();
+});
+
+/* ---------------------------------------------------------
+INIT
+--------------------------------------------------------- */
+
+(function init() {
+  var wanted = "ar";
+
+  try { wanted = localStorage.getItem("tt-lang") || "ar"; } catch (e) {}
+
+  var fromUrl = new URLSearchParams(window.location.search).get("lang");
+  if (fromUrl === "en" || fromUrl === "ar") wanted = fromUrl;
+
+  setLang(wanted);
+})();
+
+})();
+</script>
+
+</body>
+</html>

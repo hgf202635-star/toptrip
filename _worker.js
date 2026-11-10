@@ -28,7 +28,13 @@ const LIMITS = {
   minText: 10,
   contact: 80,
   perHour: 3,
-  maxBody: 8000
+  maxBody: 12000,
+  mediaPerFile: 25 * 1024 * 1024
+};
+
+const MEDIA_TYPES = {
+  "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif",
+  "video/mp4": "mp4", "video/webm": "webm", "video/quicktime": "mov"
 };
 
 const TOURS = [
@@ -116,6 +122,7 @@ async function ensureTable(db) {
         "text TEXT NOT NULL, " +
         "recommend INTEGER NOT NULL DEFAULT 0, " +
         "contact TEXT NOT NULL DEFAULT '', " +
+        "media TEXT NOT NULL DEFAULT '[]', " +
         "ip_hash TEXT NOT NULL DEFAULT '', " +
         "hidden INTEGER NOT NULL DEFAULT 0, " +
         "created INTEGER NOT NULL)"
@@ -128,6 +135,9 @@ async function ensureTable(db) {
     )
   ]);
 
+  try {
+    await db.prepare("ALTER TABLE reviews ADD COLUMN media TEXT NOT NULL DEFAULT '[]'").run();
+  } catch (e) { /* The column already exists on a new database. */ }
   tableReady = true;
 }
 
@@ -143,7 +153,11 @@ function toPublic(row) {
     tags: Array.isArray(tags) ? tags.filter((t) => TAGS.includes(t)) : [],
     text: row.text,
     recommend: row.recommend === 1,
-    date: new Date(row.created).toISOString()
+    date: new Date(row.created).toISOString(),
+    media: (function () {
+      const items = parseJsonSafe(row.media, []);
+      return Array.isArray(items) ? items.filter((m) => m && typeof m.url === "string" && m.url.startsWith("/media/reviews/") && (m.type === "image" || m.type === "video")).slice(0, 4) : [];
+    })()
   };
 }
 
@@ -154,7 +168,7 @@ async function handleGet(env) {
     await ensureTable(env.DB);
 
     const result = await env.DB.prepare(
-      "SELECT id, name, tour, rating, tags, text, recommend, created " +
+      "SELECT id, name, tour, rating, tags, text, recommend, media, created " +
         "FROM reviews WHERE hidden = 0 ORDER BY created DESC LIMIT ?"
     )
       .bind(LIMITS.list)
@@ -242,6 +256,11 @@ async function handlePost(request, env) {
 
   const recommend = body.recommend === true ? 1 : 0;
   const contact = oneLine(body.contact, LIMITS.contact);
+  const media = Array.isArray(body.media) ? body.media.filter((m) =>
+    m && typeof m.url === "string" &&
+    /^\/media\/reviews\/[a-zA-Z0-9_-]+\.(jpg|png|webp|gif|mp4|webm|mov)$/.test(m.url) &&
+    (m.type === "image" || m.type === "video")
+  ).slice(0, 4) : [];
 
   try {
     await ensureTable(env.DB);
@@ -265,8 +284,8 @@ async function handlePost(request, env) {
 
     await env.DB.prepare(
       "INSERT INTO reviews " +
-        "(id, name, tour, rating, sub, tags, text, recommend, contact, ip_hash, hidden, created) " +
-        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?)"
+        "(id, name, tour, rating, sub, tags, text, recommend, contact, media, ip_hash, hidden, created) " +
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?)"
     )
       .bind(
         id,
@@ -278,6 +297,7 @@ async function handlePost(request, env) {
         text,
         recommend,
         contact,
+        JSON.stringify(media),
         ipHash,
         now
       )
@@ -294,6 +314,7 @@ async function handlePost(request, env) {
           tags: JSON.stringify(tags),
           text,
           recommend,
+          media: JSON.stringify(media),
           created: now
         })
       },
@@ -304,9 +325,51 @@ async function handlePost(request, env) {
   }
 }
 
+async function handleMediaUpload(request, env) {
+  if (!env.REVIEW_MEDIA) return json({ ok: false, error: "media_not_configured" }, 503);
+  const origin = request.headers.get("Origin");
+  if (origin) {
+    try {
+      if (new URL(origin).host !== new URL(request.url).host) return json({ ok: false, error: "forbidden" }, 403);
+    } catch (e) { return json({ ok: false, error: "forbidden" }, 403); }
+  }
+  if (!(request.headers.get("Content-Type") || "").includes("multipart/form-data")) return invalid(415);
+  let form;
+  try { form = await request.formData(); } catch (e) { return invalid(); }
+  const file = form.get("file");
+  if (!file || typeof file.arrayBuffer !== "function") return invalid();
+  const ext = MEDIA_TYPES[file.type];
+  if (!ext || file.size < 1 || file.size > LIMITS.mediaPerFile) return json({ ok: false, error: "media_invalid" }, 422);
+  const key = crypto.randomUUID() + "." + ext;
+  try {
+    await env.REVIEW_MEDIA.put(key, file.stream(), {
+      httpMetadata: { contentType: file.type, cacheControl: "public, max-age=31536000, immutable" }
+    });
+    return json({ ok: true, media: { url: "/media/reviews/" + key, type: file.type.startsWith("video/") ? "video" : "image" } }, 201);
+  } catch (e) { return json({ ok: false, error: "server" }, 500); }
+}
+
+async function handleMediaGet(request, env, key) {
+  if (request.method !== "GET" || !env.REVIEW_MEDIA || !/^[a-zA-Z0-9_-]+\.(jpg|png|webp|gif|mp4|webm|mov)$/.test(key)) {
+    return json({ ok: false, error: "not_found" }, 404);
+  }
+  try {
+    const object = await env.REVIEW_MEDIA.get(key);
+    if (!object) return json({ ok: false, error: "not_found" }, 404);
+    const headers = new Headers();
+    object.writeHttpMetadata(headers);
+    headers.set("Cache-Control", "public, max-age=31536000, immutable");
+    headers.set("X-Content-Type-Options", "nosniff");
+    headers.set("Content-Security-Policy", "default-src 'none'; sandbox");
+    return new Response(object.body, { headers });
+  } catch (e) { return json({ ok: false, error: "server" }, 500); }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === "/api/review-media" && request.method === "POST") return handleMediaUpload(request, env);
+    if (url.pathname.startsWith("/media/reviews/")) return handleMediaGet(request, env, url.pathname.slice("/media/reviews/".length));
 
     if (url.pathname === "/api/reviews" || url.pathname === "/api/reviews/") {
       if (request.method === "GET") return handleGet(env);

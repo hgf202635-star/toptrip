@@ -2325,6 +2325,9 @@ REVIEWS SYSTEM
 .rv-pending{align-self:flex-start;margin-bottom:12px;padding:5px 12px;border-radius:100px;background:rgba(214,178,119,.14);color:var(--sand-light);font-size:11px;font-weight:800}
 .rv-body{flex:1;padding-bottom:20px}
 .rv-text{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:8;overflow:hidden;color:#d9cfc2;line-height:2;font-size:14px;white-space:pre-line;word-break:break-word}
+.rv-media{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:9px;margin-top:16px}
+.rv-media img,.rv-media video{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--border);border-radius:13px;background:#0d0b09}
+.rv-media video{object-fit:contain}
 .rv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .rv-tags span{padding:5px 11px;border-radius:100px;background:rgba(214,178,119,.12);color:var(--sand-light);font-size:11px;font-weight:700}
 .rv-rec{display:flex;align-items:center;gap:8px;margin-top:14px;color:#7be0a0;font-size:12px;font-weight:700}
@@ -4630,6 +4633,7 @@ rating: rating,
 tour: typeof r.tour === "string" ? r.tour : "",
 tags: Array.isArray(r.tags) ? r.tags.filter(hasTag) : [],
 recommend: r.recommend === true,
+media: Array.isArray(r.media) ? r.media.filter(function (m) { return m && typeof m.url === "string" && m.url.indexOf("/media/reviews/") === 0 && (m.type === "image" || m.type === "video"); }).slice(0, 4) : [],
 time: isNaN(time) ? 0 : time,
 date: r.date,
 mine: false
@@ -4720,6 +4724,26 @@ a.appendChild(mk("span", "rv-pending", tr("تقييمك (بانتظار النش
 
 var body = mk("div", "rv-body");
 body.appendChild(mk("p", "rv-text", r.text));
+
+if (r.media.length) {
+var gallery = mk("div", "rv-media");
+r.media.forEach(function (item) {
+var node;
+if (item.type === "video") {
+node = document.createElement("video");
+node.controls = true;
+node.preload = "metadata";
+node.playsInline = true;
+} else {
+node = document.createElement("img");
+node.alt = lang === "en" ? "Customer trip photo" : "صورة من تجربة العميل";
+node.loading = "lazy";
+}
+node.src = item.url;
+gallery.appendChild(node);
+});
+body.appendChild(gallery);
+}
 
 if (r.tags.length) {
 var tg = mk("div", "rv-tags");

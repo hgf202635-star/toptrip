@@ -1468,6 +1468,17 @@ RESPONSIVE
   }
 }
 
+.media-picker{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:25px 18px;border:1px dashed rgba(214,178,119,.5);border-radius:18px;background:rgba(214,178,119,.055);color:var(--sand-light);text-align:center;cursor:pointer;transition:var(--transition)}
+.media-picker:hover{border-color:var(--gold);background:rgba(214,178,119,.11);transform:translateY(-2px)}
+.media-picker>i{font-size:26px;color:var(--gold)}
+.media-picker>span{font-weight:900}
+.media-picker small{color:var(--muted);font-size:12px;line-height:1.8}
+.media-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:10px;margin-top:12px}
+.media-preview:empty{display:none}
+.media-thumb{position:relative;overflow:hidden;aspect-ratio:1;border:1px solid var(--border);border-radius:13px;background:#0d0b09}
+.media-thumb img,.media-thumb video{width:100%;height:100%;object-fit:cover}
+.media-remove{position:absolute;top:6px;inset-inline-end:6px;width:28px;height:28px;border:0;border-radius:50%;background:rgba(0,0,0,.78);color:#fff;cursor:pointer}
+
 </style>
 </head>
 
@@ -1656,6 +1667,18 @@ FORM + PREVIEW
             data-ph="ph_text"></textarea>
           <div class="counter"><span id="cnt">0</span> / 600</div>
           <div class="err" data-i="err_text">فضلاً اكتب تقييمك (10 أحرف على الأقل).</div>
+        </div>
+
+        <!-- Review photos and videos -->
+        <div class="field" id="fMedia">
+          <label class="label" for="reviewMedia"><span data-i="f_media">أضف صورًا أو فيديو من رحلتك</span><span class="opt" data-i="optional">(اختياري)</span></label>
+          <label class="media-picker" for="reviewMedia">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <span data-i="f_media">أضف صورًا أو فيديو من رحلتك</span>
+            <small data-i="media_hint">يمكنك اختيار حتى 4 ملفات، بحد أقصى 25 ميجابايت لكل ملف.</small>
+          </label>
+          <input id="reviewMedia" type="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime" multiple hidden>
+          <div id="mediaPreview" class="media-preview" aria-live="polite"></div>
         </div>
 
         <!-- Name + contact -->
@@ -1902,6 +1925,11 @@ var D = {
   f_text: { ar: "اكتب تجربتك", en: "Write your experience" },
   ph_text: { ar: "احكِ لنا: كيف كانت الرحلة؟ وما أكثر لحظة أعجبتك؟", en: "Tell us: how was the ride? What was your favourite moment?" },
   err_text: { ar: "فضلاً اكتب تقييمك (10 أحرف على الأقل).", en: "Please write your review (at least 10 characters)." },
+  f_media: { ar: "أضف صورًا أو فيديو من رحلتك", en: "Add photos or videos from your trip" },
+  media_hint: { ar: "يمكنك اختيار حتى 4 ملفات، بحد أقصى 25 ميجابايت لكل ملف.", en: "Choose up to 4 files, up to 25 MB each." },
+  media_remove: { ar: "إزالة", en: "Remove" },
+  err_media: { ar: "تعذّر رفع الصور أو الفيديو. حاول مرة أخرى لاحقًا.", en: "Could not upload the media. Please try again later." },
+  err_media_type: { ar: "اختر حتى 4 صور أو فيديوهات مدعومة، بحد أقصى 25 ميجابايت لكل ملف.", en: "Choose up to 4 supported photos or videos, up to 25 MB each." },
 
   f_name: { ar: "الاسم", en: "Name" },
   ph_name: { ar: "مثال: محمد العتيبي", en: "e.g. Mohammed Al-Otaibi" },
@@ -2071,6 +2099,64 @@ LANGUAGE
 --------------------------------------------------------- */
 
 var form = $("#reviewForm");
+var mediaInput = $("#reviewMedia");
+var mediaPreview = $("#mediaPreview");
+var selectedMedia = [];
+
+function renderMediaPreview() {
+  mediaPreview.textContent = "";
+  selectedMedia.forEach(function (file, index) {
+    var box = el("div", "media-thumb");
+    var url = URL.createObjectURL(file);
+    var media = file.type.indexOf("video/") === 0 ? el("video") : el("img");
+    media.src = url;
+    if (media.tagName === "VIDEO") { media.controls = true; media.muted = true; media.playsInline = true; }
+    else media.alt = file.name;
+    box.appendChild(media);
+    var remove = el("button", "media-remove", "×");
+    remove.type = "button";
+    remove.setAttribute("aria-label", t("media_remove"));
+    remove.addEventListener("click", function () {
+      selectedMedia.splice(index, 1);
+      renderMediaPreview();
+    });
+    box.appendChild(remove);
+    mediaPreview.appendChild(box);
+  });
+}
+
+mediaInput.addEventListener("change", function () {
+  var files = Array.prototype.slice.call(mediaInput.files || []);
+  var valid = files.length <= 4 && files.every(function (file) {
+    return /^(image\/(jpeg|png|webp|gif)|video\/(mp4|webm|quicktime))$/.test(file.type) && file.size <= 25 * 1024 * 1024;
+  });
+  if (!valid) {
+    selectedMedia = [];
+    mediaInput.value = "";
+    renderMediaPreview();
+    showSendError("err_media_type");
+    return;
+  }
+  selectedMedia = files;
+  showSendError("");
+  renderMediaPreview();
+});
+
+function uploadSelectedMedia() {
+  return selectedMedia.reduce(function (chain, file) {
+    return chain.then(function (urls) {
+      var data = new FormData();
+      data.append("file", file, file.name);
+      return fetch("/api/review-media", { method: "POST", body: data })
+        .then(function (res) { return res.json().then(function (body) { return { ok: res.ok, body: body }; }); })
+        .then(function (result) {
+          if (!result.ok || !result.body || !result.body.ok || !result.body.media) throw new Error("media upload failed");
+          urls.push(result.body.media);
+          return urls;
+        });
+    });
+  }, Promise.resolve([]));
+}
 
 function setLang(next) {
   lang = next === "en" ? "en" : "ar";
@@ -2265,6 +2351,7 @@ function sendReview(review) {
     text: review.text,
     recommend: review.recommend,
     contact: review.contact,
+    media: review.media || [],
     hp: $("#hp").value
   };
 
@@ -2330,7 +2417,8 @@ form.addEventListener("submit", function (e) {
     text: $("#text").value.trim(),
     recommend: $("#recommend").checked,
     contact: $("#contact").value.trim(),
-    date: new Date().toISOString()
+    date: new Date().toISOString(),
+    media: []
   };
 
   var btn = $(".submit");
@@ -2340,7 +2428,12 @@ form.addEventListener("submit", function (e) {
   btnText.textContent = t("sending");
   showSendError("");
 
-  sendReview(review).then(function (result) {
+  uploadSelectedMedia().then(function (media) {
+    review.media = media;
+    return sendReview(review);
+  }).catch(function () {
+    return { error: "err_media" };
+  }).then(function (result) {
     btn.disabled = false;
     btnText.textContent = t("submit");
 
